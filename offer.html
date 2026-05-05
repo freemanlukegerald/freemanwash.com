@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First-Time Offer — Freeman Pressure Washing | Bee Cave & Lakeway</title>
+  <meta name="description" content="Exclusive intro offer for Bee Cave & Lakeway homeowners. Professional exterior cleaning. Call or text (512) 333-0552.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:     #0b1120;
+      --navy-2:   #111827;
+      --navy-3:   #1a2540;
+      --blue:     #1e6ef4;
+      --orange:   #f97316;
+      --white:    #ffffff;
+      --muted:    #64748b;
+      --border:   rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,17,32,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar img {
+      height: 48px;
+      display: block;
+      background: white;
+      border-radius: 8px;
+      padding: 3px 8px;
+    }
+
+    .topbar a.phone {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .topbar a.phone svg { fill: var(--blue); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(30,110,244,0.14) 0%, transparent 65%);
+    }
+
+    /* STABLE — this headline stays the same no matter what the offer is */
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 400px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /*
+      OFFER BLOCK — the only section you need to edit when the offer changes.
+      Update: the label, price, service name, and detail line.
+      Everything else on the page stays the same.
+    */
+    .offer-block {
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      max-width: 380px;
+      margin: 0 auto 2rem;
+    }
+
+    .offer-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .offer-service {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3.5rem, 14vw, 5rem);
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-price sup { font-size: 40%; vertical-align: super; }
+
+    .offer-detail {
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.5rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn:active { transform: scale(0.98); }
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-blue   { background: var(--blue); color: #fff; }
+    .btn-ghost  { background: rgba(255,255,255,0.07); color: #fff; border: 1px solid var(--border); }
+
+    /* ── PHOTOS ── */
+    .photos {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .photos-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .photos-grid .wide { grid-column: span 2; }
+
+    .photo-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--navy-3);
+    }
+
+    .photo-card.wide { aspect-ratio: 16/7; }
+    .photo-card:not(.wide) { aspect-ratio: 4/3; }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── FORM ── */
+    .form-section {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--navy-2);
+    }
+
+    .form-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.4rem, 5vw, 1.9rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .form-section .form-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    .lead-form {
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      background: var(--navy-3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: #374151; }
+
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--blue); }
+
+    .form-field textarea { resize: none; height: 78px; }
+
+    .form-submit {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .form-submit:hover { opacity: 0.9; }
+
+    .guarantee {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: rgba(34,197,94,0.06);
+      border: 1px solid rgba(34,197,94,0.15);
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .guarantee-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .guarantee strong { color: #86efac; display: block; margin-bottom: 0.15rem; font-size: 0.85rem; }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .about-photo {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid rgba(30,110,244,0.5);
+      flex-shrink: 0;
+    }
+
+    .about-inner h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .about-inner p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .review-note {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: #475569;
+      font-style: italic;
+    }
+
+    /* ── UPSELL ── */
+    .upsell {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--navy-2);
+    }
+
+    .upsell-card {
+      max-width: 420px;
+      margin: 0 auto;
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .upsell-card .tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .upsell-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .upsell-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.75rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: #070c18;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy  { color: #1e293b; font-size: 0.75rem; }
+    .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.35rem; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="/"><img src="images/logo.png" alt="Freeman Pressure Washing"></a>
+    <a href="tel:5123330552" class="phone">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      (512) 333-0552
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- STABLE — don't change this when the offer changes -->
+    <h1>Freeman Pressure Washing<br>Bee Cave &amp; Lakeway</h1>
+    <p class="hero-sub">Local. Reliable. Done right the first time.</p>
+
+    <!--
+      ════════════════════════════════════════
+      OFFER BLOCK — edit only this section
+      when you want to change the offer.
+      Update: offer-label, offer-service,
+      offer-price, and offer-detail.
+      ════════════════════════════════════════
+    -->
+    <div class="offer-block">
+      <div class="offer-label">First-Time Customer Offer · Limited Spots</div>
+      <div class="offer-service">Driveway Cleaning</div>
+      <div class="offer-price"><sup>$</sup>50</div>
+      <div class="offer-detail">Limited to the first 50 homes in this area</div>
+    </div>
+
+    <div class="cta-stack">
+      <a href="#claim" class="btn btn-orange">Claim This Offer</a>
+      <a href="tel:5123330552" class="btn btn-blue">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+        Text Me Now
+      </a>
+    </div>
+
+  </section>
+
+  <!-- PHOTOS -->
+  <section class="photos">
+    <div class="photos-label">Real results from local jobs</div>
+    <div class="photos-grid">
+      <div class="photo-card wide">
+        <img src="images/jobs/job1.jpg" alt="Driveway before and after pressure washing">
+      </div>
+      <div class="photo-card">
+        <img src="images/jobs/job2.jpg" alt="Oil stain removal">
+      </div>
+      <div class="photo-card">
+        <img src="images/jobs/job5.jpg" alt="Concrete cleaning">
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section" id="claim">
+    <h2>Request Your Spot</h2>
+    <p class="form-sub">I'll reach out within a few hours to confirm and schedule.</p>
+
+    <form class="lead-form" action="https://formsubmit.co/luke@freemanwash.com" method="POST">
+      <input type="hidden" name="_subject" value="New Lead — freemanwash.com/offer">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://freemanwash.com/thank-you.html">
+      <input type="text" name="_honey" style="display:none">
+
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="address">Property Address</label>
+        <input type="text" id="address" name="address" placeholder="123 Main St, Bee Cave, TX" required autocomplete="street-address">
+      </div>
+      <div class="form-field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="notes">Anything I should know? <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Gate code, oil stains, driveway size..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Request →</button>
+    </form>
+
+    <br>
+
+    <div class="guarantee">
+      <span class="guarantee-icon">🛡️</span>
+      <div>
+        <strong>100% Satisfaction Guarantee</strong>
+        Not happy with the result? I'll come back and fix it free. No questions asked.
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="about-inner">
+      <img src="images/headshot.jpg" alt="Luke Freeman" class="about-photo">
+      <div>
+        <h3>Luke Freeman — Owner &amp; Operator</h3>
+        <p>Lake Travis grad, born and raised in Austin, living right here in Bee Cave. I do every job personally and hold myself to a high standard on each one.</p>
+        <p class="review-note">I'm early in building my business and focused on earning great reviews by doing great work. Your feedback genuinely matters to me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPSELL -->
+  <section class="upsell">
+    <div class="upsell-card">
+      <span class="tag">Also Available</span>
+      <h3>First Month FREE — Trash Can Cleaning</h3>
+      <p>2 cans sanitized monthly for $30/mo. No contract, cancel anytime.</p>
+      <a href="tel:5123330552" class="btn btn-ghost" style="max-width:260px;margin:0 auto;font-size:0.9rem">Ask Me About It</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Full Website</a>
+      <a href="tel:5123330552">(512) 333-0552</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning · Bee Cave, TX</p>
+    <p class="footer-verse">Proverbs 22:1</p>
+  </footer>
+
+</body>
+</html>
