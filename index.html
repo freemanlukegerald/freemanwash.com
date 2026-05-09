@@ -508,6 +508,126 @@
 
     .check { color: var(--green); font-size: 0.8rem; margin-top: 2px; flex-shrink: 0; }
 
+    /* ─── RATE TABLE ─── */
+    .rate-table {
+      max-width: 780px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .rate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .rate-row:last-child { border-bottom: none; }
+    .rate-row:nth-child(odd) { background: rgba(255,255,255,0.02); }
+
+    .rate-service {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .rate-price {
+      font-size: 0.85rem;
+      color: var(--blue-light);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ─── PLANS ─── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .plan-card.plan-featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 1px rgba(30,110,244,0.2), 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .plan-freq {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-light);
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .plan-saving {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .plan-saving strong { color: var(--orange); }
+
+    .plan-perks {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .plan-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.45rem 0;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-perks li:last-child { border-bottom: none; }
+
+    .plan-perks li::before {
+      content: '✓';
+      color: var(--green);
+      font-size: 0.75rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
     /* ─── ABOUT ─── */
     .about-grid {
       display: grid;
@@ -903,19 +1023,55 @@
       <div class="section-header fade-up">
         <div class="section-label">What We Do</div>
         <h2 class="section-title">Exterior Cleaning Services</h2>
-        <p class="section-desc">We specialize in the services that make the biggest visual impact on your home and property.</p>
+        <p class="section-desc">Full-service exterior cleaning for your home — from the driveway to the roofline.</p>
       </div>
       <div class="services-grid">
         <div class="service-card fade-up">
           <span class="service-icon">🚗</span>
-          <h3>Driveway Cleaning</h3>
-          <p>Oil stains, tire marks, mold, and years of buildup — gone. We restore your driveway to like-new condition using professional-grade pressure washing equipment.</p>
-          <div class="service-price-tag">Starting at $150 · $0.15/sq ft</div>
+          <h3>Driveway & Power Washing</h3>
+          <p>Oil stains, tire marks, mold, and years of buildup — gone. Professional-grade pressure washing that restores any flat surface to like-new condition.</p>
+          <div class="service-price-tag">$0.15/sq ft · $150 minimum</div>
         </div>
         <div class="service-card fade-up">
           <span class="service-icon">🏗️</span>
           <h3>Concrete Cleaning</h3>
           <p>Sidewalks, pool decks, patios, and any concrete surface. We remove embedded grime, algae, and staining to bring your concrete back to life.</p>
+          <div class="service-price-tag">$0.15/sq ft · $150 minimum</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🪟</span>
+          <h3>Exterior Window Cleaning</h3>
+          <p>Crystal-clear results on every pane. We clean all exterior windows including hard-to-reach areas, removing grime, water spots, and buildup.</p>
+          <div class="service-price-tag">$10/window · $0.10/sq ft</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🏠</span>
+          <h3>Interior Window Cleaning</h3>
+          <p>Spotless interior glass with no mess left behind. We clean all interior-facing panes carefully and thoroughly.</p>
+          <div class="service-price-tag">$5/window · $0.05/sq ft</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🔲</span>
+          <h3>Screen Cleaning</h3>
+          <p>Screens removed, deep-cleaned, and reinstalled. Standard and solar/specialty screens both handled with care.</p>
+          <div class="service-price-tag">$5 standard · $10 solar/specialty</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🍂</span>
+          <h3>Gutter Cleaning</h3>
+          <p>Clogged gutters cause serious water damage. We clear debris, flush downspouts, and make sure everything is flowing properly.</p>
+          <div class="service-price-tag">Free Quote</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">🏡</span>
+          <h3>Roof & Soft Washing</h3>
+          <p>Safe low-pressure soft wash removes algae, mildew, and staining from shingles and siding without causing damage.</p>
+          <div class="service-price-tag">Free Quote</div>
+        </div>
+        <div class="service-card fade-up">
+          <span class="service-icon">☀️</span>
+          <h3>Solar Panel Cleaning</h3>
+          <p>Dirty panels lose efficiency. We safely clean your solar panels to help them perform at their best year-round.</p>
           <div class="service-price-tag">Free Quote</div>
         </div>
         <div class="service-card featured-service fade-up">
@@ -937,32 +1093,85 @@
         <h2 class="section-title">Know What You'll Pay, Upfront</h2>
         <p class="section-desc">No surprise fees. No upsells. Just honest pricing from a local you can trust.</p>
       </div>
-      <div class="pricing-grid">
-        <div class="price-card fade-up">
-          <h3>Driveway Cleaning</h3>
-          <div class="price-amount"><sup>$</sup>150</div>
-          <div class="price-period">Starting price · $0.15 per sq ft</div>
-          <ul class="price-features">
-            <li><span class="check">✓</span> Full pressure wash</li>
-            <li><span class="check">✓</span> Oil &amp; stain treatment</li>
-            <li><span class="check">✓</span> Same-day quotes</li>
-            <li><span class="check">✓</span> 100% satisfaction guaranteed</li>
-          </ul>
-          <a href="tel:5123330552" class="btn btn-ghost" style="width:100%;justify-content:center">Get a Quote</a>
+      <!-- Service Rate List -->
+      <div class="rate-table fade-up">
+        <div class="rate-row">
+          <span class="rate-service">Driveway &amp; Power Washing</span>
+          <span class="rate-price">$0.15/sq ft &nbsp;·&nbsp; $150 min</span>
         </div>
-        <div class="price-card featured fade-up">
-          <span class="price-tag">Limited Offer</span>
-          <h3>Trash Can Cleaning</h3>
-          <div class="price-amount"><sup>$</sup>30<span style="font-size:1.25rem;font-weight:600">/mo</span></div>
-          <div class="price-period">2 cans included · First month FREE</div>
-          <ul class="price-features">
-            <li><span class="check">✓</span> First month free — limited time</li>
-            <li><span class="check">✓</span> No contract, cancel anytime</li>
-            <li><span class="check">✓</span> Sanitize &amp; deodorize</li>
-            <li><span class="check">✓</span> Monthly recurring service</li>
-            <li><span class="check">✓</span> Bacteria &amp; odor elimination</li>
+        <div class="rate-row">
+          <span class="rate-service">Concrete Cleaning</span>
+          <span class="rate-price">$0.15/sq ft &nbsp;·&nbsp; $150 min</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Exterior Window Cleaning</span>
+          <span class="rate-price">$10/window &nbsp;·&nbsp; $0.10/sq ft</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Interior Window Cleaning</span>
+          <span class="rate-price">$5/window &nbsp;·&nbsp; $0.05/sq ft</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Screen Cleaning</span>
+          <span class="rate-price">$5 standard &nbsp;·&nbsp; $10 solar</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Gutter Cleaning</span>
+          <span class="rate-price">Free Quote</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Roof &amp; Soft Washing</span>
+          <span class="rate-price">Free Quote</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Solar Panel Cleaning</span>
+          <span class="rate-price">Free Quote</span>
+        </div>
+        <div class="rate-row">
+          <span class="rate-service">Trash Can Cleaning</span>
+          <span class="rate-price">$30/mo · 2 cans · 1st month free</span>
+        </div>
+      </div>
+
+      <!-- Maintenance Plans -->
+      <div class="section-header center fade-up" style="margin-top:4rem;margin-bottom:2rem">
+        <div class="section-label">Maintenance Plans</div>
+        <h2 class="section-title" style="font-size:clamp(1.4rem,2.5vw,2rem)">Save More, Schedule Less</h2>
+        <p class="section-desc">Lock in recurring service and save on every visit. Cancel anytime.</p>
+      </div>
+      <div class="plans-grid">
+        <div class="plan-card fade-up">
+          <div class="plan-freq">Bi-Annual</div>
+          <div class="plan-saving">Save <strong>$50</strong>/visit</div>
+          <ul class="plan-perks">
+            <li>2 visits per year</li>
+            <li>Auto-scheduling</li>
+            <li>Rain guarantee</li>
           </ul>
-          <a href="tel:5123330552" class="btn btn-primary" style="width:100%;justify-content:center">Claim First Month Free</a>
+          <a href="tel:5123330552" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:auto">Get Started</a>
+        </div>
+        <div class="plan-card plan-featured fade-up">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-freq">Quarterly</div>
+          <div class="plan-saving">Save <strong>$100</strong>/visit</div>
+          <ul class="plan-perks">
+            <li>4 visits per year</li>
+            <li>Priority booking</li>
+            <li>5 free hard-water windows</li>
+            <li>Complimentary track cleaning</li>
+          </ul>
+          <a href="tel:5123330552" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto">Get Started</a>
+        </div>
+        <div class="plan-card fade-up">
+          <div class="plan-freq">Monthly</div>
+          <div class="plan-saving">Save <strong>$150</strong>/visit</div>
+          <ul class="plan-perks">
+            <li>12 visits per year</li>
+            <li>All quarterly perks</li>
+            <li>Triple reminders</li>
+            <li>Auto-billing</li>
+          </ul>
+          <a href="tel:5123330552" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:auto">Get Started</a>
         </div>
       </div>
     </div>
