@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Freeman Trash Can Cleaning | Bee Cave & Lakeway</title>
+  <meta name="description" content="Sign up for trash can cleaning in Bee Cave & Lakeway. First month free. Starting at $25/visit for 2 cans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #0b1120;
+      --navy-2: #111827;
+      --navy-3: #1a2540;
+      --blue:   #1e6ef4;
+      --orange: #f97316;
+      --white:  #ffffff;
+      --muted:  #64748b;
+      --green:  #22c55e;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,17,32,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar img {
+      height: 44px;
+      background: white;
+      border-radius: 8px;
+      padding: 4px 10px;
+      display: block;
+    }
+
+    .topbar a.phone {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 65%);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      max-width: 560px;
+      margin: 1.5rem auto 0;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 12px;
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: #86efac;
+    }
+
+    .promo-banner strong { color: #4ade80; }
+
+    /* ── FORM WRAPPER ── */
+    .form-wrap {
+      max-width: 600px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── FORM SECTIONS ── */
+    .form-section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-section-title:first-of-type { margin-top: 0; }
+
+    /* ── FIELDS ── */
+    .field-row {
+      display: grid;
+      gap: 0.875rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+    .field-row.cols-3 { grid-template-columns: 2fr 1fr 1fr; }
+
+    .field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .field label .req { color: var(--orange); margin-left: 2px; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--navy-3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    .field select option { background: var(--navy-2); }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: #374151; }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: var(--blue); }
+
+    .field textarea { resize: none; height: 80px; }
+
+    /* ── PLAN SELECTOR ── */
+    .plan-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .plan-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .plan-option:hover { border-color: rgba(249,115,22,0.4); }
+
+    .plan-option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--orange);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .plan-option.selected {
+      border-color: var(--orange);
+      background: rgba(249,115,22,0.06);
+    }
+
+    .plan-option-info { flex: 1; }
+    .plan-option-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .plan-option-desc {
+      font-size: 0.775rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .plan-option-price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
+    .plan-popular-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* ── CHECKBOXES ── */
+    .check-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 0.875rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .check-field input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+    }
+
+    .check-field strong { color: var(--white); display: block; margin-bottom: 0.25rem; }
+
+    /* ── SUBMIT ── */
+    .submit-btn {
+      width: 100%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 1.1rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover { opacity: 0.9; }
+    .submit-btn:active { transform: scale(0.99); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.775rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      background: #070c18;
+      text-align: center;
+    }
+
+    .footer-copy { color: #1e293b; font-size: 0.75rem; }
+    .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.3rem; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 520px) {
+      .field-row.cols-2 { grid-template-columns: 1fr; }
+      .field-row.cols-3 { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="/"><img src="images/logo.png" alt="Freeman Pressure Washing"></a>
+    <a href="tel:5123330552" class="phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      (512) 333-0552
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">First Month Free · No Contract</div>
+    <h1>Sign Up for Bin Cleaning</h1>
+    <p class="hero-sub">Fill out the form below and Luke will confirm your spot and first cleaning date within a few hours.</p>
+    <div class="promo-banner">
+      <span>🎉</span>
+      <div><strong>First Month Free</strong> — automatically applied when you select any recurring plan below.</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap">
+    <form action="https://formsubmit.co/luke@freemanwash.com" method="POST">
+      <input type="hidden" name="_subject" value="New Sign-Up — freemanwash.com/signup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://freemanwash.com/thank-you">
+      <input type="text" name="_honey" style="display:none">
+
+      <!-- CONTACT -->
+      <div class="form-section-title">Contact Details</div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" name="first_name" placeholder="John" required autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" name="last_name" placeholder="Smith" required autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label>Phone <span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- ADDRESS -->
+      <div class="form-section-title">Service Address</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Street Address <span class="req">*</span></label>
+          <input type="text" name="street_address" placeholder="123 Main St" required autocomplete="street-address">
+        </div>
+      </div>
+
+      <div class="field-row cols-3">
+        <div class="field">
+          <label>City <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="Bee Cave" required>
+        </div>
+        <div class="field">
+          <label>State</label>
+          <input type="text" name="state" value="TX" readonly style="opacity:0.6">
+        </div>
+        <div class="field">
+          <label>ZIP <span class="req">*</span></label>
+          <input type="text" name="zip" placeholder="78738" required autocomplete="postal-code">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Gate Code <span style="font-weight:400;text-transform:none;letter-spacing:0">(if applicable)</span></label>
+          <input type="text" name="gate_code" placeholder="e.g. #1234">
+        </div>
+      </div>
+
+      <!-- COLLECTION SCHEDULE -->
+      <div class="form-section-title">Collection Schedule</div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>Trash Pickup Day <span class="req">*</span></label>
+          <select name="pickup_day" required>
+            <option value="" disabled selected>Select day</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Next Pickup Date <span class="req">*</span></label>
+          <input type="date" name="next_pickup_date" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Number of Bins <span class="req">*</span></label>
+          <select name="num_bins" required>
+            <option value="" disabled selected>Select number</option>
+            <option value="1">1 bin</option>
+            <option value="2">2 bins (included in plan)</option>
+            <option value="3">3 bins (+$10)</option>
+            <option value="4">4 bins (+$20)</option>
+            <option value="5+">5+ bins (Luke will confirm price)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- PLAN SELECTION -->
+      <div class="form-section-title">Choose Your Plan</div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem">All plans cover up to 2 bins. Additional bins are $10 each per visit.</p>
+
+      <div class="plan-options" id="planOptions">
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="Every Week — $22/visit" required>
+          <div class="plan-option-info">
+            <div class="plan-option-name">Every Week</div>
+            <div class="plan-option-desc">Cleaned the day after each pickup</div>
+          </div>
+          <div class="plan-option-price">$22<span style="font-size:0.7rem;font-weight:600;color:var(--muted)">/visit</span></div>
+        </label>
+
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="Every 2 Weeks — $25/visit">
+          <div class="plan-option-info">
+            <div class="plan-option-name">Every 2 Weeks</div>
+            <div class="plan-option-desc">Bi-weekly cleaning service</div>
+          </div>
+          <div class="plan-option-price">$25<span style="font-size:0.7rem;font-weight:600;color:var(--muted)">/visit</span></div>
+        </label>
+
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="Every 4 Weeks (Monthly) — $30/month">
+          <div class="plan-option-info">
+            <div class="plan-option-name">Every 4 Weeks <span class="plan-popular-tag">Most Popular</span></div>
+            <div class="plan-option-desc">Monthly · First month FREE</div>
+          </div>
+          <div class="plan-option-price">$30<span style="font-size:0.7rem;font-weight:600;color:var(--muted)">/mo</span></div>
+        </label>
+
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="Every 8 Weeks — $45/visit">
+          <div class="plan-option-info">
+            <div class="plan-option-name">Every 8 Weeks</div>
+            <div class="plan-option-desc">Cleaning every 2 months</div>
+          </div>
+          <div class="plan-option-price">$45<span style="font-size:0.7rem;font-weight:600;color:var(--muted)">/visit</span></div>
+        </label>
+
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="Every 12 Weeks (Quarterly) — $55/visit">
+          <div class="plan-option-info">
+            <div class="plan-option-name">Every 12 Weeks</div>
+            <div class="plan-option-desc">Quarterly cleaning</div>
+          </div>
+          <div class="plan-option-price">$55<span style="font-size:0.7rem;font-weight:600;color:var(--muted)">/visit</span></div>
+        </label>
+
+        <label class="plan-option" onclick="selectPlan(this)">
+          <input type="radio" name="plan" value="One-Time Clean — $75">
+          <div class="plan-option-info">
+            <div class="plan-option-name">One-Time Clean</div>
+            <div class="plan-option-desc">Single cleaning, no commitment</div>
+          </div>
+          <div class="plan-option-price">$75</div>
+        </label>
+      </div>
+
+      <!-- EXTRA INFO -->
+      <div class="form-section-title">A Little More Info</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>How did you hear about us? <span class="req">*</span></label>
+          <select name="referral_source" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Door hanger / flyer</option>
+            <option>Google search</option>
+            <option>Neighbor referral</option>
+            <option>Social media</option>
+            <option>Nextdoor</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Promo Code <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <input type="text" name="promo_code" placeholder="Enter code if you have one">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Anything else I should know? <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <textarea name="notes" placeholder="Special instructions, bin location, accessibility notes..."></textarea>
+        </div>
+      </div>
+
+      <!-- ACKNOWLEDGEMENTS -->
+      <div class="form-section-title">Before You Submit</div>
+
+      <div class="check-field">
+        <input type="checkbox" name="understand_schedule" value="yes" required>
+        <div>
+          <strong>Scheduling</strong>
+          All cleanings happen the day after your trash is collected. Please make sure your bins are accessible. If we arrive and bins are unavailable, a $10 reschedule fee applies.
+        </div>
+      </div>
+
+      <div class="check-field">
+        <input type="checkbox" name="understand_payment" value="yes" required>
+        <div>
+          <strong>Payment</strong>
+          After signing up, Luke will reach out to confirm your first cleaning date and collect payment info. No charge until your first cleaning.
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit My Sign-Up →</button>
+
+      <p class="form-note">
+        Luke will text or call you within a few hours to confirm.<br>
+        Questions? Text directly at <a href="tel:5123330552" style="color:#60a5fa">(512) 333-0552</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning · Bee Cave, TX</p>
+    <p class="footer-verse">Proverbs 22:1</p>
+  </footer>
+
+  <script>
+    function selectPlan(label) {
+      document.querySelectorAll('.plan-option').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // Pre-select plan from URL param (e.g. /signup?plan=monthly)
+    const params = new URLSearchParams(window.location.search);
+    const planParam = params.get('plan');
+    if (planParam) {
+      const options = document.querySelectorAll('.plan-option');
+      const map = {
+        'weekly':    0,
+        'biweekly':  1,
+        'monthly':   2,
+        'bi-weekly': 1,
+        'quarterly': 4,
+        'onetime':   5,
+        'one-time':  5
+      };
+      const idx = map[planParam.toLowerCase()];
+      if (idx !== undefined && options[idx]) {
+        options[idx].classList.add('selected');
+        options[idx].querySelector('input').checked = true;
+      }
+    }
+  </script>
+
+</body>
+</html>
