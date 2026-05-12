@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -322,6 +323,82 @@
     .footer-copy { color: #1e293b; font-size: 0.75rem; }
     .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.3rem; }
 
+    /* ── STEP DIVIDER ── */
+    .step-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .step-divider::before,
+    .step-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── PAYMENT STEP ── */
+    .pay-section {
+      background: var(--navy-3);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .pay-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .pay-step-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pay-section-header h3 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .pay-section-header p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .stripe-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .pay-secure-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 520px) {
       .field-row.cols-2 { grid-template-columns: 1fr; }
@@ -558,17 +635,37 @@
         <input type="checkbox" name="understand_payment" value="yes" required>
         <div>
           <strong>Payment</strong>
-          After signing up, Luke will reach out to confirm your first cleaning date and collect payment info. No charge until your first cleaning.
+          I understand I'll complete payment in Step 2 below via Stripe. Service is confirmed once both steps are done.
         </div>
       </div>
 
-      <button type="submit" class="submit-btn">Submit My Sign-Up →</button>
+      <button type="submit" class="submit-btn">Step 1 — Submit Service Details →</button>
 
       <p class="form-note">
-        Luke will text or call you within a few hours to confirm.<br>
+        Your info goes straight to Luke. Then scroll down to complete payment.<br>
         Questions? Text directly at <a href="tel:5123330552" style="color:#60a5fa">(512) 333-0552</a>
       </p>
     </form>
+
+    <!-- STEP 2: STRIPE PAYMENT -->
+    <div class="step-divider">Step 2 — Complete Payment</div>
+    <div class="pay-section">
+      <div class="pay-section-header">
+        <div class="pay-step-badge">2</div>
+        <div>
+          <h3>Pay Securely via Stripe</h3>
+          <p>Your spot is confirmed once payment is complete. First month free on monthly plans.</p>
+        </div>
+      </div>
+      <div class="stripe-wrapper">
+        <stripe-buy-button
+          buy-button-id="buy_btn_1TWP0tIOi0nNhdyyVML6oVm3"
+          publishable-key="pk_live_51TWNrtIOi0nNhdyypllfbhxIVaQAVAwxero2VAL6RSZ0slFJ7BmJpN1Slx6Qc8yYfG4P6YWtMuEraxoycYIH3hYW00gWKOZw6x"
+        ></stripe-buy-button>
+      </div>
+      <p class="pay-secure-note">🔒 Payments processed securely by Stripe. Freeman never sees your card details.</p>
+    </div>
+
   </div>
 
   <!-- FOOTER -->

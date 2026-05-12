@@ -926,40 +926,65 @@
       border-radius: 100px;
     }
 
-    /* ─── WHY US ─── */
-    .why-grid {
+    /* ─── TRUST SIGNALS ─── */
+    .trust-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
     }
 
-    .why-card {
+    .trust-card {
       background: var(--navy-3);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 1.75rem;
       transition: border-color 0.25s;
     }
 
-    .why-card:hover { border-color: rgba(30,110,244,0.3); }
+    .trust-card:hover { border-color: rgba(30,110,244,0.3); }
 
-    .why-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--blue);
-      opacity: 0.4;
-      line-height: 1;
-      margin-bottom: 0.75rem;
+    .trust-icon {
+      font-size: 2rem;
+      margin-bottom: 0.875rem;
+      display: block;
     }
 
-    .why-card h3 {
+    .trust-card h3 {
       font-weight: 700;
       font-size: 1rem;
       margin-bottom: 0.5rem;
     }
 
-    .why-card p {
+    .trust-card p {
+      color: var(--gray-400);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    /* ─── MINI FAQ ─── */
+    .mini-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .mini-faq-item {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .mini-faq-item h4 {
+      font-weight: 700;
+      font-size: 0.925rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .mini-faq-item p {
       color: var(--gray-400);
       font-size: 0.875rem;
       line-height: 1.7;
@@ -1129,6 +1154,11 @@
     .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
     /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .mini-faq-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1162,6 +1192,11 @@
       .stats-inner { gap: 1.5rem; }
     }
 
+    @media (max-width: 540px) {
+      .trust-grid { grid-template-columns: 1fr; }
+      .mini-faq-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 480px) {
       .hero { padding: 8rem 1.5rem 4rem; }
       .section { padding: 4rem 1.5rem; }
@@ -1181,6 +1216,7 @@
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#area">Service Area</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
       </ul>
       <a href="tel:5123330552" class="nav-cta">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
@@ -1199,7 +1235,7 @@
       <div class="hero-eyebrow">Bee Cave &amp; Lakeway, Texas</div>
       <h1>Never Smell Your<br><em>Trash Cans</em> Again.</h1>
       <p class="hero-sub">
-        Monthly bin cleaning starting at $25/visit for 2 cans. Sanitized, deodorized, and returned to your property — every time. No contracts, cancel anytime.
+        We clean your stinky trash cans so you don't have to. Starting at $25/visit — sanitized, deodorized, and returned to your property. No contracts, cancel anytime.
       </p>
       <div class="hero-actions">
         <a href="#plans" class="btn btn-orange">See Plans &amp; Pricing</a>
@@ -1414,33 +1450,44 @@
     </div>
   </section>
 
-  <!-- WHY US -->
+  <!-- TRUST SIGNALS -->
   <section class="section section-alt" id="why">
     <div class="container">
       <div class="section-header center fade-up">
         <div class="section-label">Why Freeman</div>
         <h2 class="section-title">The Difference is in the Details</h2>
+        <p class="section-desc">Built on trust, run by a neighbor who actually shows up.</p>
       </div>
-      <div class="why-grid">
-        <div class="why-card fade-up">
-          <div class="why-num">01</div>
-          <h3>Fast Response</h3>
-          <p>Same-day quotes. We don't make you wait a week to hear back. Call or text and get a real answer fast.</p>
+      <div class="trust-grid">
+        <div class="trust-card fade-up">
+          <span class="trust-icon">🏡</span>
+          <h3>Locally Owned</h3>
+          <p>Born and raised in Austin, based right here in Bee Cave. This is my neighborhood — my reputation is on the line with every single job.</p>
         </div>
-        <div class="why-card fade-up">
-          <div class="why-num">02</div>
-          <h3>Local &amp; Accountable</h3>
-          <p>This is my neighborhood too. My reputation matters here, which means your job gets done right — every time.</p>
+        <div class="trust-card fade-up">
+          <span class="trust-icon">📵</span>
+          <h3>No Contracts</h3>
+          <p>Sign up and cancel anytime — no penalties, no lock-in, no fine print. I'd rather earn your business every month than trap you into anything.</p>
         </div>
-        <div class="why-card fade-up">
-          <div class="why-num">03</div>
-          <h3>Honest Pricing</h3>
-          <p>What I quote is what you pay. No add-ons, no hidden fees. Straight-forward pricing from someone you can trust.</p>
+        <div class="trust-card fade-up">
+          <span class="trust-icon">💵</span>
+          <h3>Transparent Pricing</h3>
+          <p>What I quote is what you pay. No hidden fees, no surprise add-ons. Straight-forward from someone who values your trust over a quick buck.</p>
         </div>
-        <div class="why-card fade-up">
-          <div class="why-num">04</div>
-          <h3>Guaranteed Results</h3>
-          <p>Not happy with the result? I come back and make it right — no questions asked. That's my word on it.</p>
+        <div class="trust-card fade-up">
+          <span class="trust-icon">♻️</span>
+          <h3>Eco-Friendly</h3>
+          <p>Biodegradable deodorizer, no harsh chemicals, and all contaminated wastewater is properly contained and disposed of — never left to run off into your yard.</p>
+        </div>
+        <div class="trust-card fade-up">
+          <span class="trust-icon">🌡️</span>
+          <h3>200° Hot Water</h3>
+          <p>Not a rinse — a real deep clean. Pressurized 200° hot water kills 99.9% of bacteria and eliminates odors at the source, not just on the surface.</p>
+        </div>
+        <div class="trust-card fade-up">
+          <span class="trust-icon">✅</span>
+          <h3>Satisfaction Guaranteed</h3>
+          <p>Not happy with the result? I come back and make it right, no questions asked. Every time. That's my personal guarantee on every job I do.</p>
         </div>
       </div>
     </div>
@@ -1527,6 +1574,45 @@
       </div>
       <div style="text-align:center;margin-top:2.5rem" class="fade-up">
         <a href="tel:5123330552" class="btn btn-ghost">Get a Quote → (512) 333-0552</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI FAQ -->
+  <section class="section section-alt" id="faq-preview">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <div class="section-label">Quick Answers</div>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+      <div class="mini-faq-grid fade-up">
+        <div class="mini-faq-item">
+          <h4>Do I need to be home?</h4>
+          <p>Nope. Leave your bins at the curb after trash day and I handle the rest. No need to be home or do anything.</p>
+        </div>
+        <div class="mini-faq-item">
+          <h4>Is there a contract?</h4>
+          <p>Never. Sign up, cancel anytime — no penalties, no fine print, no awkward conversation.</p>
+        </div>
+        <div class="mini-faq-item">
+          <h4>Do I pay upfront?</h4>
+          <p>No. You pay after each service, once your bins are cleaned and back at your property.</p>
+        </div>
+        <div class="mini-faq-item">
+          <h4>What if my bins are really bad?</h4>
+          <p>The worse the better — that's what 200° hot water is built for. Even badly neglected bins get fully sanitized.</p>
+        </div>
+        <div class="mini-faq-item">
+          <h4>Do you serve my neighborhood?</h4>
+          <p>I cover Bee Cave, Lakeway, West Lake Hills, Dripping Springs, Steiner Ranch, and greater Austin. Text me your address if you're not sure.</p>
+        </div>
+        <div class="mini-faq-item">
+          <h4>How much does it cost?</h4>
+          <p>Plans start at $25/visit bi-weekly or $30/month for monthly service. One-time cleans are $75. All plans cover up to 2 cans.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem" class="fade-up">
+        <a href="/faq.html" class="btn btn-ghost">See All Questions →</a>
       </div>
     </div>
   </section>

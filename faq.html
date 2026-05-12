@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | Freeman Exterior Cleaning – Bee Cave & Lakeway</title>
+  <meta name="description" content="Answers to common questions about Freeman's trash can cleaning service in Bee Cave, Lakeway, and the greater Austin area.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #0b1120;
+      --navy-2:     #111827;
+      --navy-3:     #1a2540;
+      --blue:       #1e6ef4;
+      --blue-light: #3b82f6;
+      --blue-dark:  #1554c0;
+      --orange:     #f97316;
+      --white:      #ffffff;
+      --off-white:  #f8fafc;
+      --gray-400:   #94a3b8;
+      --gray-600:   #475569;
+      --green:      #22c55e;
+      --border:     rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11,17,32,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-logo img {
+      height: 56px;
+      width: auto;
+      display: block;
+      background: white;
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 9rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -5%, rgba(30,110,244,0.16) 0%, transparent 60%);
+    }
+
+    .page-hero-content { position: relative; max-width: 680px; margin: 0 auto; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(30,110,244,0.12);
+      border: 1px solid rgba(30,110,244,0.3);
+      color: var(--blue-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue-light);
+      border-radius: 50%;
+    }
+
+    .page-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .page-hero p {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section {
+      padding: 2rem 2rem 6rem;
+    }
+
+    .faq-container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-category {
+      margin-bottom: 3rem;
+    }
+
+    .faq-category-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .faq-category-label::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .faq-category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .faq-item.open {
+      border-color: rgba(30,110,244,0.35);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--navy-3);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover { background: rgba(30,110,244,0.08); }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(30,110,244,0.12);
+      border: 1px solid rgba(30,110,244,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+      color: var(--blue-light);
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(30,110,244,0.2);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      background: var(--navy-3);
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.5rem;
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+    }
+
+    .faq-answer-inner a {
+      color: var(--blue-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-answer-inner a:hover { text-decoration: underline; }
+
+    .faq-answer-inner strong { color: var(--white); }
+
+    /* ─── STILL HAVE QUESTIONS ─── */
+    .still-questions {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .still-questions h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+
+    .still-questions p {
+      color: var(--gray-400);
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .still-questions-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 24px rgba(30,110,244,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 6px 32px rgba(30,110,244,0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 24px rgba(249,115,22,0.35);
+    }
+
+    .btn-orange:hover {
+      background: #ea6c0a;
+      box-shadow: 0 6px 32px rgba(249,115,22,0.45);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #070c18;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 56px;
+      width: auto;
+      margin-bottom: 0.75rem;
+      display: block;
+      background: white;
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+
+    .footer-tagline {
+      color: var(--gray-400);
+      font-size: 0.85rem;
+      max-width: 260px;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-contact a {
+      color: var(--gray-400);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover { color: var(--white); }
+
+    .footer-contact strong { color: var(--white); display: block; margin-bottom: 0.25rem; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      color: var(--gray-400);
+      font-size: 0.8rem;
+    }
+
+    .footer-verse {
+      color: #334155;
+      font-size: 0.75rem;
+      font-style: italic;
+    }
+
+    /* ─── FADE UP ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      nav.menu-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--navy-2);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1.25rem;
+      }
+
+      .footer-top { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .still-questions { padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { padding: 8rem 1.5rem 3.5rem; }
+      .faq-section { padding: 1.5rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="images/logo.png" alt="Freeman Pressure Washing & Exterior Cleaning">
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#plans">Plans & Pricing</a></li>
+        <li><a href="/#how-it-works">How It Works</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#area">Service Area</a></li>
+        <li><a href="/faq.html" class="active">FAQ</a></li>
+      </ul>
+      <a href="tel:5123330552" class="nav-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+        (512) 333-0552
+      </a>
+      <button class="hamburger" id="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content fade-up">
+      <div class="hero-eyebrow">Frequently Asked Questions</div>
+      <h1>Got Questions?<br>I've Got Answers.</h1>
+      <p>Everything you need to know about bin cleaning service from Freeman Exterior Cleaning. Don't see your question? Text me directly.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-container">
+
+      <!-- ABOUT THE SERVICE -->
+      <div class="faq-category fade-up">
+        <div class="faq-category-label">About the Service</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Who is Freeman Exterior Cleaning?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Freeman Exterior Cleaning is a locally owned and operated business based right here in Bee Cave, Texas. There's no franchise, no corporate office, no middleman — just me, Luke Freeman, showing up personally to every job. I grew up in the Austin area, graduated from Lake Travis High School, and started this business because I saw a real need for honest, reliable exterior cleaning in this community.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What areas do you serve?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              I'm based in Bee Cave and primarily serve <strong>Bee Cave, Lakeway, West Lake Hills, Spicewood, Dripping Springs, Steiner Ranch, and greater Austin</strong>. Not sure if you're in my coverage zone? Text me your address at <a href="tel:5123330552">(512) 333-0552</a> and I'll let you know — usually within a few minutes.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Why should I bother cleaning my trash cans?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Your trash cans are a breeding ground for bacteria like E. coli and salmonella, attract flies, maggots, and rodents, and produce some of the worst odors around your home. Most people never clean them — and that buildup compounds over time. Regular cleaning eliminates the bacteria, kills the smell, and keeps pests from making your bins their home. It's one of those things that's easy to ignore until it's really bad.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Why not just clean them myself?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              You could — but a standard garden hose and some dish soap won't get the job done the way professional equipment does. I use <strong>200° pressurized hot water</strong> that actually kills bacteria rather than just rinsing visible debris around. My equipment also uses less water than a garden hose would, and all the wastewater — which contains bacteria, mold, and gunk — is properly contained and disposed of rather than running off into your yard or storm drain.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do you clean recycling and yard waste bins too?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Yes — all of them. Recycling bins can be just as grimy as trash cans, and yard waste bins tend to be particularly nasty with decomposing material stuck to the bottom. Whatever bins you set out for pickup, I can clean. Each plan covers up to 2 cans, and additional cans are just <strong>$10 each</strong> per visit.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do you service commercial properties?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Yes. I work with HOAs, small businesses, and commercial properties with outdoor waste receptacles. The setup and pricing varies depending on the number of bins and service frequency needed. <a href="tel:5123330552">Text or call me</a> and we'll work out a plan that fits.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SCHEDULING -->
+      <div class="faq-category fade-up">
+        <div class="faq-category-label">Scheduling & Service</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How often should I schedule service?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              It depends on your household. Families with kids or pets, or anyone who throws away a lot of food waste, tend to benefit most from <strong>monthly or bi-weekly</strong> service. For most households, monthly is the sweet spot — frequent enough to prevent serious buildup, affordable enough to be a no-brainer. If you're unsure, starting with quarterly and adjusting from there is a great approach.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does the cleaning process work?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              I come out on your scheduled trash day — after the city has already picked up your cans. I pull the bins, run them through a thorough hot pressure wash, apply an eco-friendly deodorizer, and return them clean to your property. You don't need to be home. The whole process is quick, and your bins are ready to go for the next pickup.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will I be notified before each visit?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Yes. You'll get a heads-up before each scheduled service so there are no surprises. I keep communication simple — text works best for most customers, though email works too. Whatever you prefer, just let me know when you sign up.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I need to skip a service or cancel?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              No problem at all. There are <strong>no contracts and no cancellation fees</strong>. If you need to skip a month or pause service, just text me and we'll sort it out. Life happens — I'm not going to make it complicated.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            My HOA requires bins to be stored out of sight. Can you still service me?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Absolutely. If your HOA requires bins to be kept inside a gate, garage, or enclosure, just let me know when you sign up and I'll coordinate with you directly to make sure access is handled. We figure it out.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PRICING & PAYMENT -->
+      <div class="faq-category fade-up">
+        <div class="faq-category-label">Pricing & Payment</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I have to sign a contract?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              No contracts, ever. You sign up, I show up, you pay after each service. If you decide it's not for you, just say the word and we stop — no penalties, no awkward conversations. I'd rather earn your business every single month than lock you into something.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I pay before or after service?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              You pay after each service — not before. I want you to see the results first. Payment is collected after your bins are cleaned and returned to your property.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I get a one-time cleaning without committing to a plan?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Yes. A one-time clean is <strong>$75 for up to 2 cans</strong>. It's the best way to see what the service is like before committing to a recurring plan. Fair warning though — most people who try it end up signing up for monthly service once they see (and smell) the difference.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is my payment information secure?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Yes. Your payment and personal information is kept confidential and is never shared with third parties. I use secure payment processing so your card details are encrypted and protected. If you ever need to update your payment method, just reach out and I'll send a secure link.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PRODUCTS & EQUIPMENT -->
+      <div class="faq-category fade-up">
+        <div class="faq-category-label">Products & Equipment</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do you use harsh chemicals?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              No. The heavy lifting is done by <strong>200° pressurized hot water</strong> — the heat alone kills the vast majority of bacteria. For deodorizing, I use a biodegradable, eco-friendly deodorizer that's safe for your family, pets, and the environment. No bleach, no harsh solvents. If a bin has stubborn grease or residue, I may use a small amount of biodegradable degreaser, but nothing that will harm your property or the environment.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What happens to the dirty wastewater?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              All wastewater is collected and disposed of properly — it doesn't just run off into your yard, driveway, or storm drain. This matters because the water coming out of those bins contains bacteria, mold, and decomposed waste. Proper disposal is better for the environment and keeps that contaminated water away from your home.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How will I know my bins were actually cleaned?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              You'll know. The smell alone is a dead giveaway — a bin that used to reek of two-week-old garbage will smell like nothing. The interior will look visibly clean, and any built-up residue, slime, or staining will be gone. If for any reason you're not satisfied, text me and I'll make it right — no questions asked.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STILL HAVE QUESTIONS -->
+      <div class="still-questions fade-up">
+        <h3>Still have a question?</h3>
+        <p>I'm a real person and I answer my own texts. Reach out directly — I'll get back to you fast.</p>
+        <div class="still-questions-actions">
+          <a href="tel:5123330552" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+            Call or Text Luke
+          </a>
+          <a href="/signup?plan=monthly" class="btn btn-orange">Claim First Month Free</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Freeman Pressure Washing">
+          <p class="footer-tagline">Professional exterior cleaning for Bee Cave, Lakeway, and surrounding Austin communities.</p>
+        </div>
+        <div class="footer-contact">
+          <strong>Get in Touch</strong>
+          <a href="tel:5123330552">(512) 333-0552</a>
+          <a href="mailto:luke@freemanwash.com">luke@freemanwash.com</a>
+          <span style="color:var(--gray-400)">Bee Cave, TX</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning. All rights reserved.</p>
+        <p class="footer-verse">Proverbs 22:1</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all others
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-answer').style.maxHeight = '0';
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('open');
+          answer.style.maxHeight = '0';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Mobile menu
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('nav').classList.toggle('menu-open');
+    });
+  </script>
+
+</body>
+</html>
