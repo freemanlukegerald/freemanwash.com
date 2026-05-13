@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Freeman Exterior Cleaning</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #0b1120;
+      --navy-2: #111827;
+      --navy-3: #1a2540;
+      --blue:   #1e6ef4;
+      --orange: #f97316;
+      --white:  #ffffff;
+      --muted:  #64748b;
+      --green:  #22c55e;
+      --red:    #ef4444;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: rgba(11,17,32,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .topbar img {
+      height: 40px;
+      background: white;
+      border-radius: 6px;
+      padding: 3px 8px;
+      display: block;
+    }
+
+    .topbar-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .logout-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .logout-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+    /* ── LOGIN SCREEN ── */
+    #loginScreen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 64px);
+      padding: 2rem;
+    }
+
+    .login-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    .login-card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-card p {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .login-card input {
+      width: 100%;
+      background: var(--navy-2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      margin-bottom: 0.875rem;
+      transition: border-color 0.2s;
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+
+    .login-card input:focus { border-color: var(--blue); }
+
+    .login-btn {
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .login-btn:hover { opacity: 0.9; }
+
+    .login-error {
+      color: #fca5a5;
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* ── DASHBOARD ── */
+    #dashboard { display: none; padding: 2rem; }
+
+    /* Stats bar */
+    .stats-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.75rem;
+      min-width: 160px;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-card .stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stat-card.red .stat-value { color: var(--red); }
+    .stat-card.green .stat-value { color: var(--green); }
+
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .dash-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .refresh-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .refresh-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    thead th {
+      background: var(--navy-2);
+      padding: 0.875rem 1.25rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+    tbody td {
+      padding: 1rem 1.25rem;
+      vertical-align: top;
+      color: #e2e8f0;
+    }
+
+    td .name { font-weight: 600; }
+    td .email { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+    td .address { color: var(--muted); font-size: 0.8rem; }
+
+    /* Status badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .badge.trialing  { background: rgba(34,197,94,0.1);   color: #4ade80; }
+    .badge.trialing .badge-dot  { background: #4ade80; }
+
+    .badge.active    { background: rgba(30,110,244,0.12);  color: #60a5fa; }
+    .badge.active .badge-dot    { background: #60a5fa; }
+
+    .badge.failed    { background: rgba(239,68,68,0.12);   color: #fca5a5; }
+    .badge.failed .badge-dot    { background: #fca5a5; }
+
+    .badge.cancelled { background: rgba(100,116,139,0.12); color: #64748b; }
+    .badge.cancelled .badge-dot { background: #64748b; }
+
+    .badge.past_due  { background: rgba(245,158,11,0.12);  color: #fbbf24; }
+    .badge.past_due .badge-dot  { background: #fbbf24; }
+
+    .badge.paused    { background: rgba(100,116,139,0.1);  color: #94a3b8; }
+
+    /* Row flag for failed */
+    tbody tr.row-failed { background: rgba(239,68,68,0.04); }
+    tbody tr.row-failed:hover { background: rgba(239,68,68,0.07); }
+
+    /* Loading + empty states */
+    .table-status {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .table-status .spinner {
+      width: 28px;
+      height: 28px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Stripe link */
+    a.stripe-link {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+
+    a.stripe-link:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      #dashboard { padding: 1rem; }
+      .topbar { padding: 0.875rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="/"><img src="images/logo.png" alt="Freeman Exterior Cleaning"></a>
+      <span class="topbar-title">Admin Dashboard</span>
+    </div>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <h2>🔒 Admin Access</h2>
+      <p>Enter your admin password to view subscriber data.</p>
+      <input id="passwordInput" type="password" placeholder="Password" autocomplete="current-password">
+      <button class="login-btn" onclick="login()">Enter Dashboard</button>
+      <p class="login-error" id="loginError">Incorrect password. Try again.</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="stats-row" id="statsRow">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="dash-header">
+      <h2>All Subscribers</h2>
+      <button class="refresh-btn" onclick="loadData()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        Refresh
+      </button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Service Address</th>
+            <th>Signup Date</th>
+            <th>Status</th>
+            <th>Next Billing / Trial End</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td colspan="6" class="table-status">
+              <div class="spinner"></div>
+              Loading subscribers…
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const SESSION_KEY = 'fw_admin_pw';
+
+    // Auto-login if password saved in session
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = sessionStorage.getItem(SESSION_KEY);
+      if (saved) showDashboard(saved);
+
+      document.getElementById('passwordInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') login();
+      });
+    });
+
+    function login() {
+      const pw = document.getElementById('passwordInput').value;
+      if (!pw) return;
+      sessionStorage.setItem(SESSION_KEY, pw);
+      showDashboard(pw);
+    }
+
+    function logout() {
+      sessionStorage.removeItem(SESSION_KEY);
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('passwordInput').value = '';
+    }
+
+    function showDashboard(password) {
+      window._adminPw = password;
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadData();
+    }
+
+    async function loadData() {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = `<tr><td colspan="6" class="table-status"><div class="spinner"></div>Loading…</td></tr>`;
+
+      try {
+        const res = await fetch(`/api/admin-data?password=${encodeURIComponent(window._adminPw)}`);
+
+        if (res.status === 401) {
+          sessionStorage.removeItem(SESSION_KEY);
+          document.getElementById('loginError').style.display = 'block';
+          document.getElementById('loginScreen').style.display = 'flex';
+          document.getElementById('dashboard').style.display = 'none';
+          return;
+        }
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Server error');
+        }
+
+        const data = await res.json();
+        renderStats(data);
+        renderTable(data);
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="6" class="table-status">⚠️ Error: ${err.message}</td></tr>`;
+      }
+    }
+
+    function renderStats(data) {
+      const total    = data.length;
+      const active   = data.filter(s => s.status === 'active' || s.status === 'trialing').length;
+      const failed   = data.filter(s => s.status === 'payment_failed' || s.status === 'past_due').length;
+      const cancelled = data.filter(s => s.status === 'cancelled').length;
+
+      document.getElementById('statsRow').innerHTML = `
+        <div class="stat-card green">
+          <div class="stat-label">Active / Trial</div>
+          <div class="stat-value">${active}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Subscribers</div>
+          <div class="stat-value">${total}</div>
+        </div>
+        ${failed ? `
+        <div class="stat-card red">
+          <div class="stat-label">Payment Failed</div>
+          <div class="stat-value">${failed}</div>
+        </div>` : ''}
+        <div class="stat-card">
+          <div class="stat-label">Cancelled</div>
+          <div class="stat-value">${cancelled}</div>
+        </div>
+      `;
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('tableBody');
+
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="table-status">No subscribers yet. Share that link! 🚀</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = data.map(s => {
+        const isFailed = s.status === 'payment_failed' || s.status === 'past_due';
+        const badgeClass = getBadgeClass(s.status);
+        const badgeLabel = getBadgeLabel(s.status);
+        const nextDate = s.status === 'trialing' ? s.trialEnd : s.currentPeriodEnd;
+
+        return `
+          <tr class="${isFailed ? 'row-failed' : ''}">
+            <td>
+              <div class="name">${escHtml(s.name)}</div>
+              <div class="email">${escHtml(s.email)}</div>
+              ${s.customerId ? `<a class="stripe-link" href="https://dashboard.stripe.com/customers/${s.customerId}" target="_blank" rel="noopener">View in Stripe →</a>` : ''}
+            </td>
+            <td>${escHtml(s.phone)}</td>
+            <td><div class="address">${escHtml(s.address)}</div></td>
+            <td>${escHtml(s.signupDate)}</td>
+            <td>
+              <span class="badge ${badgeClass}">
+                <span class="badge-dot"></span>
+                ${badgeLabel}
+              </span>
+            </td>
+            <td>${nextDate ? escHtml(nextDate) : '—'}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function getBadgeClass(status) {
+      const map = {
+        trialing: 'trialing',
+        active: 'active',
+        payment_failed: 'failed',
+        past_due: 'past_due',
+        cancelled: 'cancelled',
+        canceled: 'cancelled',
+        paused: 'paused',
+      };
+      return map[status] || 'cancelled';
+    }
+
+    function getBadgeLabel(status) {
+      const map = {
+        trialing: 'Trial',
+        active: 'Active',
+        payment_failed: 'Payment Failed',
+        past_due: 'Past Due',
+        cancelled: 'Cancelled',
+        canceled: 'Cancelled',
+        paused: 'Paused',
+        incomplete: 'Incomplete',
+      };
+      return map[status] || status;
+    }
+
+    function escHtml(str) {
+      if (!str) return '—';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
+
+</body>
+</html>

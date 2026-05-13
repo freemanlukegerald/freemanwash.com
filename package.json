@@ -1,0 +1,8 @@
+{
+  "name": "freemanwash-com",
+  "version": "1.0.0",
+  "description": "Freeman Exterior Cleaning",
+  "dependencies": {
+    "stripe": "^16.12.0"
+  }
+}

@@ -3,3 +3,6 @@ design-ref/
 driveway.html
 images/logo.svg
 .DS_Store
+.env.local
+.env
+node_modules/

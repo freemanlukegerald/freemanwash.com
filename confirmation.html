@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're In! | Freeman Exterior Cleaning</title>
+  <meta name="description" content="Welcome to Freeman Exterior Cleaning. Your first month is free.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #0b1120;
+      --navy-2: #111827;
+      --navy-3: #1a2540;
+      --blue:   #1e6ef4;
+      --orange: #f97316;
+      --white:  #ffffff;
+      --muted:  #64748b;
+      --green:  #22c55e;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: rgba(11,17,32,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar img {
+      height: 44px;
+      background: white;
+      border-radius: 8px;
+      padding: 4px 10px;
+      display: block;
+    }
+
+    .topbar a.phone {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .confirm-card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Animated checkmark */
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      border: 2px solid rgba(34,197,94,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .check-circle svg {
+      animation: drawCheck 0.3s ease 0.3s both;
+    }
+
+    @keyframes drawCheck {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 .name {
+      color: var(--green);
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Details cards */
+    .details-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .detail-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .detail-text strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-text p {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Save number CTA */
+    .save-number {
+      background: linear-gradient(135deg, rgba(30,110,244,0.12) 0%, rgba(30,110,244,0.06) 100%);
+      border: 1px solid rgba(30,110,244,0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .save-number p {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin-bottom: 0.75rem;
+    }
+
+    .save-number a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 10px;
+      transition: opacity 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .save-number a:hover { opacity: 0.9; }
+
+    .save-number .save-hint {
+      margin-top: 0.625rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .back-link {
+      font-size: 0.825rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      background: #070c18;
+      text-align: center;
+    }
+
+    .footer-copy { color: #1e293b; font-size: 0.75rem; }
+    .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.3rem; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="/"><img src="images/logo.png" alt="Freeman Exterior Cleaning"></a>
+    <a href="tel:5123330552" class="phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      (512) 333-0552
+    </a>
+  </div>
+
+  <main>
+    <div class="confirm-card">
+
+      <div class="check-circle">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1>You're in, <span class="name" id="customerName">friend</span>!<br>Welcome to the family.</h1>
+      <p class="tagline">Your first month is completely free. Here's what happens next.</p>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-icon">🎉</div>
+          <div class="detail-text">
+            <strong>First Month Free</strong>
+            <p>Your card won't be charged for 30 days. You'll only pay $30/month after your free trial — and you can cancel anytime before then.</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">📅</div>
+          <div class="detail-text">
+            <strong>Luke Will Reach Out</strong>
+            <p>Expect a text from Luke at (512) 333-0552 within a few hours to confirm your first cleaning date. He schedules it the day after your trash pickup.</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">🚿</div>
+          <div class="detail-text">
+            <strong>No Need to Be Home</strong>
+            <p>Just leave your bins out after trash day. Luke does the rest — deep cleans them with 200° hot water and returns them to your property.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="save-number">
+        <p>Save Luke's number so you recognize his text:</p>
+        <a href="tel:5123330552">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+          (512) 333-0552
+        </a>
+        <p class="save-hint">Luke Freeman · Freeman Exterior Cleaning</p>
+      </div>
+
+      <a href="/" class="back-link">← Back to freemanwash.com</a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning · Bee Cave, TX</p>
+    <p class="footer-verse">Proverbs 22:1</p>
+  </footer>
+
+  <script>
+    // Pull first name from Stripe session
+    (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      if (!sessionId) return;
+
+      try {
+        const res = await fetch(`/api/get-session?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await res.json();
+        if (data.firstName && data.firstName !== 'Friend') {
+          document.getElementById('customerName').textContent = data.firstName;
+        }
+      } catch {
+        // Fallback already in place — silently ignore
+      }
+    })();
+  </script>
+
+</body>
+</html>
