@@ -279,7 +279,12 @@
         <p class="save-hint">Luke Freeman · Freeman Exterior Cleaning</p>
       </div>
 
-      <a href="/" class="back-link">← Back to freemanwash.com</a>
+      <div style="margin-bottom:1.25rem">
+        <a href="/" class="back-link">← Back to freemanwash.com</a>
+      </div>
+      <a id="manageLink" href="#" class="back-link" style="font-size:0.75rem;color:#334155">
+        Manage or cancel subscription
+      </a>
 
     </div>
   </main>
@@ -304,6 +309,12 @@
         }
       } catch {
         // Fallback already in place — silently ignore
+      }
+
+      // Wire up manage subscription link
+      if (sessionId) {
+        document.getElementById('manageLink').href =
+          `/api/customer-portal?session_id=${encodeURIComponent(sessionId)}`;
       }
     })();
   </script>

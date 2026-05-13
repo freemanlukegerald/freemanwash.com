@@ -33,11 +33,11 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Invalid request body' });
   }
 
-  const { firstName, lastName, email, phone, address, city, zip } = body;
+  const { firstName, lastName, email, phone, address, city, zip, pickupDay, numBins, gateCode, notes } = body;
 
   // Validate all required fields
-  if (!firstName || !lastName || !email || !phone || !address || !city || !zip) {
-    return res.status(400).json({ error: 'All fields are required.' });
+  if (!firstName || !lastName || !email || !phone || !address || !city || !zip || !pickupDay || !numBins) {
+    return res.status(400).json({ error: 'All required fields must be filled in.' });
   }
 
   // Basic email validation
@@ -52,15 +52,19 @@ module.exports = async (req, res) => {
       email: email.trim().toLowerCase(),
       phone: phone.trim(),
       metadata: {
-        first_name: firstName.trim(),
-        last_name: lastName.trim(),
-        address: address.trim(),
-        city: city.trim(),
-        state: 'TX',
-        zip: zip.trim(),
+        first_name:   firstName.trim(),
+        last_name:    lastName.trim(),
+        address:      address.trim(),
+        city:         city.trim(),
+        state:        'TX',
+        zip:          zip.trim(),
         full_address: `${address.trim()}, ${city.trim()}, TX ${zip.trim()}`,
-        status: 'pending',
-        signup_date: new Date().toISOString(),
+        pickup_day:   pickupDay,
+        num_bins:     numBins,
+        gate_code:    gateCode || '',
+        notes:        notes || '',
+        status:       'pending',
+        signup_date:  new Date().toISOString(),
       },
     });
 
@@ -86,8 +90,12 @@ module.exports = async (req, res) => {
         trial_period_days: 30,
         metadata: {
           customer_name: `${firstName.trim()} ${lastName.trim()}`,
-          full_address: `${address.trim()}, ${city.trim()}, TX ${zip.trim()}`,
-          phone: phone.trim(),
+          full_address:  `${address.trim()}, ${city.trim()}, TX ${zip.trim()}`,
+          phone:         phone.trim(),
+          pickup_day:    pickupDay,
+          num_bins:      numBins,
+          gate_code:     gateCode || '',
+          notes:         notes || '',
         },
       },
       customer_update: {

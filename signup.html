@@ -176,7 +176,9 @@
 
     .field label .req { color: var(--orange); margin-left: 2px; }
 
-    .field input {
+    .field input,
+    .field select,
+    .field textarea {
       width: 100%;
       background: var(--navy-2);
       border: 1px solid rgba(255,255,255,0.1);
@@ -187,13 +189,40 @@
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
     }
 
-    .field input::placeholder { color: #374151; }
+    .field select option { background: var(--navy-2); }
+    .field textarea { resize: none; height: 80px; }
 
-    .field input:focus {
+    .field input::placeholder,
+    .field textarea::placeholder { color: #374151; }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(30,110,244,0.12);
+    }
+
+    .field .opt-label {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--muted);
+      font-size: 0.68rem;
+    }
+
+    .section-divider {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin: 1.75rem 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
 
     /* ── SUBMIT ── */
@@ -362,6 +391,47 @@
         </div>
       </div>
 
+      <div class="section-divider">Service Details</div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>Trash Pickup Day <span class="req">*</span></label>
+          <select id="pickupDay">
+            <option value="">Select day</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Number of Bins <span class="req">*</span></label>
+          <select id="numBins">
+            <option value="">Select</option>
+            <option value="1">1 bin</option>
+            <option value="2">2 bins (included in plan)</option>
+            <option value="3">3 bins (+$10/visit)</option>
+            <option value="4">4 bins (+$20/visit)</option>
+            <option value="5+">5+ bins (Luke will confirm)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Gate Code <span class="opt-label">(if applicable)</span></label>
+          <input id="gateCode" type="text" placeholder="e.g. #1234">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Special Instructions <span class="opt-label">(optional)</span></label>
+          <textarea id="notes" placeholder="Bin location, access notes, anything Luke should know..."></textarea>
+        </div>
+      </div>
+
       <button id="submitBtn" class="submit-btn" type="button">
         <span id="btnText">Claim My Free Month →</span>
         <div id="spinner" class="spinner"></div>
@@ -395,24 +465,32 @@
       const errMsg  = document.getElementById('errorMsg');
 
       const fields = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName:  document.getElementById('lastName').value.trim(),
-        email:     document.getElementById('email').value.trim(),
-        phone:     document.getElementById('phone').value.trim(),
-        address:   document.getElementById('address').value.trim(),
-        city:      document.getElementById('city').value.trim(),
-        zip:       document.getElementById('zip').value.trim(),
+        firstName:  document.getElementById('firstName').value.trim(),
+        lastName:   document.getElementById('lastName').value.trim(),
+        email:      document.getElementById('email').value.trim(),
+        phone:      document.getElementById('phone').value.trim(),
+        address:    document.getElementById('address').value.trim(),
+        city:       document.getElementById('city').value.trim(),
+        zip:        document.getElementById('zip').value.trim(),
+        pickupDay:  document.getElementById('pickupDay').value,
+        numBins:    document.getElementById('numBins').value,
+        gateCode:   document.getElementById('gateCode').value.trim(),
+        notes:      document.getElementById('notes').value.trim(),
       };
 
-      // Client-side validation
-      const missing = Object.entries(fields).filter(([, v]) => !v).map(([k]) => k);
+      // Client-side validation (required fields only)
+      const required = ['firstName','lastName','email','phone','address','city','zip','pickupDay','numBins'];
+      const missing = required.filter(k => !fields[k]);
       if (missing.length) {
         showError('Please fill in all required fields.');
         // Highlight missing fields
         missing.forEach(id => {
           const el = document.getElementById(id);
           if (el) el.style.borderColor = '#ef4444';
+          // Scroll to first missing field
         });
+        const firstMissing = document.getElementById(missing[0]);
+        if (firstMissing) firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
