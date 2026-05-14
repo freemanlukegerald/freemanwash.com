@@ -108,7 +108,7 @@ async function sendCustomerConfirmation(customer, meta) {
           <tr>
             <td style="padding:10px 0;border-bottom:1px solid #e2e8f0;font-size:14px">
               <strong style="display:block;margin-bottom:2px">🚿 No need to be home</strong>
-              <span style="color:#64748b">Just leave your bins out after trash day. Luke cleans them with 200° hot water and returns them.</span>
+              <span style="color:#64748b">Once your trash is picked up, Luke cleans your bins that same day and texts you when they're done.</span>
             </td>
           </tr>
           <tr>
