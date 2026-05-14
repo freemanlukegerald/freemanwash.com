@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claim Your First Month Free | Freeman Exterior Cleaning</title>
-  <meta name="description" content="Sign up for monthly trash can cleaning in Bee Cave & Lakeway. First month free — $30/month after. No contracts.">
+  <title>Sign Up | Freeman Exterior Cleaning</title>
+  <meta name="description" content="Sign up for trash can cleaning in Bee Cave & Lakeway. Monthly subscribers get their first month free. No contracts, cancel anytime.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
     /* ── HERO ── */
     .hero {
       background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 65%);
-      padding: 3.5rem 1.5rem 2rem;
+      padding: 3rem 1.5rem 1.75rem;
       text-align: center;
     }
 
@@ -88,7 +88,7 @@
 
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 6vw, 3rem);
+      font-size: clamp(1.9rem, 5.5vw, 2.75rem);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.02em;
@@ -99,7 +99,7 @@
       color: var(--muted);
       font-size: 1rem;
       max-width: 440px;
-      margin: 0 auto 1.75rem;
+      margin: 0 auto 1.5rem;
       line-height: 1.7;
     }
 
@@ -108,7 +108,6 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 0.25rem;
     }
 
     .perk {
@@ -130,7 +129,7 @@
 
     /* ── FORM WRAPPER ── */
     .form-wrap {
-      max-width: 540px;
+      max-width: 560px;
       margin: 2rem auto 4rem;
       padding: 0 1.5rem;
     }
@@ -142,16 +141,141 @@
       padding: 2rem;
     }
 
-    .form-card-title {
+    .section-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.7rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--orange);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
+    }
+
+    .section-divider {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin: 1.75rem 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── PLAN SELECTOR ── */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .plan-card {
+      position: relative;
+      background: var(--navy-2);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1rem 0.5rem 0.875rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.18s, background 0.18s;
+      user-select: none;
+    }
+
+    .plan-card input[type="radio"] { display: none; }
+
+    .plan-card:hover { border-color: rgba(30,110,244,0.4); }
+
+    .plan-card.selected {
+      border-color: var(--blue);
+      background: rgba(30,110,244,0.09);
+    }
+
+    .plan-card.popular { padding-top: 1.375rem; }
+
+    .plan-card.popular.selected {
+      border-color: var(--orange);
+      background: rgba(249,115,22,0.08);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: white;
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .plan-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .plan-detail {
+      font-size: 0.6rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    /* ── PRICE SUMMARY ── */
+    .price-summary {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.875rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      min-height: 52px;
+    }
+
+    .price-summary-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .price-summary-right {
+      text-align: right;
+    }
+
+    .price-summary-total {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .price-summary-note {
+      font-size: 0.7rem;
+      color: var(--green);
+      margin-top: 0.2rem;
     }
 
     /* ── FIELDS ── */
@@ -175,6 +299,7 @@
     }
 
     .field label .req { color: var(--orange); margin-left: 2px; }
+    .field label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.68rem; }
 
     .field input,
     .field select,
@@ -194,7 +319,6 @@
 
     .field select option { background: var(--navy-2); }
     .field textarea { resize: none; height: 80px; }
-
     .field input::placeholder,
     .field textarea::placeholder { color: #374151; }
 
@@ -203,26 +327,6 @@
     .field textarea:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(30,110,244,0.12);
-    }
-
-    .field .opt-label {
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--muted);
-      font-size: 0.68rem;
-    }
-
-    .section-divider {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--orange);
-      margin: 1.75rem 0 1.25rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
     }
 
     /* ── SUBMIT ── */
@@ -285,7 +389,6 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── SECURITY BADGE ── */
     .security-badge {
       display: flex;
       align-items: center;
@@ -309,6 +412,7 @@
 
     /* ── MOBILE ── */
     @media (max-width: 520px) {
+      .plan-grid { grid-template-columns: 1fr 1fr; }
       .field-row.cols-2 { grid-template-columns: 1fr; }
       .field-row.cols-3 { grid-template-columns: 1fr 1fr; }
       .form-card { padding: 1.5rem; }
@@ -317,7 +421,6 @@
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="topbar">
     <a href="/"><img src="images/logo.png" alt="Freeman Exterior Cleaning"></a>
     <a href="tel:5123330552" class="phone">
@@ -326,13 +429,12 @@
     </a>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-eyebrow">🎉 First Month Completely Free</div>
-    <h1>Claim Your<br>First Month Free</h1>
+    <div class="hero-eyebrow">No Contracts · Cancel Anytime</div>
+    <h1>Clean Bins,<br>Zero Hassle</h1>
     <p class="hero-sub">
-      Monthly trash can cleaning — $30/month after your free first month.<br>
-      Cancel anytime, no contracts.
+      Choose your plan below. All plans include up to 2 bins.<br>
+      Monthly subscribers get their <strong style="color:#4ade80">first month completely free</strong>.
     </p>
     <div class="hero-perks">
       <div class="perk"><div class="perk-dot"></div> 200° hot water clean</div>
@@ -342,10 +444,48 @@
     </div>
   </div>
 
-  <!-- FORM -->
   <div class="form-wrap">
     <div class="form-card">
-      <div class="form-card-title">Your Information</div>
+
+      <div class="section-title">Choose Your Plan</div>
+
+      <div class="plan-grid" id="planGrid">
+        <label class="plan-card" data-plan="onetime">
+          <input type="radio" name="plan" value="onetime">
+          <div class="plan-name">One-Time</div>
+          <div class="plan-price">$75</div>
+          <div class="plan-detail">per visit</div>
+        </label>
+        <label class="plan-card" data-plan="quarterly">
+          <input type="radio" name="plan" value="quarterly">
+          <div class="plan-name">Quarterly</div>
+          <div class="plan-price">$55</div>
+          <div class="plan-detail">per visit<br>4× per year</div>
+        </label>
+        <label class="plan-card popular selected" data-plan="monthly">
+          <input type="radio" name="plan" value="monthly" checked>
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Monthly</div>
+          <div class="plan-price">$30</div>
+          <div class="plan-detail">per month<br>1st month free</div>
+        </label>
+        <label class="plan-card" data-plan="biweekly">
+          <input type="radio" name="plan" value="biweekly">
+          <div class="plan-name">Bi-Weekly</div>
+          <div class="plan-price">$25</div>
+          <div class="plan-detail">per visit<br>every 2 weeks</div>
+        </label>
+      </div>
+
+      <div class="price-summary">
+        <div class="price-summary-label">Your total</div>
+        <div class="price-summary-right">
+          <div class="price-summary-total" id="summaryTotal">$30/month</div>
+          <div class="price-summary-note" id="summaryNote">First month completely free</div>
+        </div>
+      </div>
+
+      <div class="section-divider">Your Information</div>
 
       <div class="field-row cols-2">
         <div class="field">
@@ -410,24 +550,25 @@
           <select id="numBins">
             <option value="">Select</option>
             <option value="1">1 bin</option>
-            <option value="2">2 bins (included in plan)</option>
-            <option value="3">3 bins (+$10/visit)</option>
-            <option value="4">4 bins (+$20/visit)</option>
-            <option value="5+">5+ bins (Luke will confirm)</option>
+            <option value="2">2 bins (included)</option>
+            <option value="3">3 bins (+$10)</option>
+            <option value="4">4 bins (+$20)</option>
+            <option value="5">5 bins (+$30)</option>
+            <option value="5+">6+ bins (Luke confirms)</option>
           </select>
         </div>
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label>Gate Code <span class="opt-label">(if applicable)</span></label>
+          <label>Gate Code <span class="opt">(if applicable)</span></label>
           <input id="gateCode" type="text" placeholder="e.g. #1234">
         </div>
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label>Special Instructions <span class="opt-label">(optional)</span></label>
+          <label>Special Instructions <span class="opt">(optional)</span></label>
           <textarea id="notes" placeholder="Bin location, access notes, anything Luke should know..."></textarea>
         </div>
       </div>
@@ -439,7 +580,7 @@
 
       <div id="errorMsg" class="error-msg"></div>
 
-      <p class="form-note">
+      <p class="form-note" id="formNote">
         You'll enter your card details on the next screen via Stripe.<br>
         No charge for 30 days — cancel before then and pay nothing.
       </p>
@@ -451,13 +592,87 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning · Bee Cave, TX</p>
     <p class="footer-verse">Proverbs 22:1</p>
   </footer>
 
   <script>
+    const PLANS = {
+      onetime:  { label: 'One-Time',  base: 75, unit: 'visit',   interval: null,     trial: false },
+      quarterly:{ label: 'Quarterly', base: 55, unit: 'quarter', interval: 'quarter', trial: false },
+      monthly:  { label: 'Monthly',   base: 30, unit: 'month',   interval: 'month',  trial: true  },
+      biweekly: { label: 'Bi-Weekly', base: 25, unit: 'visit',   interval: '2 weeks',trial: false },
+    };
+
+    let selectedPlan = 'monthly';
+
+    // Pre-select plan from URL param e.g. /signup?plan=quarterly
+    const urlPlan = new URLSearchParams(window.location.search).get('plan');
+    if (urlPlan && PLANS[urlPlan]) {
+      selectedPlan = urlPlan;
+      document.querySelectorAll('.plan-card').forEach(card => {
+        const isMatch = card.dataset.plan === selectedPlan;
+        card.classList.toggle('selected', isMatch);
+        if (isMatch) card.querySelector('input').checked = true;
+      });
+    }
+
+    // Plan card clicks
+    document.getElementById('planGrid').addEventListener('click', e => {
+      const card = e.target.closest('.plan-card');
+      if (!card) return;
+      selectedPlan = card.dataset.plan;
+      document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      card.querySelector('input').checked = true;
+      updateSummary();
+    });
+
+    // Bin count changes
+    document.getElementById('numBins').addEventListener('change', updateSummary);
+
+    function updateSummary() {
+      const plan = PLANS[selectedPlan];
+      const numBinsVal = document.getElementById('numBins').value;
+      const numBinsInt = numBinsVal === '5+' ? 6 : (parseInt(numBinsVal) || 0);
+      const extraBins  = Math.max(0, Math.min(numBinsInt - 2, numBinsInt > 0 ? numBinsInt - 2 : 0));
+      const total      = plan.base + (extraBins * 10);
+
+      const summaryTotal = document.getElementById('summaryTotal');
+      const summaryNote  = document.getElementById('summaryNote');
+      const btnText      = document.getElementById('btnText');
+      const formNote     = document.getElementById('formNote');
+
+      if (numBinsVal === '5+') {
+        summaryTotal.textContent = `$${plan.base}+/${plan.unit}`;
+        summaryNote.textContent  = 'Luke will confirm final price for 6+ bins';
+        summaryNote.style.color  = '#f97316';
+      } else if (numBinsInt > 0) {
+        summaryTotal.textContent = `$${total}/${plan.unit}`;
+        summaryNote.textContent  = plan.trial
+          ? 'First month completely free'
+          : extraBins > 0 ? `$${plan.base} base + $${extraBins * 10} extra bin${extraBins > 1 ? 's' : ''}` : '';
+        summaryNote.style.color  = plan.trial ? '#4ade80' : '#64748b';
+      } else {
+        summaryTotal.textContent = `$${plan.base}/${plan.unit}`;
+        summaryNote.textContent  = plan.trial ? 'First month completely free' : '';
+        summaryNote.style.color  = '#4ade80';
+      }
+
+      if (plan.trial) {
+        btnText.textContent = 'Claim My Free Month →';
+        formNote.innerHTML  = "You'll enter your card details on the next screen via Stripe.<br>No charge for 30 days — cancel before then and pay nothing.";
+      } else if (plan.label === 'One-Time') {
+        btnText.textContent = 'Continue to Secure Checkout →';
+        formNote.innerHTML  = "You'll enter your card details on the next screen via Stripe.<br>One-time payment, no subscription.";
+      } else {
+        btnText.textContent = 'Continue to Secure Checkout →';
+        formNote.innerHTML  = "You'll enter your card details on the next screen via Stripe.<br>Cancel anytime — no contracts.";
+      }
+    }
+
+    // Submit
     document.getElementById('submitBtn').addEventListener('click', async () => {
       const btn     = document.getElementById('submitBtn');
       const btnText = document.getElementById('btnText');
@@ -465,63 +680,57 @@
       const errMsg  = document.getElementById('errorMsg');
 
       const fields = {
-        firstName:  document.getElementById('firstName').value.trim(),
-        lastName:   document.getElementById('lastName').value.trim(),
-        email:      document.getElementById('email').value.trim(),
-        phone:      document.getElementById('phone').value.trim(),
-        address:    document.getElementById('address').value.trim(),
-        city:       document.getElementById('city').value.trim(),
-        zip:        document.getElementById('zip').value.trim(),
-        pickupDay:  document.getElementById('pickupDay').value,
-        numBins:    document.getElementById('numBins').value,
-        gateCode:   document.getElementById('gateCode').value.trim(),
-        notes:      document.getElementById('notes').value.trim(),
+        plan:      selectedPlan,
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName:  document.getElementById('lastName').value.trim(),
+        email:     document.getElementById('email').value.trim(),
+        phone:     document.getElementById('phone').value.trim(),
+        address:   document.getElementById('address').value.trim(),
+        city:      document.getElementById('city').value.trim(),
+        zip:       document.getElementById('zip').value.trim(),
+        pickupDay: document.getElementById('pickupDay').value,
+        numBins:   document.getElementById('numBins').value,
+        gateCode:  document.getElementById('gateCode').value.trim(),
+        notes:     document.getElementById('notes').value.trim(),
       };
 
-      // Client-side validation (required fields only)
       const required = ['firstName','lastName','email','phone','address','city','zip','pickupDay','numBins'];
-      const missing = required.filter(k => !fields[k]);
+      const missing  = required.filter(k => !fields[k]);
+
       if (missing.length) {
         showError('Please fill in all required fields.');
-        // Highlight missing fields
         missing.forEach(id => {
           const el = document.getElementById(id);
           if (el) el.style.borderColor = '#ef4444';
-          // Scroll to first missing field
         });
         const firstMissing = document.getElementById(missing[0]);
         if (firstMissing) firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
-      // Clear any previous errors / highlights
       errMsg.classList.remove('visible');
-      document.querySelectorAll('.field input').forEach(el => el.style.borderColor = '');
+      document.querySelectorAll('.field input, .field select').forEach(el => el.style.borderColor = '');
 
-      // Loading state
       btn.disabled = true;
       btnText.textContent = 'Setting up your account…';
       spinner.style.display = 'block';
 
       try {
-        const res = await fetch('/api/create-checkout', {
+        const res  = await fetch('/api/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(fields),
         });
-
         const data = await res.json();
 
-        if (!res.ok || !data.url) {
-          throw new Error(data.error || 'Something went wrong. Please try again.');
-        }
+        if (!res.ok || !data.url) throw new Error(data.error || 'Something went wrong. Please try again.');
 
         btnText.textContent = 'Redirecting to checkout…';
         window.location.href = data.url;
       } catch (err) {
         showError(err.message);
         btn.disabled = false;
-        btnText.textContent = 'Claim My Free Month →';
+        updateSummary(); // restore button text
         spinner.style.display = 'none';
       }
     });
@@ -532,6 +741,9 @@
       el.classList.add('visible');
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    // Init
+    updateSummary();
   </script>
 
 </body>
