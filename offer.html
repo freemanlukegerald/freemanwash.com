@@ -12,33 +12,28 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --navy:     #0b1120;
-      --navy-2:   #111827;
-      --navy-3:   #1a2540;
-      --blue:     #1e6ef4;
-      --orange:   #f97316;
-      --white:    #ffffff;
-      --muted:    #64748b;
-      --border:   rgba(255,255,255,0.08);
+      --navy:   #0b1120;
+      --navy-2: #111827;
+      --navy-3: #1a2540;
+      --blue:   #1e6ef4;
+      --orange: #f97316;
+      --white:  #ffffff;
+      --muted:  #64748b;
+      --green:  #22c55e;
+      --border: rgba(255,255,255,0.08);
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--navy);
       color: var(--white);
       line-height: 1.6;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     /* ── TOP BAR ── */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
       background: rgba(11,17,32,0.96);
-      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0.875rem 1.5rem;
       display: flex;
@@ -47,11 +42,11 @@
     }
 
     .topbar img {
-      height: 48px;
-      display: block;
+      height: 42px;
       background: white;
       border-radius: 8px;
       padding: 3px 8px;
+      display: block;
     }
 
     .topbar a.phone {
@@ -64,473 +59,449 @@
       font-size: 0.9rem;
     }
 
-    .topbar a.phone svg { fill: var(--blue); }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 3.5rem 1.5rem 3rem;
-      text-align: center;
-      background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(30,110,244,0.14) 0%, transparent 65%);
+    /* ── PAGE ── */
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* STABLE — this headline stays the same no matter what the offer is */
-    .hero h1 {
+    /* ── OFFER HEADER ── */
+    .offer-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #4ade80;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.875rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 7vw, 3rem);
+      font-size: clamp(2rem, 7vw, 2.75rem);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
 
-    .hero-sub {
+    h1 span { color: var(--orange); }
+
+    .offer-sub {
       color: var(--muted);
-      font-size: 1rem;
-      max-width: 400px;
-      margin: 0 auto 2.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
     }
 
-    /*
-      OFFER BLOCK — the only section you need to edit when the offer changes.
-      Update: the label, price, service name, and detail line.
-      Everything else on the page stays the same.
-    */
-    .offer-block {
-      background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(249,115,22,0.3);
-      border-radius: 16px;
-      padding: 1.75rem 1.5rem;
-      max-width: 380px;
-      margin: 0 auto 2rem;
+    /* ── PERKS ── */
+    .perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
 
-    .offer-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--orange);
-      margin-bottom: 0.75rem;
-    }
-
-    .offer-service {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-    }
-
-    .offer-price {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(3.5rem, 14vw, 5rem);
-      font-weight: 900;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .offer-price sup { font-size: 40%; vertical-align: super; }
-
-    .offer-detail {
-      font-size: 0.82rem;
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 600;
       color: #94a3b8;
     }
 
-    .cta-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-width: 380px;
-      margin: 0 auto;
+    .perk-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
     }
 
-    .btn {
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+    .divider span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); white-space: nowrap; }
+
+    /* ── FORM ── */
+    .form-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+    }
+
+    .field-row {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+
+    .field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .field label .req { color: var(--orange); margin-left: 2px; }
+
+    .field input,
+    .field select {
+      width: 100%;
+      background: var(--navy-2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.8rem 0.9rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .field select option { background: var(--navy-2); }
+    .field input::placeholder { color: #374151; }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(30,110,244,0.12);
+    }
+
+    /* ── SUBMIT ── */
+    .submit-btn {
+      width: 100%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 1.1rem;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: opacity 0.2s, transform 0.15s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.95rem 1.5rem;
-      border-radius: 12px;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.15s;
     }
 
-    .btn:active { transform: scale(0.98); }
-    .btn-orange { background: var(--orange); color: #fff; }
-    .btn-blue   { background: var(--blue); color: #fff; }
-    .btn-ghost  { background: rgba(255,255,255,0.07); color: #fff; border: 1px solid var(--border); }
+    .submit-btn:hover:not(:disabled) { opacity: 0.92; }
+    .submit-btn:active:not(:disabled) { transform: scale(0.99); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-    /* ── PHOTOS ── */
-    .photos {
-      padding: 2.5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .photos-label {
+    .form-note {
       text-align: center;
       font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .photos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .photos-grid .wide { grid-column: span 2; }
-
-    .photo-card {
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--navy-3);
-    }
-
-    .photo-card.wide { aspect-ratio: 16/7; }
-    .photo-card:not(.wide) { aspect-ratio: 4/3; }
-
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ── FORM ── */
-    .form-section {
-      padding: 2.5rem 1.5rem;
-      border-top: 1px solid var(--border);
-      background: var(--navy-2);
-    }
-
-    .form-section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.4rem, 5vw, 1.9rem);
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 0.4rem;
-      letter-spacing: -0.01em;
-    }
-
-    .form-section .form-sub {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.875rem;
-      margin-bottom: 2rem;
-    }
-
-    .lead-form {
-      max-width: 420px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.875rem;
-    }
-
-    .form-field label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
-    }
-
-    .form-field input,
-    .form-field textarea {
-      width: 100%;
-      background: var(--navy-3);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 0.875rem 1rem;
-      color: var(--white);
-      font-family: inherit;
-      font-size: 1rem;
-      outline: none;
-      -webkit-appearance: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: #374151; }
-
-    .form-field input:focus,
-    .form-field textarea:focus { border-color: var(--blue); }
-
-    .form-field textarea { resize: none; height: 78px; }
-
-    .form-submit {
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 1rem;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      width: 100%;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .form-submit:hover { opacity: 0.9; }
-
-    .guarantee {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      background: rgba(34,197,94,0.06);
-      border: 1px solid rgba(34,197,94,0.15);
-      border-radius: 10px;
-      padding: 1rem;
-      font-size: 0.82rem;
-      color: #94a3b8;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .guarantee-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
-    .guarantee strong { color: #86efac; display: block; margin-bottom: 0.15rem; font-size: 0.85rem; }
-
-    /* ── ABOUT ── */
-    .about {
-      padding: 2.5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .about-inner {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-    }
-
-    .about-photo {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
-      border: 2px solid rgba(30,110,244,0.5);
-      flex-shrink: 0;
-    }
-
-    .about-inner h3 {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .about-inner p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .review-note {
-      margin-top: 0.75rem;
-      font-size: 0.82rem;
       color: #475569;
-      font-style: italic;
-    }
-
-    /* ── UPSELL ── */
-    .upsell {
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--border);
-      background: var(--navy-2);
-    }
-
-    .upsell-card {
-      max-width: 420px;
-      margin: 0 auto;
-      border: 1px solid rgba(249,115,22,0.2);
-      border-radius: 14px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .upsell-card .tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--orange);
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-
-    .upsell-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-    }
-
-    .upsell-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
+      margin-top: 0.875rem;
       line-height: 1.6;
     }
 
+    /* ── ERROR ── */
+    .error-msg {
+      display: none;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      margin-top: 0.875rem;
+      text-align: center;
+    }
+
+    .error-msg.visible { display: block; }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── SECURITY ── */
+    .security {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: #334155;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .about img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid rgba(30,110,244,0.4);
+      flex-shrink: 0;
+    }
+
+    .about h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .about p  { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
     /* ── FOOTER ── */
     footer {
-      padding: 1.75rem 1.5rem;
+      padding: 1.5rem;
       border-top: 1px solid var(--border);
       background: #070c18;
       text-align: center;
     }
 
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--white); }
-
     .footer-copy  { color: #1e293b; font-size: 0.75rem; }
-    .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.35rem; }
+    .footer-verse { color: #1a2035; font-size: 0.7rem; font-style: italic; margin-top: 0.3rem; }
+
+    @media (max-width: 420px) {
+      .field-row.cols-2 { grid-template-columns: 1fr; }
+      .form-card { padding: 1.25rem; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="topbar">
-    <a href="/"><img src="images/logo.png" alt="Freeman Pressure Washing"></a>
+    <a href="/"><img src="images/logo.png" alt="Freeman Exterior Cleaning"></a>
     <a href="tel:5123330552" class="phone">
-      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
       (512) 333-0552
     </a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <div class="page">
 
-    <h1>Your First Month of<br>Trash Can Cleaning — Free</h1>
-    <p class="hero-sub">We clean your stinky bins with 200° hot water after every trash day. $30/month after your free month. No contracts.</p>
+    <div class="offer-eyebrow">🎉 Limited Time · Bee Cave &amp; Lakeway</div>
 
-    <div class="offer-block">
-      <div class="offer-label">Limited-Time Offer · Bee Cave &amp; Lakeway</div>
-      <div class="offer-service">Monthly Trash Can Cleaning</div>
-      <div class="offer-price">FREE</div>
-      <div class="offer-detail">First month completely free · Then $30/month · 2 bins included · Cancel anytime</div>
+    <h1>Your First Month<br>of Bin Cleaning is <span>Free</span></h1>
+
+    <p class="offer-sub">
+      We clean your trash cans with 200° hot water the day after pickup. Just $30/month after your free month — cancel anytime.
+    </p>
+
+    <div class="perks">
+      <div class="perk"><div class="perk-dot"></div> No need to be home</div>
+      <div class="perk"><div class="perk-dot"></div> 200° hot water sanitize</div>
+      <div class="perk"><div class="perk-dot"></div> Eco-friendly deodorizer</div>
+      <div class="perk"><div class="perk-dot"></div> No contracts</div>
     </div>
 
-    <div class="cta-stack">
-      <a href="/signup?plan=monthly" class="btn btn-orange">Claim My Free Month →</a>
-      <a href="#interested" class="btn btn-ghost">Not ready yet — contact me first</a>
+    <div class="divider">
+      <hr>
+      <span>Claim your free month</span>
+      <hr>
     </div>
 
-  </section>
+    <div class="form-card">
 
-  <!-- PHOTOS -->
-  <section class="photos">
-    <div class="photos-label">Real results from local jobs</div>
-    <div class="photos-grid">
-      <div class="photo-card wide">
-        <img src="images/jobs/job1.jpg" alt="Driveway before and after pressure washing">
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input id="firstName" type="text" placeholder="John" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input id="lastName" type="text" placeholder="Smith" autocomplete="family-name">
+        </div>
       </div>
-      <div class="photo-card">
-        <img src="images/jobs/job2.jpg" alt="Oil stain removal">
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label>Phone <span class="req">*</span></label>
+          <input id="phone" type="tel" placeholder="(512) 000-0000" autocomplete="tel">
+        </div>
       </div>
-      <div class="photo-card">
-        <img src="images/jobs/job5.jpg" alt="Concrete cleaning">
+
+      <div class="field-row">
+        <div class="field">
+          <label>Service Address <span class="req">*</span></label>
+          <input id="address" type="text" placeholder="123 Main St" autocomplete="street-address">
+        </div>
       </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>City <span class="req">*</span></label>
+          <input id="city" type="text" placeholder="Bee Cave" autocomplete="address-level2">
+        </div>
+        <div class="field">
+          <label>ZIP <span class="req">*</span></label>
+          <input id="zip" type="text" placeholder="78738" autocomplete="postal-code" maxlength="5">
+        </div>
+      </div>
+
+      <div class="field-row cols-2">
+        <div class="field">
+          <label>Trash Pickup Day <span class="req">*</span></label>
+          <select id="pickupDay">
+            <option value="">Select day</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Number of Bins <span class="req">*</span></label>
+          <select id="numBins">
+            <option value="">Select</option>
+            <option value="1">1 bin</option>
+            <option value="2" selected>2 bins (included)</option>
+            <option value="3">3 bins (+$10)</option>
+            <option value="4">4 bins (+$20)</option>
+            <option value="5">5 bins (+$30)</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="submitBtn" class="submit-btn" type="button">
+        <span id="btnText">Claim My Free Month →</span>
+        <div id="spinner" class="spinner"></div>
+      </button>
+
+      <div id="errorMsg" class="error-msg"></div>
+
+      <p class="form-note">
+        You'll enter your card on Stripe's secure checkout.<br>
+        No charge for 30 days — cancel before then and pay nothing.
+      </p>
+
     </div>
-  </section>
 
-  <!-- FORM -->
-  <section class="form-section" id="interested">
-    <h2>Not Ready to Sign Up Yet?</h2>
-    <p class="form-sub">Leave your info and Luke will reach out within a few hours — no pressure.</p>
-
-    <form class="lead-form" action="https://formsubmit.co/luke@freemanwash.com" method="POST">
-      <input type="hidden" name="_subject" value="New Interest — freemanwash.com/offer (trash can cleaning)">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://freemanwash.com">
-      <input type="text" name="_honey" style="display:none">
-
-      <div class="form-field">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name">
-      </div>
-      <div class="form-field">
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" placeholder="(512) 000-0000" required autocomplete="tel">
-      </div>
-      <div class="form-field">
-        <label for="address">Address</label>
-        <input type="text" id="address" name="address" placeholder="123 Main St, Bee Cave, TX" autocomplete="street-address">
-      </div>
-      <button type="submit" class="form-submit">Send My Info →</button>
-    </form>
-
-    <br>
-
-    <div class="guarantee">
-      <span class="guarantee-icon">🛡️</span>
-      <div>
-        <strong>100% Satisfaction Guarantee</strong>
-        Not happy after your first clean? You owe nothing. No questions asked.
-      </div>
+    <div class="security">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Secured by Stripe · Luke never sees your card details
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <div class="about-inner">
-      <img src="images/headshot.jpg" alt="Luke Freeman" class="about-photo">
+    <div class="about">
+      <img src="images/headshot.jpg" alt="Luke Freeman">
       <div>
         <h3>Luke Freeman — Owner &amp; Operator</h3>
-        <p>Lake Travis grad, born and raised in Austin, living right here in Bee Cave. I do every job personally and hold myself to a high standard on each one.</p>
-        <p class="review-note">I'm early in building my business and focused on earning great reviews by doing great work. Your feedback genuinely matters to me.</p>
+        <p>Lake Travis grad, born and raised in Austin, living right here in Bee Cave. I do every job personally. Your first month is completely on me — no catch.</p>
       </div>
     </div>
-  </section>
 
-  <!-- UPSELL -->
-  <section class="upsell">
-    <div class="upsell-card">
-      <span class="tag">Ready to lock it in?</span>
-      <h3>Sign Up in 2 Minutes</h3>
-      <p>Enter your info, add a card, and your first month is free. Luke will text you to confirm your first cleaning date.</p>
-      <a href="/signup?plan=monthly" class="btn btn-orange" style="max-width:280px;margin:0 auto;font-size:0.9rem">Claim My Free Month →</a>
-    </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-links">
-      <a href="/">Full Website</a>
-      <a href="tel:5123330552">(512) 333-0552</a>
-    </div>
     <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning · Bee Cave, TX</p>
     <p class="footer-verse">Proverbs 22:1</p>
   </footer>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const btn     = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const spinner = document.getElementById('spinner');
+      const errMsg  = document.getElementById('errorMsg');
+
+      const fields = {
+        plan:      'monthly',
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName:  document.getElementById('lastName').value.trim(),
+        email:     document.getElementById('email').value.trim(),
+        phone:     document.getElementById('phone').value.trim(),
+        address:   document.getElementById('address').value.trim(),
+        city:      document.getElementById('city').value.trim(),
+        zip:       document.getElementById('zip').value.trim(),
+        pickupDay: document.getElementById('pickupDay').value,
+        numBins:   document.getElementById('numBins').value,
+        gateCode:  '',
+        notes:     '',
+      };
+
+      const required = ['firstName','lastName','email','phone','address','city','zip','pickupDay','numBins'];
+      const missing  = required.filter(k => !fields[k]);
+
+      if (missing.length) {
+        showError('Please fill in all required fields.');
+        missing.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.borderColor = '#ef4444';
+        });
+        document.getElementById(missing[0]).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      errMsg.classList.remove('visible');
+      document.querySelectorAll('.field input, .field select').forEach(el => el.style.borderColor = '');
+
+      btn.disabled = true;
+      btnText.textContent = 'Setting up your account…';
+      spinner.style.display = 'block';
+
+      try {
+        const res  = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(fields),
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.url) throw new Error(data.error || 'Something went wrong. Please try again.');
+
+        btnText.textContent = 'Redirecting to checkout…';
+        window.location.href = data.url;
+      } catch (err) {
+        showError(err.message);
+        btn.disabled = false;
+        btnText.textContent = 'Claim My Free Month →';
+        spinner.style.display = 'none';
+      }
+    });
+
+    function showError(msg) {
+      const el = document.getElementById('errorMsg');
+      el.textContent = msg;
+      el.classList.add('visible');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 
 </body>
 </html>
