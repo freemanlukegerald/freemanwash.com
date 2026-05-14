@@ -213,6 +213,32 @@ module.exports = async (req, res) => {
           await stripe.customers.update(session.customer, {
             metadata: { status: 'trialing', subscription_id: session.subscription },
           });
+
+          // Charge extra bins immediately for monthly trial (base plan is free, extras are not)
+          const numBinsInt = parseInt(meta.num_bins) || 2;
+          const extraBins  = Math.max(0, numBinsInt - 2);
+
+          if (meta.plan === 'monthly' && extraBins > 0) {
+            try {
+              const subscription = await stripe.subscriptions.retrieve(session.subscription);
+              await stripe.invoiceItems.create({
+                customer:    session.customer,
+                amount:      extraBins * 1000,
+                currency:    'usd',
+                description: `Additional Bin${extraBins > 1 ? 's' : ''} — Month 1 (${extraBins} × $10.00)`,
+              });
+              const invoice = await stripe.invoices.create({
+                customer:                session.customer,
+                default_payment_method:  subscription.default_payment_method,
+                collection_method:       'charge_automatically',
+                auto_advance:            true,
+              });
+              await stripe.invoices.finalizeInvoice(invoice.id);
+              console.log(`Charged extra bins immediately: ${extraBins} × $10 for ${customer.name}`);
+            } catch (err) {
+              console.error('Extra bin immediate charge error:', err);
+            }
+          }
         } else if (session.mode === 'payment') {
           await stripe.customers.update(session.customer, {
             metadata: { status: 'completed' },
