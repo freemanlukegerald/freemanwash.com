@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Month Free — Trash Can Cleaning | Freeman Exterior Cleaning</title>
-  <meta name="description" content="Get your first month of trash can cleaning completely free. $30/month after. No contracts. Serving Bee Cave & Lakeway.">
+  <title>$50 Off Your First Driveway Cleaning | Freeman Exterior Cleaning</title>
+  <meta name="description" content="Get $50 off your first driveway pressure washing in Bee Cave & Lakeway. Free quote, no contracts. Call (512) 333-0552.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
@@ -31,7 +31,6 @@
       min-height: 100vh;
     }
 
-    /* ── TOP BAR ── */
     .topbar {
       background: rgba(11,17,32,0.96);
       border-bottom: 1px solid var(--border);
@@ -59,21 +58,19 @@
       font-size: 0.9rem;
     }
 
-    /* ── PAGE ── */
     .page {
       max-width: 480px;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── OFFER HEADER ── */
     .offer-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.25);
-      color: #4ade80;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: #fb923c;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -101,7 +98,6 @@
       margin-bottom: 1.75rem;
     }
 
-    /* ── PERKS ── */
     .perks {
       display: flex;
       flex-wrap: wrap;
@@ -126,7 +122,6 @@
       flex-shrink: 0;
     }
 
-    /* ── DIVIDER ── */
     .divider {
       display: flex;
       align-items: center;
@@ -137,7 +132,6 @@
     .divider hr { flex: 1; border: none; border-top: 1px solid var(--border); }
     .divider span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); white-space: nowrap; }
 
-    /* ── FORM ── */
     .form-card {
       background: var(--navy-3);
       border: 1px solid var(--border);
@@ -166,7 +160,8 @@
     .field label .req { color: var(--orange); margin-left: 2px; }
 
     .field input,
-    .field select {
+    .field select,
+    .field textarea {
       width: 100%;
       background: var(--navy-2);
       border: 1px solid rgba(255,255,255,0.1);
@@ -178,18 +173,20 @@
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
+      resize: vertical;
     }
 
-    .field select option { background: var(--navy-2); }
-    .field input::placeholder { color: #374151; }
+    .field textarea { min-height: 80px; }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #374151; }
 
     .field input:focus,
-    .field select:focus {
+    .field select:focus,
+    .field textarea:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(30,110,244,0.12);
     }
 
-    /* ── SUBMIT ── */
     .submit-btn {
       width: 100%;
       background: var(--orange);
@@ -221,7 +218,6 @@
       line-height: 1.6;
     }
 
-    /* ── ERROR ── */
     .error-msg {
       display: none;
       background: rgba(239,68,68,0.1);
@@ -236,6 +232,55 @@
 
     .error-msg.visible { display: block; }
 
+    /* Success state */
+    .success-card {
+      display: none;
+      background: var(--navy-3);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 20px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+    }
+
+    .success-card.visible { display: block; }
+
+    .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .success-card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+
+    .success-card h2 span { color: var(--green); }
+
+    .success-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .success-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(30,110,244,0.1);
+      border: 1px solid rgba(30,110,244,0.25);
+      color: #93c5fd;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+
     .spinner {
       width: 18px;
       height: 18px;
@@ -248,7 +293,6 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── SECURITY ── */
     .security {
       display: flex;
       align-items: center;
@@ -259,7 +303,6 @@
       color: #334155;
     }
 
-    /* ── ABOUT ── */
     .about {
       margin-top: 2rem;
       display: flex;
@@ -282,7 +325,6 @@
     .about h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
     .about p  { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── FOOTER ── */
     footer {
       padding: 1.5rem;
       border-top: 1px solid var(--border);
@@ -311,28 +353,29 @@
 
   <div class="page">
 
-    <div class="offer-eyebrow">🎉 Limited Time · Bee Cave &amp; Lakeway</div>
+    <div class="offer-eyebrow">🚗 Limited Offer · Bee Cave &amp; Lakeway</div>
 
-    <h1>Your First Month<br>of Bin Cleaning is <span>Free</span></h1>
+    <h1>Get <span>$50 Off</span> Your<br>First Driveway Cleaning</h1>
 
     <p class="offer-sub">
-      We clean your trash cans with 200° hot water the day after pickup. Just $30/month after your free month — cancel anytime.
+      Professional pressure washing for driveways, patios, and concrete. Fill out your info below and Luke will text you within a few hours with a free quote — plus $50 off your first clean.
     </p>
 
     <div class="perks">
-      <div class="perk"><div class="perk-dot"></div> No need to be home</div>
-      <div class="perk"><div class="perk-dot"></div> 200° hot water sanitize</div>
-      <div class="perk"><div class="perk-dot"></div> Eco-friendly deodorizer</div>
-      <div class="perk"><div class="perk-dot"></div> No contracts</div>
+      <div class="perk"><div class="perk-dot"></div> Free quote, no commitment</div>
+      <div class="perk"><div class="perk-dot"></div> Commercial-grade equipment</div>
+      <div class="perk"><div class="perk-dot"></div> Results same day</div>
+      <div class="perk"><div class="perk-dot"></div> Locally owned &amp; operated</div>
     </div>
 
     <div class="divider">
       <hr>
-      <span>Claim your free month</span>
+      <span>Claim your $50 off</span>
       <hr>
     </div>
 
-    <div class="form-card">
+    <!-- FORM -->
+    <div class="form-card" id="formCard">
 
       <div class="field-row cols-2">
         <div class="field">
@@ -374,55 +417,49 @@
         </div>
       </div>
 
-      <div class="field-row cols-2">
+      <div class="field-row">
         <div class="field">
-          <label>Trash Pickup Day <span class="req">*</span></label>
-          <select id="pickupDay">
-            <option value="">Select day</option>
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Number of Bins <span class="req">*</span></label>
-          <select id="numBins">
-            <option value="">Select</option>
-            <option value="1">1 bin</option>
-            <option value="2" selected>2 bins (included)</option>
-            <option value="3">3 bins (+$10)</option>
-            <option value="4">4 bins (+$20)</option>
-            <option value="5">5 bins (+$30)</option>
-          </select>
+          <label>Anything we should know? <span style="color:var(--muted);font-weight:500">(optional)</span></label>
+          <textarea id="notes" placeholder="e.g. large driveway, oil stains, back patio too…"></textarea>
         </div>
       </div>
 
       <button id="submitBtn" class="submit-btn" type="button">
-        <span id="btnText">Claim My Free Month →</span>
+        <span id="btnText">Claim My $50 Off →</span>
         <div id="spinner" class="spinner"></div>
       </button>
 
       <div id="errorMsg" class="error-msg"></div>
 
       <p class="form-note">
-        You'll enter your card on Stripe's secure checkout.<br>
-        No charge for 30 days — cancel before then and pay nothing.
+        No payment required — Luke will text you with a free quote.<br>
+        Your $50 discount is applied when you book.
       </p>
 
     </div>
 
-    <div class="security">
+    <!-- SUCCESS -->
+    <div class="success-card" id="successCard">
+      <span class="success-icon">🎉</span>
+      <h2>You're all set, <span id="successName"></span>!</h2>
+      <p>Luke got your info and will text you within a few hours to confirm your free quote. Your <strong>$50 off</strong> is locked in.</p>
+      <p>Save his number so you recognize the text:</p>
+      <a href="tel:5123330552" class="success-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+        (512) 333-0552 — Luke Freeman
+      </a>
+    </div>
+
+    <div class="security" id="securityLine">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Secured by Stripe · Luke never sees your card details
+      Your info is only shared with Luke — never sold or spammed
     </div>
 
     <div class="about">
       <img src="images/headshot.jpg" alt="Luke Freeman">
       <div>
         <h3>Luke Freeman — Owner &amp; Operator</h3>
-        <p>Lake Travis grad, born and raised in Austin, living right here in Bee Cave. I do every job personally. Your first month is completely on me — no catch.</p>
+        <p>Lake Travis grad, born and raised in Austin, living right here in Bee Cave. I do every job personally. Your $50 off is guaranteed — no catch, no fine print.</p>
       </div>
     </div>
 
@@ -441,7 +478,6 @@
       const errMsg  = document.getElementById('errorMsg');
 
       const fields = {
-        plan:      'monthly',
         firstName: document.getElementById('firstName').value.trim(),
         lastName:  document.getElementById('lastName').value.trim(),
         email:     document.getElementById('email').value.trim(),
@@ -449,13 +485,10 @@
         address:   document.getElementById('address').value.trim(),
         city:      document.getElementById('city').value.trim(),
         zip:       document.getElementById('zip').value.trim(),
-        pickupDay: document.getElementById('pickupDay').value,
-        numBins:   document.getElementById('numBins').value,
-        gateCode:  '',
-        notes:     '',
+        notes:     document.getElementById('notes').value.trim(),
       };
 
-      const required = ['firstName','lastName','email','phone','address','city','zip','pickupDay','numBins'];
+      const required = ['firstName','lastName','email','phone','address','city','zip'];
       const missing  = required.filter(k => !fields[k]);
 
       if (missing.length) {
@@ -469,28 +502,33 @@
       }
 
       errMsg.classList.remove('visible');
-      document.querySelectorAll('.field input, .field select').forEach(el => el.style.borderColor = '');
+      document.querySelectorAll('.field input, .field select, .field textarea').forEach(el => el.style.borderColor = '');
 
       btn.disabled = true;
-      btnText.textContent = 'Setting up your account…';
+      btnText.textContent = 'Sending…';
       spinner.style.display = 'block';
 
       try {
-        const res  = await fetch('/api/create-checkout', {
+        const res  = await fetch('/api/driveway-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(fields),
         });
         const data = await res.json();
 
-        if (!res.ok || !data.url) throw new Error(data.error || 'Something went wrong. Please try again.');
+        if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
 
-        btnText.textContent = 'Redirecting to checkout…';
-        window.location.href = data.url;
+        // Show success state
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('securityLine').style.display = 'none';
+        document.getElementById('successName').textContent = fields.firstName;
+        document.getElementById('successCard').classList.add('visible');
+        document.getElementById('successCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
       } catch (err) {
         showError(err.message);
         btn.disabled = false;
-        btnText.textContent = 'Claim My Free Month →';
+        btnText.textContent = 'Claim My $50 Off →';
         spinner.style.display = 'none';
       }
     });
