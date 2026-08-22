@@ -736,7 +736,8 @@
     .dsp-heart .duck-sticker-clip {
       clip-path: path('M 60 103 C 60 103 5 66 5 37 C 5 17 20 8 37 11 C 46 13 54 20 60 31 C 66 20 74 13 83 11 C 100 8 115 17 115 37 C 115 66 60 103 60 103 Z');
     }
-    .dsp-bumper .duck-sticker-clip { clip-path: ellipse(48% 38% at 50% 50%); }
+    .dsp-bumper .duck-sticker-clip { clip-path: inset(4% round 14px); }
+    .dsp-bumper .duck-sticker-img { object-fit: cover; object-position: center 15%; }
     .dsp-sheet .duck-sticker-clip { clip-path: inset(2% round 8px); }
 
     /* Cut-line border (die-cut) */
@@ -798,14 +799,14 @@
     /* ─── MOBILE ─── */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-mascot { width: 100%; max-width: 320px; margin: 2rem auto 0; }
+      .hero-mascot { width: 100%; max-width: 280px; margin: 1.5rem auto 0; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
+      /* Nav */
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
       nav.menu-open .nav-links {
         display: flex;
         flex-direction: column;
@@ -816,14 +817,57 @@
         padding: 1.5rem 2rem;
         border-bottom: 1px solid rgba(255,255,255,0.06);
         gap: 1rem;
+        z-index: 99;
       }
+
+      /* Hero: no tall forced height, hide floating badges */
+      .hero { min-height: auto; padding: 2.5rem 1.5rem 2rem; }
+      .sticker-float { display: none; }
+
+      /* Stack CTA buttons */
+      .hero-btns { flex-direction: column; align-items: flex-start; gap: 0.65rem; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+
+      /* Product cards: full-width image previews */
+      .duck-sticker-outer { width: 110px; height: 110px; }
+      .dsp-bumper-wrap .duck-sticker-outer { width: 150px; height: 88px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 560px) {
-      .footer-grid { grid-template-columns: 1fr; }
+      /* Typography */
       .hero-h1 { font-size: clamp(3rem, 13vw, 5rem); }
-      .hero { padding: 2rem 1.5rem 0; }
-      .section { padding: 4rem 1.5rem; }
+
+      /* Spacing */
+      .hero { padding: 2rem 1.25rem 1.5rem; }
+      .section { padding: 4rem 1.25rem; }
+
+      /* Product cards */
+      .product-card { padding: 1.5rem; }
+      .duck-sticker-outer { width: 100px; height: 100px; }
+      .dsp-bumper-wrap .duck-sticker-outer { width: 140px; height: 80px; }
+      .duck-sticker-wrap { margin-bottom: 1.1rem; }
+
+      /* Products grid: single column */
+      .products-grid { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+      /* CTA strip */
+      .cta-strip { padding: 4rem 1.25rem; }
+
+      /* Steps */
+      .steps-grid { grid-template-columns: 1fr; max-width: 420px; }
+
+      /* Why grid */
+      .why-grid { grid-template-columns: 1fr; }
+
+      /* Nav */
+      .nav-inner { padding: 0 1.25rem; }
     }
   </style>
 </head>
