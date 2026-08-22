@@ -4,977 +4,802 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sticker Duck — Configure Your Stickers</title>
-  <meta name="description" content="Configure your custom stickers — choose size, material, quantity, and upload your design.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#0A0A0A;--surface:#131313;--raised:#1C1C1C;
+      --yellow:#F5C000;--yellow-d:#D9A900;
+      --white:#FFFFFF;--muted:#666;--border:rgba(255,255,255,0.07);
+      --sel-border:#F5C000;--sel-bg:rgba(245,192,0,0.06);
+      --green:#22C55E;--green-bg:rgba(34,197,94,0.12);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;min-height:100vh}
 
-    :root {
-      --black:   #000000;
-      --yellow:  #f5c000;
-      --yellow-d:#d9aa00;
-      --white:   #ffffff;
-      --muted:   #888888;
-      --green:   #2d7d3a;
-      --card:    #111111;
-      --card2:   #161616;
-      --border:  rgba(255,255,255,0.08);
-      --sel-border: var(--yellow);
-      --sel-bg:  rgba(245,192,0,0.07);
-    }
+    /* NAV */
+    nav{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:1400px;margin:0 auto;padding:0 1.5rem;height:60px;display:flex;align-items:center;gap:1.25rem}
+    .nav-logo img{height:42px;width:auto;display:block}
+    .nav-sep{width:1px;height:22px;background:var(--border);flex-shrink:0}
+    .nav-back{display:flex;align-items:center;gap:0.4rem;color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;transition:color 0.15s;white-space:nowrap}
+    .nav-back:hover{color:var(--white)}
+    .nav-crumb{font-size:0.82rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .nav-crumb strong{color:var(--white);font-weight:600}
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: var(--white); overflow-x: hidden; }
+    /* PRODUCT HEADER */
+    .prod-header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem}
+    .prod-header-inner{max-width:1400px;margin:0 auto;width:100%;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .prod-badge{background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:6px}
+    .prod-title{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:0.04em;text-transform:uppercase}
+    .prod-feats{margin-left:auto;display:flex;gap:1.5rem}
+    .prod-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--muted);font-weight:500}
+    .prod-feat svg{flex-shrink:0}
 
-    /* ─── NAV ─── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--black); border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1400px; margin: 0 auto; padding: 0 2rem;
-      height: 64px; display: flex; align-items: center; gap: 1.5rem;
-    }
-    .nav-logo { flex-shrink: 0; }
-    .nav-logo img { height: 46px; width: auto; display: block; }
-    .nav-back {
-      display: flex; align-items: center; gap: 0.5rem; color: var(--muted);
-      text-decoration: none; font-size: 0.85rem; font-weight: 600;
-      transition: color 0.15s; margin-left: 0.5rem;
-    }
-    .nav-back:hover { color: var(--white); }
-    .nav-title {
-      font-family: 'Anton', sans-serif; font-size: 0.9rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
-    .nav-title span { color: var(--yellow); }
-    .nav-actions { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
-    .nav-cta {
-      background: var(--yellow); color: #000; text-decoration: none;
-      font-family: 'Anton', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.55rem 1.1rem; border-radius: 8px; transition: background 0.15s;
-    }
-    .nav-cta:hover { background: var(--yellow-d); }
+    /* CONFIG GRID: 4 equal cols */
+    .config-grid{display:grid;grid-template-columns:1.05fr 0.95fr 0.9fr 1.1fr;border-bottom:1px solid var(--border)}
+    .config-grid>*{max-width:1400px}
 
-    /* ─── LAYOUT ─── */
-    .configure-wrap {
-      max-width: 1400px; margin: 0 auto; padding: 2rem;
-      display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start;
-    }
+    .cfg-col{border-right:1px solid var(--border);padding:1.25rem}
+    .cfg-col:last-child{border-right:none}
 
-    /* ─── STEP CARDS ─── */
-    .step-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; margin-bottom: 1.25rem; overflow: hidden;
-    }
-    .step-card.locked { opacity: 0.45; pointer-events: none; }
+    .col-hd{display:flex;align-items:center;gap:0.65rem;padding-bottom:1rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+    .col-num{width:22px;height:22px;border-radius:50%;background:var(--raised);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.68rem;color:var(--muted);flex-shrink:0;transition:all 0.2s}
+    .cfg-col.done .col-num{background:var(--yellow);border-color:var(--yellow);color:#000}
+    .col-title{font-family:'Anton',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;flex:1}
+    .col-sel{font-size:0.72rem;color:var(--yellow);font-weight:600;text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-    .step-header {
-      display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem;
-    }
-    .step-num {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(255,255,255,0.08); border: 2px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Anton', sans-serif; font-size: 0.85rem; color: var(--muted);
-      flex-shrink: 0; transition: all 0.2s;
-    }
-    .step-card.active .step-num,
-    .step-card.done .step-num {
-      background: var(--yellow); border-color: var(--yellow); color: #000;
-    }
-    .step-title { font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .step-summary { margin-left: auto; font-size: 0.8rem; color: var(--yellow); font-weight: 600; }
+    /* CUT TABS */
+    .cut-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem}
+    .cut-tab{padding:0.6rem 0.5rem;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);text-align:center;transition:all 0.15s;user-select:none}
+    .cut-tab:hover{border-color:rgba(245,192,0,0.3)}
+    .cut-tab.selected{border-color:var(--yellow);background:var(--sel-bg)}
+    .ct-name{font-weight:700;font-size:0.8rem}
+    .ct-sub{font-size:0.66rem;color:var(--muted);margin-top:0.15rem}
+    .cut-tab.selected .ct-name{color:var(--yellow)}
 
-    .step-body { padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--border); }
+    .sec-lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:0.65rem}
 
-    /* Option grid */
-    .option-grid { display: grid; gap: 0.75rem; margin-top: 1.25rem; }
-    .option-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-    .option-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .option-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    /* SHAPE OPTIONS */
+    .shape-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
+    .shape-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;padding:0.7rem 0.5rem;transition:all 0.15s;user-select:none;aspect-ratio:1}
+    .shape-opt:hover{border-color:rgba(245,192,0,0.3);background:rgba(255,255,255,0.03)}
+    .shape-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
+    .shape-opt svg{width:32px;height:32px;color:var(--white);opacity:0.7;transition:all 0.15s}
+    .shape-opt.selected svg{color:var(--yellow);opacity:1}
+    .sn{font-size:0.68rem;font-weight:600;color:var(--muted);transition:color 0.15s}
+    .shape-opt.selected .sn{color:var(--yellow)}
 
-    .opt {
-      background: var(--card2); border: 2px solid var(--border);
-      border-radius: 12px; padding: 1rem; cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0.5rem; text-align: center; user-select: none;
+    /* MATERIAL SWATCHES */
+    .mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
+    .mat-divider{grid-column:span 2;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);display:flex;align-items:center;gap:0.5rem;margin:0.35rem 0 0.1rem}
+    .mat-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+    .mat-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;gap:0.45rem;padding:0.65rem 0.4rem;transition:all 0.15s;user-select:none}
+    .mat-opt:hover{border-color:rgba(245,192,0,0.3)}
+    .mat-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
+    .mat-swatch{width:44px;height:30px;border-radius:5px;flex-shrink:0;overflow:hidden;position:relative;box-shadow:0 2px 6px rgba(0,0,0,0.5)}
+    .mat-swatch canvas{display:block;width:100%;height:100%;border-radius:5px}
+    .mn{font-size:0.68rem;font-weight:600;color:var(--muted);text-align:center;transition:color 0.15s}
+    .mat-opt.selected .mn{color:var(--yellow)}
+
+    /* SIZE OPTIONS */
+    .size-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
+    .size-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:0.35rem;padding:0.75rem 0.5rem;transition:all 0.15s;user-select:none;min-height:90px}
+    .size-opt:hover{border-color:rgba(245,192,0,0.3)}
+    .size-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
+    .size-vis{display:flex;align-items:flex-end;justify-content:center;flex:1;width:100%}
+    .size-bubble{border-radius:50%;background:rgba(255,255,255,0.1);transition:background 0.15s;flex-shrink:0}
+    .size-opt.selected .size-bubble{background:rgba(245,192,0,0.22)}
+    .size-in{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.02em;transition:color 0.15s}
+    .size-opt.selected .size-in{color:var(--yellow)}
+    .size-name{font-size:0.65rem;color:var(--muted);transition:color 0.15s}
+    .size-opt.selected .size-name{color:rgba(245,192,0,0.7)}
+
+    /* QUANTITY */
+    .qty-list{display:flex;flex-direction:column;gap:2px;margin-bottom:0.75rem}
+    .qty-row{display:grid;grid-template-columns:2.5rem 1fr auto auto;align-items:center;gap:0.6rem;padding:0.65rem 0.6rem;border-radius:8px;cursor:pointer;transition:all 0.12s;border:1.5px solid transparent;user-select:none}
+    .qty-row:hover{background:rgba(255,255,255,0.03);border-color:rgba(245,192,0,0.2)}
+    .qty-row.selected{background:var(--sel-bg);border-color:var(--yellow)}
+    .qn{font-family:'Anton',sans-serif;font-size:0.95rem;font-variant-numeric:tabular-nums}
+    .qp{font-size:0.67rem;color:var(--muted);font-variant-numeric:tabular-nums}
+    .qprice{font-weight:700;font-size:0.85rem;font-variant-numeric:tabular-nums}
+    .qsave{font-size:0.62rem;font-weight:700;color:var(--green);background:var(--green-bg);padding:0.18rem 0.42rem;border-radius:4px;min-width:48px;text-align:center}
+
+    .custom-qty-row{display:flex;gap:0.4rem;margin-bottom:0.85rem}
+    .custom-qty-row input{flex:1;background:var(--raised);border:1.5px solid var(--border);color:var(--white);padding:0.5rem 0.65rem;border-radius:8px;font-size:0.8rem;font-family:'Inter',sans-serif}
+    .custom-qty-row input:focus{outline:none;border-color:var(--yellow)}
+    .custom-qty-row input::placeholder{color:var(--muted)}
+    .custom-qty-row button{background:var(--raised);border:1.5px solid var(--border);color:var(--white);padding:0.5rem 0.8rem;border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:600;transition:all 0.15s;white-space:nowrap}
+    .custom-qty-row button:hover{border-color:var(--yellow);color:var(--yellow)}
+
+    /* RUNNING TOTAL */
+    .total-box{background:var(--raised);border-radius:12px;padding:1rem;border:1px solid var(--border)}
+    .total-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0.35rem}
+    .total-price{font-family:'Anton',sans-serif;font-size:2rem;color:var(--yellow);font-variant-numeric:tabular-nums;line-height:1}
+    .total-per{font-size:0.72rem;background:rgba(255,255,255,0.07);border-radius:5px;padding:0.22rem 0.55rem;font-weight:600;font-variant-numeric:tabular-nums}
+    .total-delivery{font-size:0.73rem;color:var(--green);font-weight:500;margin-bottom:0.2rem}
+    .total-credit{font-size:0.7rem;color:var(--muted)}
+    .total-credit em{color:var(--yellow);font-style:normal;font-weight:600}
+
+    .order-btn{display:block;width:100%;margin-top:0.85rem;background:var(--yellow);color:#000;border:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem;border-radius:10px;transition:all 0.15s}
+    .order-btn:hover{background:var(--yellow-d);transform:translateY(-1px)}
+    .guarantee{margin-top:0.6rem;text-align:center;font-size:0.68rem;color:var(--muted)}
+
+    /* UPLOAD */
+    .upload-section{border-bottom:1px solid var(--border)}
+    .upload-inner{max-width:1400px;margin:0 auto;padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start}
+    .upload-hd{font-family:'Anton',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:0.5rem;margin-bottom:0.65rem}
+    .upload-num{width:20px;height:20px;border-radius:50%;background:var(--raised);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--muted)}
+    .drop-zone{border:1.5px dashed var(--border);border-radius:12px;padding:1.75rem 1.25rem;text-align:center;cursor:pointer;transition:all 0.2s}
+    .drop-zone:hover,.drop-zone.over{border-color:var(--yellow);background:rgba(245,192,0,0.03)}
+    .drop-zone.done{border-color:var(--green);border-style:solid;background:rgba(34,197,94,0.04)}
+    .drop-zone input{display:none}
+    .drop-icon{color:var(--muted);margin-bottom:0.6rem}
+    .drop-title{font-weight:700;font-size:0.88rem;margin-bottom:0.25rem}
+    .drop-sub{font-size:0.73rem;color:var(--muted)}
+    .drop-fname{font-size:0.78rem;color:var(--green);font-weight:600;margin-top:0.4rem}
+    .link-lbl{font-size:0.75rem;color:var(--muted);font-weight:500;margin-bottom:0.5rem}
+    .link-row{display:flex;gap:0.5rem;margin-bottom:0.75rem}
+    .link-in{flex:1;background:var(--raised);border:1.5px solid var(--border);color:var(--white);padding:0.68rem 0.9rem;border-radius:9px;font-size:0.83rem;font-family:'Inter',sans-serif}
+    .link-in:focus{outline:none;border-color:var(--yellow)}
+    .link-in::placeholder{color:var(--muted)}
+    .upload-tips{background:var(--raised);border-radius:8px;padding:0.7rem 0.9rem;font-size:0.73rem;color:var(--muted);line-height:1.6;border:1px solid var(--border)}
+    .upload-tips strong{color:rgba(255,255,255,0.75)}
+
+    /* MODAL */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+    .modal-bg.hidden{display:none}
+    .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto}
+    .modal-hd{padding:1.4rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+    .modal-hd h2{font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.05em;text-transform:uppercase}
+    .modal-x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.5rem;line-height:1;padding:0.15rem}
+    .modal-x:hover{color:var(--white)}
+    .modal-bd{padding:1.4rem 1.5rem}
+    .sum-box{background:var(--raised);border-radius:10px;padding:0.9rem 1.1rem;margin-bottom:1.1rem;font-size:0.8rem}
+    .sum-box h4{font-family:'Anton',sans-serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.55rem}
+    .sum-row{display:flex;justify-content:space-between;padding:0.18rem 0}
+    .sum-l{color:var(--muted)}.sum-v{font-weight:600}
+    .sum-total{display:flex;justify-content:space-between;margin-top:0.55rem;padding-top:0.55rem;border-top:1px solid var(--border)}
+    .sum-total .sum-l{color:var(--white);font-weight:700}
+    .sum-total .sum-v{font-family:'Anton',sans-serif;font-size:1.05rem;color:var(--yellow)}
+    .form-2{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem}
+    .fg{margin-bottom:0.65rem}
+    .fg label{display:block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.32rem}
+    .fg input,.fg textarea{width:100%;background:var(--raised);border:1.5px solid var(--border);color:var(--white);padding:0.65rem 0.85rem;border-radius:8px;font-size:0.85rem;font-family:'Inter',sans-serif;resize:vertical}
+    .fg input:focus,.fg textarea:focus{outline:none;border-color:var(--yellow)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--muted)}
+    .form-err{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#f87171;border-radius:8px;padding:0.65rem 0.85rem;font-size:0.78rem;margin-bottom:0.65rem}
+    .sub-btn{width:100%;background:var(--yellow);color:#000;border:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.9rem;border-radius:10px;transition:background 0.15s}
+    .sub-btn:hover{background:var(--yellow-d)}
+    .sub-btn:disabled{opacity:0.5;cursor:not-allowed}
+    .modal-note{margin-top:0.55rem;text-align:center;font-size:0.7rem;color:var(--muted)}
+    .success-box{text-align:center;padding:2rem 0}
+    .success-box .si{font-size:3rem;margin-bottom:0.7rem}
+    .success-box h3{font-family:'Anton',sans-serif;font-size:1.2rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.6rem}
+    .success-box p{color:var(--muted);line-height:1.7;font-size:0.85rem}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .config-grid{grid-template-columns:1fr 1fr}
+      .cfg-col{border-right:none;border-bottom:1px solid var(--border)}
+      .cfg-col:last-child{border-bottom:none}
+      .prod-feats{display:none}
     }
-    .opt:hover { border-color: rgba(245,192,0,0.35); background: rgba(255,255,255,0.03); }
-    .opt.selected { border-color: var(--yellow); background: var(--sel-bg); }
-    .opt-icon { font-size: 1.75rem; }
-    .opt-name { font-weight: 700; font-size: 0.85rem; }
-    .opt-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
-    .opt-badge {
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.07em; background: var(--yellow); color: #000;
-      padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.2rem;
-    }
-
-    /* Quantity table */
-    .qty-table { margin-top: 1.25rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-    .qty-row {
-      display: grid; grid-template-columns: 80px 1fr auto auto;
-      align-items: center; gap: 1rem; padding: 0.9rem 1.25rem;
-      border-bottom: 1px solid var(--border); cursor: pointer;
-      transition: background 0.12s; background: var(--card2);
-    }
-    .qty-row:last-child { border-bottom: none; }
-    .qty-row:hover { background: rgba(255,255,255,0.03); }
-    .qty-row.selected { background: var(--sel-bg); border-left: 3px solid var(--yellow); }
-    .qty-num { font-family: 'Anton', sans-serif; font-size: 1.1rem; }
-    .qty-per { font-size: 0.75rem; color: var(--muted); }
-    .qty-price { font-weight: 700; font-size: 0.95rem; }
-    .qty-save {
-      font-size: 0.7rem; font-weight: 700; color: #4ade80;
-      background: rgba(74,222,128,0.12); padding: 0.2rem 0.5rem; border-radius: 4px;
-    }
-
-    .custom-qty-wrap { margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-    .custom-qty-wrap input {
-      flex: 1; background: var(--card2); border: 2px solid var(--border);
-      color: var(--white); padding: 0.7rem 1rem; border-radius: 10px; font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-    }
-    .custom-qty-wrap input:focus { outline: none; border-color: var(--yellow); }
-    .custom-qty-wrap input::placeholder { color: var(--muted); }
-    .btn-sm {
-      background: var(--yellow); color: #000; border: none; cursor: pointer;
-      font-family: 'Anton', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.7rem 1.25rem; border-radius: 10px; transition: background 0.15s;
-    }
-    .btn-sm:hover { background: var(--yellow-d); }
-
-    /* Upload zone */
-    .upload-zone {
-      margin-top: 1.25rem; border: 2px dashed var(--border); border-radius: 14px;
-      padding: 2.5rem 2rem; text-align: center; cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .upload-zone:hover, .upload-zone.dragover { border-color: var(--yellow); background: rgba(245,192,0,0.04); }
-    .upload-zone.has-file { border-color: #4ade80; background: rgba(74,222,128,0.05); }
-    .upload-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-    .upload-title { font-weight: 700; margin-bottom: 0.35rem; }
-    .upload-sub { font-size: 0.8rem; color: var(--muted); }
-    .upload-zone input[type="file"] { display: none; }
-    .file-info { margin-top: 0.75rem; font-size: 0.82rem; color: #4ade80; font-weight: 600; }
-
-    .upload-alt {
-      margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem;
-    }
-    .upload-alt span { font-size: 0.8rem; color: var(--muted); }
-    .upload-alt input {
-      flex: 1; background: var(--card2); border: 2px solid var(--border);
-      color: var(--white); padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.82rem;
-      font-family: 'Inter', sans-serif;
-    }
-    .upload-alt input:focus { outline: none; border-color: var(--yellow); }
-    .upload-alt input::placeholder { color: var(--muted); }
-
-    /* Step CTA */
-    .step-next {
-      display: block; width: 100%; margin-top: 1.25rem;
-      background: var(--yellow); color: #000; border: none; cursor: pointer;
-      font-family: 'Anton', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.9rem; border-radius: 12px; transition: background 0.15s;
-    }
-    .step-next:hover { background: var(--yellow-d); }
-    .step-next:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    /* ─── ORDER SUMMARY SIDEBAR ─── */
-    .order-sidebar { position: sticky; top: 84px; }
-
-    .sidebar-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden;
-    }
-
-    .sidebar-header {
-      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .sidebar-header h3 { font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    .sidebar-body { padding: 1.25rem 1.5rem; }
-
-    .summary-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem;
-    }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-label { color: var(--muted); }
-    .summary-value { font-weight: 600; text-align: right; }
-    .summary-value.pending { color: var(--muted); font-weight: 400; font-style: italic; }
-
-    .price-block {
-      margin-top: 1.25rem; padding: 1.25rem;
-      background: var(--card2); border-radius: 12px; text-align: center;
-    }
-    .price-total { font-family: 'Anton', sans-serif; font-size: 2.25rem; color: var(--yellow); }
-    .price-per { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
-    .price-delivery { font-size: 0.78rem; color: #4ade80; margin-top: 0.5rem; font-weight: 600; }
-    .price-credit { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; }
-    .price-credit span { color: var(--yellow); font-weight: 700; }
-
-    .sidebar-cta {
-      display: block; width: 100%; margin-top: 1.25rem;
-      background: var(--yellow); color: #000; border: none; cursor: pointer;
-      font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 1rem; border-radius: 12px; transition: background 0.15s, transform 0.15s;
-    }
-    .sidebar-cta:hover { background: var(--yellow-d); transform: translateY(-1px); }
-    .sidebar-cta:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-    .sidebar-guarantee {
-      margin-top: 1rem; text-align: center; font-size: 0.75rem; color: var(--muted);
-    }
-    .sidebar-guarantee span { color: var(--white); }
-
-    /* ─── ORDER MODAL ─── */
-    .modal-backdrop {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-      z-index: 500; display: flex; align-items: center; justify-content: center;
-      padding: 1.5rem;
-    }
-    .modal-backdrop.hidden { display: none; }
-
-    .modal {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; max-width: 520px; width: 100%;
-      max-height: 90vh; overflow-y: auto;
-    }
-    .modal-header {
-      padding: 1.5rem 1.75rem; border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .modal-header h2 { font-family: 'Anton', sans-serif; font-size: 1.2rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.5rem; padding: 0.25rem; }
-    .modal-close:hover { color: var(--white); }
-
-    .modal-body { padding: 1.5rem 1.75rem; }
-    .modal-order-summary {
-      background: var(--card2); border-radius: 12px; padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem; font-size: 0.82rem;
-    }
-    .modal-order-summary h4 { font-family: 'Anton', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.75rem; }
-    .modal-order-summary p { color: var(--muted); margin-bottom: 0.3rem; }
-    .modal-order-summary p strong { color: var(--white); }
-    .modal-order-summary .total-line { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-weight: 700; font-size: 0.9rem; color: var(--yellow); }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4rem; }
-    .form-group input, .form-group textarea {
-      width: 100%; background: var(--card2); border: 2px solid var(--border);
-      color: var(--white); padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.9rem;
-      font-family: 'Inter', sans-serif; resize: vertical;
-    }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--yellow); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); }
-
-    .modal-submit {
-      width: 100%; background: var(--yellow); color: #000; border: none; cursor: pointer;
-      font-family: 'Anton', sans-serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 1rem; border-radius: 12px; transition: background 0.15s;
-    }
-    .modal-submit:hover { background: var(--yellow-d); }
-    .modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .success-state { text-align: center; padding: 2rem 0; }
-    .success-state .success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-    .success-state h3 { font-family: 'Anton', sans-serif; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-    .success-state p { color: var(--muted); line-height: 1.6; }
-
-    .form-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.82rem; margin-bottom: 1rem; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .configure-wrap { grid-template-columns: 1fr; }
-      .order-sidebar { position: static; }
-      /* Sticky mobile price bar */
-      .mobile-price-bar {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        background: var(--card); border-top: 1px solid var(--border);
-        padding: 0.85rem 1.25rem; display: flex; align-items: center; gap: 1rem; z-index: 50;
-      }
-      .mobile-price-bar .mb-price { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: var(--yellow); }
-      .mobile-price-bar .mb-per { font-size: 0.75rem; color: var(--muted); }
-      .mobile-price-bar .mb-cta {
-        margin-left: auto; background: var(--yellow); color: #000; border: none; cursor: pointer;
-        font-family: 'Anton', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-        padding: 0.75rem 1.5rem; border-radius: 10px;
-      }
-      body { padding-bottom: 80px; }
-      .option-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 900px) {
-      .mobile-price-bar { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .configure-wrap { padding: 1rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .option-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
-      .qty-row { grid-template-columns: 60px 1fr auto; }
-      .qty-save { display: none; }
+    @media(max-width:640px){
+      .config-grid{grid-template-columns:1fr}
+      .upload-inner{grid-template-columns:1fr}
+      .form-2{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <img src="images/logo.png" alt="Sticker Duck">
-      </a>
-      <a href="products.html" class="nav-back">← All Sticker Types</a>
-      <span class="nav-title" id="nav-product-title">Configure: <span id="nav-type-name">Stickers</span></span>
-      <div class="nav-actions">
-        <a href="products.html" class="nav-cta">Change Type</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="images/logo.png" alt="Sticker Duck"></a>
+    <div class="nav-sep"></div>
+    <a href="products.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All types
+    </a>
+    <div class="nav-crumb">Configuring: <strong id="nav-name">Die-Cut Stickers</strong></div>
+  </div>
+</nav>
+
+<!-- PRODUCT HEADER -->
+<div class="prod-header">
+  <div class="prod-header-inner">
+    <span class="prod-badge" id="prod-badge">Die-Cut</span>
+    <span class="prod-title" id="prod-title">Custom Stickers</span>
+    <div class="prod-feats">
+      <div class="prod-feat">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7l3 3 6-6" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Waterproof vinyl
+      </div>
+      <div class="prod-feat">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7l3 3 6-6" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        3–5 day turnaround
+      </div>
+      <div class="prod-feat">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7l3 3 6-6" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Free shipping on $75+
       </div>
     </div>
-  </nav>
+  </div>
+</div>
 
-  <!-- MAIN CONFIGURE LAYOUT -->
-  <div class="configure-wrap">
+<!-- CONFIG GRID -->
+<div class="config-grid">
 
-    <!-- STEPS (left) -->
-    <div class="steps-col">
+  <!-- COL 1: SHAPE & CUT -->
+  <div class="cfg-col" id="col1">
+    <div class="col-hd">
+      <div class="col-num">1</div>
+      <div class="col-title">Shape &amp; Cut</div>
+      <div class="col-sel" id="sel1"></div>
+    </div>
 
-      <!-- STEP 1: CUT -->
-      <div class="step-card active" id="step-1">
-        <div class="step-header">
-          <div class="step-num">1</div>
-          <div class="step-title">Shape &amp; Cut</div>
-          <div class="step-summary" id="step1-summary"></div>
-        </div>
-        <div class="step-body">
-          <div class="option-grid cols-2" id="cut-options">
-            <div class="opt selected" data-cut="die-cut" onclick="selectCut('die-cut', this)">
-              <div class="opt-icon">✂️</div>
-              <div class="opt-name">Die Cut</div>
-              <div class="opt-desc">Cut exactly to your design shape through the backing</div>
-              <div class="opt-badge">Most Popular</div>
-            </div>
-            <div class="opt" data-cut="kiss-cut" onclick="selectCut('kiss-cut', this)">
-              <div class="opt-icon">🗂️</div>
-              <div class="opt-name">Kiss Cut</div>
-              <div class="opt-desc">Your shape on a square backing — easy peel &amp; apply</div>
-            </div>
-          </div>
-          <button class="step-next" onclick="completeStep(1)">Next: Choose Material →</button>
-        </div>
+    <div class="cut-tabs" role="group" aria-label="Cut type">
+      <div class="cut-tab selected" data-cut="die-cut" onclick="pickCut('die-cut',this)" tabindex="0">
+        <div class="ct-name">Die Cut</div>
+        <div class="ct-sub">Through the backing</div>
+      </div>
+      <div class="cut-tab" data-cut="kiss-cut" onclick="pickCut('kiss-cut',this)" tabindex="0">
+        <div class="ct-name">Kiss Cut</div>
+        <div class="ct-sub">On a square backing</div>
+      </div>
+    </div>
+
+    <div class="sec-lbl">Shape</div>
+
+    <div class="shape-grid">
+
+      <!-- Custom: duck silhouette = on-brand -->
+      <div class="shape-opt selected" data-shape="custom" onclick="pickShape('custom',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M34.5 13.5c1.5-1.8 4.5-2.8 7-1.5 2.5 1.3 3 4 1.5 6-1 1.3-2.8 2-4.2 1.8 1.5 1.5 2.2 4 0.8 6C38 28 34 28.5 31 27c-2.5 4-7 7-14 6.5C10 33 6 27.5 7.5 21 9 15 15.5 12 21.5 13c2.5-2.8 7-3.5 10-1.5z"/>
+          <circle cx="38" cy="16" r="1.8" fill="white" opacity="0.9"/>
+        </svg>
+        <div class="sn">Custom</div>
       </div>
 
-      <!-- STEP 2: MATERIAL -->
-      <div class="step-card locked" id="step-2">
-        <div class="step-header">
-          <div class="step-num">2</div>
-          <div class="step-title">Material</div>
-          <div class="step-summary" id="step2-summary"></div>
-        </div>
-        <div class="step-body">
-          <div class="option-grid cols-3" id="material-options">
-            <div class="opt selected" data-mat="matte" onclick="selectMat('matte', this)">
-              <div class="opt-icon">🖼️</div>
-              <div class="opt-name">Matte</div>
-              <div class="opt-desc">Smooth, elegant finish. No glare. Print-design friendly.</div>
-            </div>
-            <div class="opt" data-mat="gloss" onclick="selectMat('gloss', this)">
-              <div class="opt-icon">✨</div>
-              <div class="opt-name">Gloss</div>
-              <div class="opt-desc">Shiny, vibrant finish. Colors pop. Most durable.</div>
-            </div>
-            <div class="opt" data-mat="holographic" onclick="selectMat('holographic', this)" id="mat-holo">
-              <div class="opt-icon">🌈</div>
-              <div class="opt-name">Holographic</div>
-              <div class="opt-desc">Rainbow prismatic shine. Catches every angle of light.</div>
-            </div>
-            <div class="opt" data-mat="clear" onclick="selectMat('clear', this)" id="mat-clear">
-              <div class="opt-icon">💎</div>
-              <div class="opt-name">Clear</div>
-              <div class="opt-desc">Transparent vinyl — looks printed directly on surface.</div>
-            </div>
-            <div class="opt" data-mat="glitter" onclick="selectMat('glitter', this)" id="mat-glitter">
-              <div class="opt-icon">🪩</div>
-              <div class="opt-name">Glitter</div>
-              <div class="opt-desc">Sparkle &amp; shimmer effect vinyl that makes designs pop.</div>
-            </div>
-            <div class="opt" data-mat="chrome" onclick="selectMat('chrome', this)" id="mat-chrome">
-              <div class="opt-icon">🪞</div>
-              <div class="opt-name">Chrome</div>
-              <div class="opt-desc">Mirror-like metallic vinyl with a premium reflective look.</div>
-            </div>
-          </div>
-          <button class="step-next" onclick="completeStep(2)">Next: Choose Size →</button>
-        </div>
+      <div class="shape-opt" data-shape="circle" onclick="pickShape('circle',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <circle cx="24" cy="24" r="19"/>
+        </svg>
+        <div class="sn">Circle</div>
       </div>
 
-      <!-- STEP 3: SIZE -->
-      <div class="step-card locked" id="step-3">
-        <div class="step-header">
-          <div class="step-num">3</div>
-          <div class="step-title">Size</div>
-          <div class="step-summary" id="step3-summary"></div>
-        </div>
-        <div class="step-body">
-          <div class="option-grid cols-4" id="size-options">
-            <div class="opt" data-size="2" onclick="selectSize('2', this)">
-              <div class="opt-icon">🔵</div>
-              <div class="opt-name">Small</div>
-              <div class="opt-desc">2 inches</div>
-            </div>
-            <div class="opt selected" data-size="3" onclick="selectSize('3', this)">
-              <div class="opt-icon">🟡</div>
-              <div class="opt-name">Medium</div>
-              <div class="opt-desc">3 inches</div>
-              <div class="opt-badge">Best Value</div>
-            </div>
-            <div class="opt" data-size="4" onclick="selectSize('4', this)">
-              <div class="opt-icon">🟠</div>
-              <div class="opt-name">Large</div>
-              <div class="opt-desc">4 inches</div>
-            </div>
-            <div class="opt" data-size="5" onclick="selectSize('5', this)">
-              <div class="opt-icon">🔴</div>
-              <div class="opt-name">X-Large</div>
-              <div class="opt-desc">5 inches</div>
-            </div>
-          </div>
-          <p style="margin-top:0.85rem;font-size:0.75rem;color:var(--muted)">📐 Sizes are the longest dimension of your design. Need something different? Choose custom quantity below and note your custom size in the order notes.</p>
-          <button class="step-next" onclick="completeStep(3)">Next: Choose Quantity →</button>
-        </div>
+      <div class="shape-opt" data-shape="oval" onclick="pickShape('oval',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <ellipse cx="24" cy="24" rx="22" ry="14"/>
+        </svg>
+        <div class="sn">Oval</div>
       </div>
 
-      <!-- STEP 4: QUANTITY -->
-      <div class="step-card locked" id="step-4">
-        <div class="step-header">
-          <div class="step-num">4</div>
-          <div class="step-title">Quantity</div>
-          <div class="step-summary" id="step4-summary"></div>
-        </div>
-        <div class="step-body">
-          <div class="qty-table" id="qty-table">
-            <!-- Populated by JS -->
-          </div>
-          <div class="custom-qty-wrap">
-            <input type="number" id="custom-qty" placeholder="Custom qty (e.g. 150)" min="25">
-            <button class="btn-sm" onclick="applyCustomQty()">Apply</button>
-          </div>
-          <button class="step-next" onclick="completeStep(4)">Next: Upload Design →</button>
-        </div>
+      <div class="shape-opt" data-shape="square" onclick="pickShape('square',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <rect x="7" y="7" width="34" height="34" rx="5"/>
+        </svg>
+        <div class="sn">Square</div>
       </div>
 
-      <!-- STEP 5: UPLOAD -->
-      <div class="step-card locked" id="step-5">
-        <div class="step-header">
-          <div class="step-num">5</div>
-          <div class="step-title">Upload Your Design</div>
-          <div class="step-summary" id="step5-summary"></div>
-        </div>
-        <div class="step-body">
-          <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
-            <input type="file" id="file-input" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps" onchange="handleFileSelect(this)">
-            <div class="upload-icon">📤</div>
-            <div class="upload-title">Drag &amp; drop or click to upload</div>
-            <div class="upload-sub">PNG, JPG, SVG, PDF, AI, EPS · Max 25MB</div>
-            <div class="file-info" id="file-info"></div>
-          </div>
-
-          <div class="upload-alt">
-            <span>Or share a link:</span>
-            <input type="url" id="design-link" placeholder="Google Drive / Dropbox / WeTransfer link…">
-          </div>
-
-          <p style="margin-top:0.85rem;font-size:0.75rem;color:var(--muted)">💡 Best results: 300 DPI minimum, transparent background. We'll check your file before printing and reach out if anything looks off.</p>
-
-          <button class="step-next" onclick="openOrderModal()">Review &amp; Place Order →</button>
-        </div>
+      <div class="shape-opt" data-shape="rectangle" onclick="pickShape('rectangle',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <rect x="4" y="13" width="40" height="22" rx="5"/>
+        </svg>
+        <div class="sn">Rectangle</div>
       </div>
 
-    </div><!-- /steps-col -->
-
-    <!-- SIDEBAR (right) -->
-    <aside class="order-sidebar">
-      <div class="sidebar-card">
-        <div class="sidebar-header">
-          <h3>Order Summary</h3>
-        </div>
-        <div class="sidebar-body">
-          <div class="summary-row">
-            <span class="summary-label">Product</span>
-            <span class="summary-value" id="sum-product">—</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Cut</span>
-            <span class="summary-value" id="sum-cut"><span class="pending">Not selected</span></span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Material</span>
-            <span class="summary-value" id="sum-mat"><span class="pending">Not selected</span></span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Size</span>
-            <span class="summary-value" id="sum-size"><span class="pending">Not selected</span></span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Quantity</span>
-            <span class="summary-value" id="sum-qty"><span class="pending">Not selected</span></span>
-          </div>
-
-          <div class="price-block">
-            <div class="price-total" id="sum-total">—</div>
-            <div class="price-per" id="sum-per">Select options to see price</div>
-            <div class="price-delivery" id="sum-delivery"></div>
-            <div class="price-credit" id="sum-credit"></div>
-          </div>
-
-          <button class="sidebar-cta" id="sidebar-cta-btn" onclick="openOrderModal()" disabled>
-            Place Your Order →
-          </button>
-
-          <div class="sidebar-guarantee">
-            🦆 <span>100% satisfaction guaranteed</span><br>
-            Free proofing · Secure checkout
-          </div>
-        </div>
+      <div class="shape-opt" data-shape="heart" onclick="pickShape('heart',this)" tabindex="0">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+          <path d="M24 40 L6 22 C2 18 2 11 7.5 8 C13 5 19 7.5 22 11.5 L24 14 L26 11.5 C29 7.5 35 5 40.5 8 C46 11 46 18 42 22 Z"/>
+        </svg>
+        <div class="sn">Heart</div>
       </div>
-    </aside>
 
-  </div><!-- /configure-wrap -->
+    </div>
+  </div>
 
-  <!-- MOBILE PRICE BAR -->
-  <div class="mobile-price-bar">
+  <!-- COL 2: MATERIAL -->
+  <div class="cfg-col" id="col2">
+    <div class="col-hd">
+      <div class="col-num">2</div>
+      <div class="col-title">Material</div>
+      <div class="col-sel" id="sel2"></div>
+    </div>
+
+    <div class="mat-grid" id="mat-grid">
+
+      <div class="mat-opt selected" data-mat="matte" onclick="pickMat('matte',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-matte"></div>
+        <div class="mn">Matte</div>
+      </div>
+
+      <div class="mat-opt" data-mat="gloss" onclick="pickMat('gloss',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-gloss"></div>
+        <div class="mn">Gloss</div>
+      </div>
+
+      <div class="mat-divider">Specialty</div>
+
+      <div class="mat-opt" data-mat="holographic" onclick="pickMat('holographic',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-holo"></div>
+        <div class="mn">Holographic</div>
+      </div>
+
+      <div class="mat-opt" data-mat="clear" onclick="pickMat('clear',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-clear"></div>
+        <div class="mn">Clear</div>
+      </div>
+
+      <div class="mat-opt" data-mat="glitter" onclick="pickMat('glitter',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-glitter"></div>
+        <div class="mn">Glitter</div>
+      </div>
+
+      <div class="mat-opt" data-mat="chrome" onclick="pickMat('chrome',this)" tabindex="0">
+        <div class="mat-swatch" id="sw-chrome"></div>
+        <div class="mn">Chrome</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COL 3: SIZE -->
+  <div class="cfg-col" id="col3">
+    <div class="col-hd">
+      <div class="col-num">3</div>
+      <div class="col-title">Size</div>
+      <div class="col-sel" id="sel3"></div>
+    </div>
+
+    <div class="size-grid">
+
+      <div class="size-opt" data-size="2" onclick="pickSize('2',this)" tabindex="0">
+        <div class="size-vis"><div class="size-bubble" style="width:20px;height:20px"></div></div>
+        <div class="size-in">2"</div>
+        <div class="size-name">Small</div>
+      </div>
+
+      <div class="size-opt selected" data-size="3" onclick="pickSize('3',this)" tabindex="0">
+        <div class="size-vis"><div class="size-bubble" style="width:30px;height:30px"></div></div>
+        <div class="size-in">3"</div>
+        <div class="size-name">Medium</div>
+      </div>
+
+      <div class="size-opt" data-size="4" onclick="pickSize('4',this)" tabindex="0">
+        <div class="size-vis"><div class="size-bubble" style="width:40px;height:40px"></div></div>
+        <div class="size-in">4"</div>
+        <div class="size-name">Large</div>
+      </div>
+
+      <div class="size-opt" data-size="5" onclick="pickSize('5',this)" tabindex="0">
+        <div class="size-vis" style="height:50px"><div class="size-bubble" style="width:50px;height:50px"></div></div>
+        <div class="size-in">5"</div>
+        <div class="size-name">X-Large</div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:0.85rem;font-size:0.68rem;color:var(--muted);line-height:1.5">
+      Longest dimension of your design. Need a different size? Note it in your order.
+    </p>
+  </div>
+
+  <!-- COL 4: QUANTITY + TOTAL -->
+  <div class="cfg-col" id="col4">
+    <div class="col-hd">
+      <div class="col-num">4</div>
+      <div class="col-title">Quantity</div>
+    </div>
+
+    <div class="qty-list" id="qty-list"></div>
+
+    <div class="custom-qty-row">
+      <input type="number" id="cqty" placeholder="Custom qty (min 25)" min="25">
+      <button onclick="applyCustom()">Set</button>
+    </div>
+
+    <div class="total-box">
+      <div class="total-top">
+        <div class="total-price" id="total-price">$94.00</div>
+        <div class="total-per" id="total-per">$0.94/ea</div>
+      </div>
+      <div class="total-delivery" id="total-del"></div>
+      <div class="total-credit" id="total-cred"></div>
+    </div>
+
+    <button class="order-btn" onclick="openModal()">Place Order →</button>
+    <div class="guarantee">100% satisfaction · Free digital proof included</div>
+  </div>
+
+</div><!-- /config-grid -->
+
+<!-- UPLOAD -->
+<div class="upload-section">
+  <div class="upload-inner">
     <div>
-      <div class="mb-price" id="mb-price">—</div>
-      <div class="mb-per" id="mb-per">Select options</div>
-    </div>
-    <button class="mb-cta" onclick="openOrderModal()" id="mb-cta-btn" disabled>Order →</button>
-  </div>
-
-  <!-- ORDER MODAL -->
-  <div class="modal-backdrop hidden" id="modal-backdrop" onclick="closeModalOnBackdrop(event)">
-    <div class="modal" id="modal">
-      <div class="modal-header">
-        <h2>Place Your Order</h2>
-        <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="upload-hd">
+        <div class="upload-num">5</div>
+        Upload Your Design
       </div>
-      <div class="modal-body" id="modal-body">
+      <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-in').click()">
+        <input type="file" id="file-in" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps" onchange="handleFile(this)">
+        <div class="drop-icon">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <path d="M15 4v16M9 9l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 21v3a2 2 0 002 2h16a2 2 0 002-2v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="drop-title">Drag &amp; drop your design file</div>
+        <div class="drop-sub">PNG · JPG · SVG · PDF · AI · EPS · Max 25MB</div>
+        <div class="drop-fname" id="drop-fname"></div>
+      </div>
+    </div>
 
-        <div class="modal-order-summary" id="modal-order-summary">
-          <h4>Your Order</h4>
-          <!-- Filled by JS -->
-        </div>
-
-        <div id="form-error" class="form-error" style="display:none"></div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name *</label>
-            <input type="text" id="o-fname" placeholder="Jane">
-          </div>
-          <div class="form-group">
-            <label>Last Name *</label>
-            <input type="text" id="o-lname" placeholder="Smith">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" id="o-email" placeholder="jane@yourband.com">
-        </div>
-        <div class="form-group">
-          <label>Phone *</label>
-          <input type="tel" id="o-phone" placeholder="(512) 555-0000">
-        </div>
-        <div class="form-group">
-          <label>Shipping Address *</label>
-          <input type="text" id="o-address" placeholder="123 Main St, Austin TX 78701">
-        </div>
-        <div class="form-group">
-          <label>Notes (optional)</label>
-          <textarea id="o-notes" rows="3" placeholder="Anything we should know about your design, colors, or special requirements…"></textarea>
-        </div>
-
-        <button class="modal-submit" id="modal-submit-btn" onclick="submitOrder()">
-          Submit Order Request →
-        </button>
-        <p style="margin-top:0.75rem;font-size:0.75rem;color:var(--muted);text-align:center">
-          Luke will review your order and send a payment link within a few hours.
-        </p>
+    <div>
+      <div class="link-lbl">Or share a link to your file (Google Drive, Dropbox, WeTransfer)</div>
+      <div class="link-row">
+        <input type="url" class="link-in" id="design-link" placeholder="Paste your file link here…">
+      </div>
+      <div class="upload-tips">
+        <strong>For best results:</strong> 300 DPI or higher · transparent background preferred · vector files (AI, SVG, EPS) ideal. We send a free digital proof before printing and will reach out if anything needs adjusting.
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    // ─── STATE ───────────────────────────────────────────────────────────
-    const ORDER = {
-      type: 'die-cut',
-      typeName: 'Die-Cut Stickers',
-      cut: 'die-cut',
-      material: 'matte',
-      size: '3',
-      qty: 100,
-      file: null,
-      designLink: '',
-    };
-    let currentStep = 1;
+<!-- ORDER MODAL -->
+<div class="modal-bg hidden" id="modal-bg" onclick="closeBg(event)">
+  <div class="modal">
+    <div class="modal-hd">
+      <h2>Place Your Order</h2>
+      <button class="modal-x" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-bd" id="modal-bd">
 
-    // Product type config from URL
-    const PRODUCT_CONFIGS = {
-      'die-cut':     { name: 'Die-Cut Stickers',     defaultCut: 'die-cut',  showSpecialty: true },
-      'kiss-cut':    { name: 'Kiss-Cut Stickers',     defaultCut: 'kiss-cut', showSpecialty: true },
-      'holographic': { name: 'Holographic Stickers',  defaultCut: 'die-cut',  defaultMat: 'holographic', showSpecialty: true },
-      'clear':       { name: 'Clear Stickers',        defaultCut: 'die-cut',  defaultMat: 'clear', showSpecialty: true },
-      'glitter':     { name: 'Glitter Stickers',      defaultCut: 'die-cut',  defaultMat: 'glitter', showSpecialty: true },
-      'chrome':      { name: 'Chrome Stickers',       defaultCut: 'die-cut',  defaultMat: 'chrome', showSpecialty: true },
-      'bumper':      { name: 'Bumper Stickers',       defaultCut: 'die-cut',  showSpecialty: false },
-      'circle':      { name: 'Circle Stickers',       defaultCut: 'die-cut',  showSpecialty: true },
-      'sheets':      { name: 'Sticker Sheets',        defaultCut: 'die-cut',  showSpecialty: false },
-      'labels':      { name: 'Sheet Labels',          defaultCut: 'die-cut',  showSpecialty: false },
-    };
+      <div class="sum-box" id="sum-box"></div>
 
-    // ─── PRICING ─────────────────────────────────────────────────────────
-    // Base prices at 3" die-cut matte vinyl
-    const QTY_BASE = [
-      { qty: 25,   price: 49.00 },
-      { qty: 50,   price: 72.00 },
-      { qty: 100,  price: 94.00 },
-      { qty: 200,  price: 138.00 },
-      { qty: 300,  price: 171.00 },
-      { qty: 500,  price: 229.00 },
-      { qty: 1000, price: 375.00 },
-    ];
+      <div class="form-err" id="form-err" style="display:none"></div>
 
-    const SIZE_MULT  = { '2': 0.78, '3': 1.0, '4': 1.32, '5': 1.65 };
-    const MAT_MULT   = { matte: 1.0, gloss: 1.07, holographic: 1.45, clear: 1.22, glitter: 1.40, chrome: 1.50 };
-    const CUT_MULT   = { 'die-cut': 1.0, 'kiss-cut': 1.1 };
+      <div class="form-2">
+        <div class="fg"><label>First Name *</label><input type="text" id="ff" placeholder="Jane"></div>
+        <div class="fg"><label>Last Name *</label><input type="text" id="fl" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label>Email *</label><input type="email" id="fe" placeholder="jane@yourband.com"></div>
+      <div class="fg"><label>Phone *</label><input type="tel" id="fp" placeholder="(512) 555-0000"></div>
+      <div class="fg"><label>Shipping Address *</label><input type="text" id="fa" placeholder="123 Main St, Austin TX 78701"></div>
+      <div class="fg"><label>Notes (optional)</label><textarea id="fn" rows="2" placeholder="Special requirements, color notes, anything we should know…"></textarea></div>
 
-    function calcPrice(qty, size, mat, cut) {
-      // Find base price for qty (interpolate between tiers)
-      const tiers = QTY_BASE;
-      let base = tiers[tiers.length - 1].price;
-      for (let i = 0; i < tiers.length; i++) {
-        if (qty <= tiers[i].qty) { base = tiers[i].price; break; }
-        if (i < tiers.length - 1 && qty < tiers[i+1].qty) {
-          // Linear interpolate
-          const t = (qty - tiers[i].qty) / (tiers[i+1].qty - tiers[i].qty);
-          base = tiers[i].price + t * (tiers[i+1].price - tiers[i].price);
-          break;
-        }
-      }
-      const sm = SIZE_MULT[size] || 1.0;
-      const mm = MAT_MULT[mat] || 1.0;
-      const cm = CUT_MULT[cut] || 1.0;
-      return Math.round(base * sm * mm * cm * 100) / 100;
+      <button class="sub-btn" id="sub-btn" onclick="submitOrder()">Submit Order Request →</button>
+      <p class="modal-note">Luke will send a proof + payment link within a few hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── STATE ────────────────────────────────────────────────────────────────
+const S={type:'die-cut',typeName:'Die-Cut Stickers',cut:'die-cut',shape:'custom',material:'matte',size:'3',qty:100,file:null,designLink:''};
+
+const CFGS={
+  'die-cut':{name:'Die-Cut Stickers',short:'Die-Cut'},
+  'kiss-cut':{name:'Kiss-Cut Stickers',short:'Kiss-Cut',cut:'kiss-cut'},
+  'holographic':{name:'Holographic Stickers',short:'Holographic',mat:'holographic'},
+  'clear':{name:'Clear Stickers',short:'Clear',mat:'clear'},
+  'glitter':{name:'Glitter Stickers',short:'Glitter',mat:'glitter'},
+  'chrome':{name:'Chrome Stickers',short:'Chrome',mat:'chrome'},
+  'bumper':{name:'Bumper Stickers',short:'Bumper',mat:'gloss'},
+  'circle':{name:'Circle Stickers',short:'Circle',shape:'circle'},
+  'sheets':{name:'Sticker Sheets',short:'Sheets'},
+  'labels':{name:'Sheet Labels',short:'Labels'},
+};
+
+// ─── PRICING ──────────────────────────────────────────────────────────────
+const TIERS=[{q:25,b:49},{q:50,b:72},{q:100,b:94},{q:200,b:138},{q:300,b:171},{q:500,b:229},{q:1000,b:375}];
+const SM={2:.78,3:1,4:1.32,5:1.65};
+const MM={matte:1,gloss:1.07,holographic:1.45,clear:1.22,glitter:1.40,chrome:1.50};
+const CM={'die-cut':1,'kiss-cut':1.1};
+
+function price(qty,size,mat,cut){
+  let base=TIERS[TIERS.length-1].b;
+  for(let i=0;i<TIERS.length;i++){
+    if(qty<=TIERS[i].q){base=TIERS[i].b;break}
+    if(i<TIERS.length-1&&qty<TIERS[i+1].q){
+      const t=(qty-TIERS[i].q)/(TIERS[i+1].q-TIERS[i].q);
+      base=TIERS[i].b+t*(TIERS[i+1].b-TIERS[i].b);break;
     }
+  }
+  return Math.round(base*(SM[size]||1)*(MM[mat]||1)*(CM[cut]||1)*100)/100;
+}
+const fmt=n=>'$'+n.toFixed(2);
 
-    function fmtPrice(n) {
-      return '$' + n.toFixed(2);
+function delivery(){
+  const d=new Date();let n=0;
+  while(n<5){d.setDate(d.getDate()+1);if(d.getDay()&&d.getDay()<6)n++;}
+  return d.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+}
+
+// ─── MATERIAL SWATCHES ─────────────────────────────────────────────────────
+function drawSwatch(id,drawFn){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const c=document.createElement('canvas');
+  c.width=88;c.height=60;
+  c.style.cssText='display:block;width:100%;height:100%;border-radius:5px';
+  const ctx=c.getContext('2d');
+  drawFn(ctx,88,60);
+  el.appendChild(c);
+}
+
+function initSwatches(){
+  // Matte: warm flat grey, very slight texture
+  drawSwatch('sw-matte',(ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,'#dddbd8');g.addColorStop(1,'#cac8c4');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    ctx.fillStyle='rgba(0,0,0,0.04)';
+    for(let i=0;i<6;i++){ctx.fillRect(0,i*10,w,1);}
+  });
+
+  // Gloss: white with diagonal shine streak
+  drawSwatch('sw-gloss',(ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,'#ffffff');g.addColorStop(0.45,'#f0f0f0');g.addColorStop(1,'#e8e8e8');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    ctx.save();ctx.rotate(0.5);
+    const shine=ctx.createLinearGradient(8,0,22,0);
+    shine.addColorStop(0,'rgba(255,255,255,0)');
+    shine.addColorStop(0.5,'rgba(255,255,255,0.75)');
+    shine.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=shine;ctx.fillRect(5,-10,16,h+20);
+    ctx.restore();
+  });
+
+  // Holographic: rainbow at 45deg
+  drawSwatch('sw-holo',(ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,'#ff0090');g.addColorStop(0.17,'#ff6600');
+    g.addColorStop(0.33,'#ffee00');g.addColorStop(0.5,'#00dd66');
+    g.addColorStop(0.67,'#0099ff');g.addColorStop(0.83,'#9933ff');
+    g.addColorStop(1,'#ff0090');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    // shimmer overlay
+    ctx.fillStyle='rgba(255,255,255,0.18)';
+    for(let i=-h;i<w;i+=8){
+      ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+4,0);ctx.lineTo(i+4+h,h);ctx.lineTo(i+h,h);ctx.closePath();ctx.fill();
     }
+  });
 
-    function getDelivery() {
-      const d = new Date();
-      d.setDate(d.getDate() + 5); // 5 business days estimate
-      // Skip weekends
-      let added = 0, target = new Date();
-      let cur = new Date();
-      while (added < 5) {
-        cur.setDate(cur.getDate() + 1);
-        if (cur.getDay() !== 0 && cur.getDay() !== 6) added++;
-      }
-      return cur.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  // Clear: checkerboard (transparency indicator)
+  drawSwatch('sw-clear',(ctx,w,h)=>{
+    const sq=10;
+    for(let y=0;y<h;y+=sq)for(let x=0;x<w;x+=sq){
+      ctx.fillStyle=((x/sq+y/sq)%2===0)?'#cccccc':'#ffffff';
+      ctx.fillRect(x,y,sq,sq);
     }
+    ctx.fillStyle='rgba(200,220,255,0.25)';ctx.fillRect(0,0,w,h);
+  });
 
-    // ─── INIT ─────────────────────────────────────────────────────────────
-    function init() {
-      const params = new URLSearchParams(window.location.search);
-      const type = params.get('type') || 'die-cut';
-      const cfg = PRODUCT_CONFIGS[type] || PRODUCT_CONFIGS['die-cut'];
-
-      ORDER.type = type;
-      ORDER.typeName = cfg.name;
-
-      document.getElementById('nav-type-name').textContent = cfg.name;
-      document.getElementById('sum-product').textContent = cfg.name;
-      document.title = 'Sticker Duck — Configure ' + cfg.name;
-
-      // Pre-select cut
-      if (cfg.defaultCut) {
-        ORDER.cut = cfg.defaultCut;
-        document.querySelectorAll('[data-cut]').forEach(el => el.classList.remove('selected'));
-        const cutEl = document.querySelector(`[data-cut="${cfg.defaultCut}"]`);
-        if (cutEl) cutEl.classList.add('selected');
-      }
-
-      // Pre-select material
-      if (cfg.defaultMat) {
-        ORDER.material = cfg.defaultMat;
-        document.querySelectorAll('[data-mat]').forEach(el => el.classList.remove('selected'));
-        const matEl = document.querySelector(`[data-mat="${cfg.defaultMat}"]`);
-        if (matEl) matEl.classList.add('selected');
-      }
-
-      buildQtyTable();
-      updateSummary();
+  // Glitter: light base + scattered sparkle dots
+  drawSwatch('sw-glitter',(ctx,w,h)=>{
+    ctx.fillStyle='#f5f0f5';ctx.fillRect(0,0,w,h);
+    const cols=['#ff69b4','#ffd700','#87ceeb','#da70d6','#98fb98','#fff','#ff9999','#bbbbff'];
+    for(let i=0;i<220;i++){
+      const x=Math.random()*w,y=Math.random()*h,r=Math.random()*2.2+0.4;
+      ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle=cols[Math.floor(Math.random()*cols.length)];
+      ctx.globalAlpha=Math.random()*0.9+0.1;ctx.fill();
     }
-
-    // ─── STEP SELECTORS ──────────────────────────────────────────────────
-    function selectCut(val, el) {
-      ORDER.cut = val;
-      document.querySelectorAll('[data-cut]').forEach(e => e.classList.remove('selected'));
-      el.classList.add('selected');
-      updateSummary();
+    ctx.globalAlpha=1;
+    // 4-point stars
+    for(let i=0;i<12;i++){
+      const x=Math.random()*w,y=Math.random()*h,s=Math.random()*3+1.5;
+      ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);
+      ctx.fillStyle='rgba(255,255,255,0.9)';
+      ctx.fillRect(-s/2,-s/2*3,s/2,s*3);ctx.fillRect(-s/2*3,-s/2,s*3,s/2);
+      ctx.restore();
     }
+  });
 
-    function selectMat(val, el) {
-      ORDER.material = val;
-      document.querySelectorAll('[data-mat]').forEach(e => e.classList.remove('selected'));
-      el.classList.add('selected');
-      buildQtyTable();
-      updateSummary();
-    }
+  // Chrome: metallic bands
+  drawSwatch('sw-chrome',(ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,'#898c90');g.addColorStop(0.2,'#c5c8cc');
+    g.addColorStop(0.4,'#ffffff');g.addColorStop(0.55,'#d0d3d7');
+    g.addColorStop(0.7,'#a0a3a7');g.addColorStop(0.85,'#e0e3e6');
+    g.addColorStop(1,'#787b7e');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    ctx.fillStyle='rgba(255,255,255,0.25)';
+    ctx.fillRect(0,0,w,h*0.12);
+  });
+}
 
-    function selectSize(val, el) {
-      ORDER.size = val;
-      document.querySelectorAll('[data-size]').forEach(e => e.classList.remove('selected'));
-      el.classList.add('selected');
-      buildQtyTable();
-      updateSummary();
-    }
+// ─── INIT ─────────────────────────────────────────────────────────────────
+function init(){
+  const p=new URLSearchParams(location.search);
+  const type=p.get('type')||'die-cut';
+  const cfg=CFGS[type]||CFGS['die-cut'];
+  Object.assign(S,{type,typeName:cfg.name});
+  document.getElementById('nav-name').textContent=cfg.name;
+  document.getElementById('prod-badge').textContent=cfg.short||type;
+  document.getElementById('prod-title').textContent=cfg.name;
+  document.title='Sticker Duck — '+cfg.name;
 
-    function selectQty(val) {
-      ORDER.qty = val;
-      document.querySelectorAll('.qty-row').forEach(r => r.classList.remove('selected'));
-      const row = document.querySelector(`.qty-row[data-qty="${val}"]`);
-      if (row) row.classList.add('selected');
-      updateSummary();
-    }
+  if(cfg.cut){
+    S.cut=cfg.cut;
+    document.querySelectorAll('[data-cut]').forEach(e=>e.classList.remove('selected'));
+    const el=document.querySelector('[data-cut="'+cfg.cut+'"]');if(el)el.classList.add('selected');
+  }
+  if(cfg.mat){
+    S.material=cfg.mat;
+    document.querySelectorAll('[data-mat]').forEach(e=>e.classList.remove('selected'));
+    const el=document.querySelector('[data-mat="'+cfg.mat+'"]');if(el)el.classList.add('selected');
+  }
+  if(cfg.shape){
+    S.shape=cfg.shape;
+    document.querySelectorAll('[data-shape]').forEach(e=>e.classList.remove('selected'));
+    const el=document.querySelector('[data-shape="'+cfg.shape+'"]');if(el)el.classList.add('selected');
+  }
 
-    function applyCustomQty() {
-      const v = parseInt(document.getElementById('custom-qty').value);
-      if (!v || v < 1) return;
-      ORDER.qty = v;
-      document.querySelectorAll('.qty-row').forEach(r => r.classList.remove('selected'));
-      updateSummary();
-    }
+  initSwatches();
+  buildQty();
+  updateSummary();
+  // Mark all cols done since defaults are set
+  [1,2,3,4].forEach(n=>document.getElementById('col'+n).classList.add('done'));
+}
 
-    // ─── BUILD QTY TABLE ──────────────────────────────────────────────────
-    function buildQtyTable() {
-      const basePrice100 = calcPrice(100, ORDER.size, ORDER.material, ORDER.cut);
-      const basePricePer = basePrice100 / 100;
+// ─── SELECTORS ────────────────────────────────────────────────────────────
+function pickCut(v,el){
+  S.cut=v;
+  document.querySelectorAll('[data-cut]').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');buildQty();updateSummary();
+}
+function pickShape(v,el){
+  S.shape=v;
+  document.querySelectorAll('[data-shape]').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');updateSummary();
+}
+function pickMat(v,el){
+  S.material=v;
+  document.querySelectorAll('[data-mat]').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');buildQty();updateSummary();
+}
+function pickSize(v,el){
+  S.size=v;
+  document.querySelectorAll('[data-size]').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');buildQty();updateSummary();
+}
+function pickQty(v){
+  S.qty=parseInt(v);
+  document.querySelectorAll('.qty-row').forEach(r=>r.classList.remove('selected'));
+  const r=document.querySelector('.qty-row[data-qty="'+v+'"]');if(r)r.classList.add('selected');
+  updateSummary();
+}
+function applyCustom(){
+  const v=parseInt(document.getElementById('cqty').value);
+  if(!v||v<1)return;
+  S.qty=v;
+  document.querySelectorAll('.qty-row').forEach(r=>r.classList.remove('selected'));
+  updateSummary();
+}
 
-      const table = document.getElementById('qty-table');
-      table.innerHTML = QTY_BASE.map(({ qty }) => {
-        const price = calcPrice(qty, ORDER.size, ORDER.material, ORDER.cut);
-        const per = price / qty;
-        const fullPrice = calcPrice(qty, ORDER.size, ORDER.material, ORDER.cut); // could calc retail separately
-        // Savings vs 25-qty per-unit rate
-        const expensive = calcPrice(25, ORDER.size, ORDER.material, ORDER.cut) / 25;
-        const save = qty > 25 ? Math.round((1 - per / expensive) * 100) : 0;
-        const isSel = ORDER.qty === qty;
+// ─── BUILD QTY LIST ──────────────────────────────────────────────────────
+function buildQty(){
+  const per25=price(25,S.size,S.material,S.cut)/25;
+  document.getElementById('qty-list').innerHTML=TIERS.map(({q})=>{
+    const p=price(q,S.size,S.material,S.cut);
+    const per=p/q;
+    const save=q>25?Math.round((1-per/per25)*100):0;
+    const sel=S.qty===q;
+    return`<div class="qty-row${sel?' selected':''}" data-qty="${q}" onclick="pickQty(${q})">
+      <div class="qn">${q>=1000?'1K':q}</div>
+      <div class="qp">${fmt(per)}/ea</div>
+      <div class="qprice">${fmt(p)}</div>
+      <div class="qsave">${save>0?'Save '+save+'%':''}</div>
+    </div>`;
+  }).join('');
+}
 
-        return `<div class="qty-row ${isSel ? 'selected' : ''}" data-qty="${qty}" onclick="selectQty(${qty})">
-          <div class="qty-num">${qty.toLocaleString()}</div>
-          <div class="qty-per">${fmtPrice(per)}/ea</div>
-          <div class="qty-price">${fmtPrice(price)}</div>
-          ${save > 0 ? `<div class="qty-save">Save ${save}%</div>` : '<div></div>'}
-        </div>`;
-      }).join('');
+// ─── SUMMARY ─────────────────────────────────────────────────────────────
+function updateSummary(){
+  const p=price(S.qty,S.size,S.material,S.cut);
+  const per=p/S.qty;
+  document.getElementById('total-price').textContent=fmt(p);
+  document.getElementById('total-per').textContent=fmt(per)+'/ea';
+  document.getElementById('total-del').textContent='🚀 Est. delivery by '+delivery();
+  document.getElementById('total-cred').innerHTML='🦆 You\'ll earn <em>'+fmt(p*0.02)+'</em> in store credit';
 
-      // Re-select current
-      const row = document.querySelector(`.qty-row[data-qty="${ORDER.qty}"]`);
-      if (row) row.classList.add('selected');
-    }
+  const cutLbl=S.cut==='die-cut'?'Die Cut':'Kiss Cut';
+  const shapeLbl=S.shape.charAt(0).toUpperCase()+S.shape.slice(1);
+  const matLbl=S.material.charAt(0).toUpperCase()+S.material.slice(1);
+  document.getElementById('sel1').textContent=cutLbl+' · '+shapeLbl;
+  document.getElementById('sel2').textContent=matLbl;
+  document.getElementById('sel3').textContent=S.size+'" stickers';
+}
 
-    // ─── STEP FLOW ────────────────────────────────────────────────────────
-    function completeStep(stepNum) {
-      // Mark this step done
-      const card = document.getElementById(`step-${stepNum}`);
-      card.classList.remove('active');
-      card.classList.add('done');
+// ─── FILE UPLOAD ──────────────────────────────────────────────────────────
+function handleFile(input){
+  const f=input.files[0];if(!f)return;
+  S.file=f;
+  document.getElementById('drop-fname').textContent='✓ '+f.name;
+  document.getElementById('drop-zone').classList.add('done');
+}
+const dz=document.getElementById('drop-zone');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+dz.addEventListener('drop',e=>{
+  e.preventDefault();dz.classList.remove('over');
+  const f=e.dataTransfer.files[0];if(!f)return;
+  S.file=f;document.getElementById('drop-fname').textContent='✓ '+f.name;dz.classList.add('done');
+});
 
-      // Update summary chip
-      const summaryEl = document.getElementById(`step${stepNum}-summary`);
-      if (stepNum === 1) summaryEl.textContent = ORDER.cut === 'die-cut' ? 'Die Cut' : 'Kiss Cut';
-      if (stepNum === 2) summaryEl.textContent = ORDER.material.charAt(0).toUpperCase() + ORDER.material.slice(1);
-      if (stepNum === 3) summaryEl.textContent = `${ORDER.size}"`;
-      if (stepNum === 4) summaryEl.textContent = ORDER.qty.toLocaleString() + ' stickers';
+// ─── MODAL ────────────────────────────────────────────────────────────────
+function openModal(){
+  const p=price(S.qty,S.size,S.material,S.cut);
+  const dl=document.getElementById('design-link').value;if(dl)S.designLink=dl;
+  const cutLbl=S.cut==='die-cut'?'Die Cut':'Kiss Cut';
+  const shapeLbl=S.shape.charAt(0).toUpperCase()+S.shape.slice(1);
+  const matLbl=S.material.charAt(0).toUpperCase()+S.material.slice(1);
+  document.getElementById('sum-box').innerHTML=`
+    <h4>Order Summary</h4>
+    <div class="sum-row"><span class="sum-l">Product</span><span class="sum-v">${S.typeName}</span></div>
+    <div class="sum-row"><span class="sum-l">Cut / Shape</span><span class="sum-v">${cutLbl} · ${shapeLbl}</span></div>
+    <div class="sum-row"><span class="sum-l">Material</span><span class="sum-v">${matLbl}</span></div>
+    <div class="sum-row"><span class="sum-l">Size</span><span class="sum-v">${S.size}" stickers</span></div>
+    <div class="sum-row"><span class="sum-l">Quantity</span><span class="sum-v">${S.qty.toLocaleString()} stickers</span></div>
+    ${S.file?`<div class="sum-row"><span class="sum-l">Design file</span><span class="sum-v">${S.file.name}</span></div>`:''}
+    <div class="sum-total"><span class="sum-l">Total</span><span class="sum-v">${fmt(p)}</span></div>`;
+  document.getElementById('modal-bg').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal-bg').classList.add('hidden');document.body.style.overflow='';}
+function closeBg(e){if(e.target===document.getElementById('modal-bg'))closeModal();}
 
-      // Unlock next step
-      const nextCard = document.getElementById(`step-${stepNum + 1}`);
-      if (nextCard) {
-        nextCard.classList.remove('locked');
-        nextCard.classList.add('active');
-        nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+// ─── SUBMIT ───────────────────────────────────────────────────────────────
+async function submitOrder(){
+  const f=n=>document.getElementById(n).value.trim();
+  const [fname,lname,email,phone,addr,notes]=[f('ff'),f('fl'),f('fe'),f('fp'),f('fa'),f('fn')];
+  const errEl=document.getElementById('form-err');
+  errEl.style.display='none';
+  if(!fname||!lname||!email||!phone||!addr){errEl.textContent='Please fill in all required fields.';errEl.style.display='block';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
+  const btn=document.getElementById('sub-btn');
+  btn.disabled=true;btn.textContent='Sending…';
+  const p=price(S.qty,S.size,S.material,S.cut);
+  const cutLbl=S.cut==='die-cut'?'Die Cut':'Kiss Cut';
+  const shapeLbl=S.shape.charAt(0).toUpperCase()+S.shape.slice(1);
+  const matLbl=S.material.charAt(0).toUpperCase()+S.material.slice(1);
+  const dl=document.getElementById('design-link').value.trim()||S.designLink||'';
+  try{
+    const res=await fetch('/api/sticker-order',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({firstName:fname,lastName:lname,email,phone,address:addr,notes,
+        product:S.typeName,cut:cutLbl,shape:shapeLbl,material:matLbl,
+        size:S.size+'"',qty:S.qty,price:p.toFixed(2),designLink:dl,fileName:S.file?.name||''})});
+    const data=await res.json();
+    if(data.success){
+      document.getElementById('modal-bd').innerHTML=`<div class="success-box">
+        <div class="si">🦆</div>
+        <h3>You're all set, ${fname}!</h3>
+        <p>Luke got your order and will reach out within a few hours with a digital proof and payment link.<br><br>
+        Watch for an email to <strong>${email}</strong> or a text from <strong>(512) 333-0552</strong>.</p>
+      </div>`;
+    } else throw new Error(data.error||'Something went wrong');
+  } catch(err){
+    errEl.textContent=err.message||'Something went wrong. Please try again.';
+    errEl.style.display='block';btn.disabled=false;btn.textContent='Submit Order Request →';
+  }
+}
 
-      currentStep = stepNum + 1;
-    }
+// Keyboard nav for option cards
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.cut-tab,.shape-opt,.mat-opt,.size-opt'))e.target.click();
+});
 
-    // ─── UPDATE SUMMARY ───────────────────────────────────────────────────
-    function updateSummary() {
-      document.getElementById('sum-cut').innerHTML = ORDER.cut ? (ORDER.cut === 'die-cut' ? 'Die Cut' : 'Kiss Cut') : '<span class="pending">Not selected</span>';
-      document.getElementById('sum-mat').innerHTML = ORDER.material ? (ORDER.material.charAt(0).toUpperCase() + ORDER.material.slice(1)) : '<span class="pending">Not selected</span>';
-      document.getElementById('sum-size').innerHTML = ORDER.size ? `${ORDER.size}" stickers` : '<span class="pending">Not selected</span>';
-      document.getElementById('sum-qty').innerHTML = ORDER.qty ? ORDER.qty.toLocaleString() + ' stickers' : '<span class="pending">Not selected</span>';
-
-      const price = calcPrice(ORDER.qty, ORDER.size, ORDER.material, ORDER.cut);
-      const per = (price / ORDER.qty).toFixed(2);
-      const credit = (price * 0.02).toFixed(2);
-
-      document.getElementById('sum-total').textContent = fmtPrice(price);
-      document.getElementById('sum-per').textContent = `$${per}/ea · ${ORDER.qty.toLocaleString()} stickers`;
-      document.getElementById('sum-delivery').textContent = `🚀 Est. delivery by ${getDelivery()}`;
-      document.getElementById('sum-credit').innerHTML = `🦆 You'll earn <span>$${credit}</span> in store credit`;
-
-      // Mobile bar
-      document.getElementById('mb-price').textContent = fmtPrice(price);
-      document.getElementById('mb-per').textContent = `$${per}/ea`;
-
-      // Enable CTA after step 4 is done
-      const ready = currentStep >= 5;
-      document.getElementById('sidebar-cta-btn').disabled = !ready;
-      document.getElementById('mb-cta-btn').disabled = !ready;
-    }
-
-    // ─── FILE UPLOAD ──────────────────────────────────────────────────────
-    function handleFileSelect(input) {
-      const file = input.files[0];
-      if (!file) return;
-      ORDER.file = file;
-      document.getElementById('file-info').textContent = `✅ ${file.name} (${(file.size/1024/1024).toFixed(1)} MB)`;
-      document.getElementById('upload-zone').classList.add('has-file');
-      document.getElementById('step5-summary').textContent = 'File ready';
-    }
-
-    // Drag and drop
-    const uploadZone = document.getElementById('upload-zone');
-    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
-    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-    uploadZone.addEventListener('drop', e => {
-      e.preventDefault();
-      uploadZone.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        ORDER.file = file;
-        document.getElementById('file-info').textContent = `✅ ${file.name} (${(file.size/1024/1024).toFixed(1)} MB)`;
-        uploadZone.classList.add('has-file');
-        document.getElementById('step5-summary').textContent = 'File ready';
-      }
-    });
-
-    // ─── MODAL ────────────────────────────────────────────────────────────
-    function openOrderModal() {
-      // Fill modal order summary
-      const price = calcPrice(ORDER.qty, ORDER.size, ORDER.material, ORDER.cut);
-      const per   = (price / ORDER.qty).toFixed(2);
-      const designLink = document.getElementById('design-link').value;
-      if (designLink) ORDER.designLink = designLink;
-
-      document.getElementById('modal-order-summary').innerHTML = `
-        <h4>Your Order</h4>
-        <p><strong>${ORDER.typeName}</strong></p>
-        <p>${ORDER.cut === 'die-cut' ? 'Die Cut' : 'Kiss Cut'} · ${ORDER.material.charAt(0).toUpperCase() + ORDER.material.slice(1)} · ${ORDER.size}" stickers</p>
-        <p>Qty: <strong>${ORDER.qty.toLocaleString()} stickers</strong></p>
-        ${ORDER.file ? `<p>Design: <strong>${ORDER.file.name}</strong></p>` : ''}
-        ${ORDER.designLink ? `<p>Design link: <strong>${ORDER.designLink}</strong></p>` : ''}
-        <div class="total-line">${fmtPrice(price)} total · $${per}/ea</div>
-      `;
-
-      document.getElementById('modal-backdrop').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('modal-backdrop').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    function closeModalOnBackdrop(e) {
-      if (e.target === document.getElementById('modal-backdrop')) closeModal();
-    }
-
-    // ─── SUBMIT ORDER ─────────────────────────────────────────────────────
-    async function submitOrder() {
-      const fname   = document.getElementById('o-fname').value.trim();
-      const lname   = document.getElementById('o-lname').value.trim();
-      const email   = document.getElementById('o-email').value.trim();
-      const phone   = document.getElementById('o-phone').value.trim();
-      const address = document.getElementById('o-address').value.trim();
-      const notes   = document.getElementById('o-notes').value.trim();
-      const errEl   = document.getElementById('form-error');
-
-      errEl.style.display = 'none';
-      if (!fname || !lname || !email || !phone || !address) {
-        errEl.textContent = 'Please fill in all required fields.';
-        errEl.style.display = 'block';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errEl.textContent = 'Please enter a valid email address.';
-        errEl.style.display = 'block';
-        return;
-      }
-
-      const btn = document.getElementById('modal-submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      const price = calcPrice(ORDER.qty, ORDER.size, ORDER.material, ORDER.cut);
-      const designLink = document.getElementById('design-link').value.trim() || ORDER.designLink || '';
-
-      try {
-        const res = await fetch('/api/sticker-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            firstName: fname,
-            lastName:  lname,
-            email,
-            phone,
-            address,
-            notes,
-            product:   ORDER.typeName,
-            cut:       ORDER.cut,
-            material:  ORDER.material,
-            size:      ORDER.size + '"',
-            qty:       ORDER.qty,
-            price:     price.toFixed(2),
-            designLink,
-            fileName:  ORDER.file ? ORDER.file.name : '',
-          }),
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-          document.getElementById('modal-body').innerHTML = `
-            <div class="success-state">
-              <div class="success-icon">🦆</div>
-              <h3>You're all set, ${fname}!</h3>
-              <p>Luke got your order and will reach out within a few hours with a proof and payment link.<br><br>
-              Keep an eye on <strong>${email}</strong> or a text from <strong>(512) 333-0552</strong>.</p>
-            </div>
-          `;
-        } else {
-          throw new Error(data.error || 'Something went wrong');
-        }
-      } catch (err) {
-        errEl.textContent = err.message || 'Something went wrong. Please try again.';
-        errEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Submit Order Request →';
-      }
-    }
-
-    // ─── START ────────────────────────────────────────────────────────────
-    init();
-  </script>
+init();
+</script>
 </body>
 </html>
