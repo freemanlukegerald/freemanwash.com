@@ -180,12 +180,56 @@
     .success-box h3{font-family:'Anton',sans-serif;font-size:1.2rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.6rem}
     .success-box p{color:var(--muted);line-height:1.7;font-size:0.85rem}
 
+    /* ── STICKER PREVIEW STAGE ───────────────────────────── */
+    .preview-stage-wrap{border-bottom:1px solid var(--border);padding:1.5rem 1.5rem 1.75rem}
+    .preview-stage{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:3rem}
+
+    /* Shadow wrapper — filter here so drop-shadow follows clipped shape */
+    .sticker-outer{width:200px;height:200px;flex-shrink:0;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.7));position:relative}
+
+    /* Clip container — gets clip-path + overflow */
+    .sticker-clip{
+      width:100%;height:100%;position:relative;overflow:hidden;
+      transition:clip-path 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    /* White/material sticker background */
+    .sticker-bg{position:absolute;inset:0;background:#ffffff;transition:background 0.25s}
+    /* Duck art SVG */
+    .duck-art{position:relative;z-index:1;display:block;width:100%;height:100%}
+    /* Material FX overlay */
+    .mat-vfx{position:absolute;inset:0;z-index:2;pointer-events:none}
+
+    /* Holographic hue-shift */
+    @keyframes holoShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+    /* Die-cut dashed ring (shown around duck for custom cut) */
+    .cutline-ring{
+      position:absolute;inset:-4px;border-radius:50%;
+      border:2.5px dashed rgba(255,192,0,0.55);
+      pointer-events:none;z-index:3;display:none;
+    }
+
+    /* Preview label below sticker */
+    .preview-label{font-size:0.7rem;font-weight:600;color:var(--muted);letter-spacing:0.06em;text-align:center;margin-top:0.65rem;white-space:nowrap}
+
+    /* Info panel */
+    .preview-info{flex:1;min-width:0}
+    .preview-type-lbl{font-family:'Anton',sans-serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem}
+    .preview-headline{font-size:1.3rem;font-weight:800;line-height:1.25;margin-bottom:0.9rem;text-wrap:balance}
+    .preview-feats{display:flex;flex-wrap:wrap;gap:0.45rem 1.25rem}
+    .preview-feats span{font-size:0.76rem;color:var(--green);font-weight:500}
+
     /* RESPONSIVE */
     @media(max-width:1024px){
       .config-grid{grid-template-columns:1fr 1fr}
       .cfg-col{border-right:none;border-bottom:1px solid var(--border)}
       .cfg-col:last-child{border-bottom:none}
       .prod-feats{display:none}
+      .preview-stage{gap:2rem}
+    }
+    @media(max-width:700px){
+      .preview-stage{flex-direction:column;gap:1.25rem;text-align:center}
+      .preview-feats{justify-content:center}
+      .sticker-outer{width:170px;height:170px}
     }
     @media(max-width:640px){
       .config-grid{grid-template-columns:1fr}
@@ -228,6 +272,83 @@
         Free shipping on $75+
       </div>
     </div>
+  </div>
+</div>
+
+<!-- STICKER PREVIEW STAGE -->
+<div class="preview-stage-wrap">
+  <div class="preview-stage">
+
+    <!-- Live sticker preview -->
+    <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
+      <div class="sticker-outer" id="sticker-outer">
+        <div class="sticker-clip" id="sticker-clip">
+
+          <!-- Background (white / checkerboard / transparent) -->
+          <div class="sticker-bg" id="sticker-bg"></div>
+
+          <!-- Duck mascot SVG -->
+          <svg class="duck-art" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <radialGradient id="hg" cx="38%" cy="30%" r="64%">
+                <stop offset="0%" stop-color="#44bc58"/>
+                <stop offset="100%" stop-color="#1b6626"/>
+              </radialGradient>
+            </defs>
+            <!-- Brown neck/chest -->
+            <ellipse cx="152" cy="285" rx="68" ry="34" fill="#6e3018" stroke="#111" stroke-width="7"/>
+            <!-- White collar ring -->
+            <ellipse cx="152" cy="263" rx="78" ry="21" fill="#f0f0f0" stroke="#111" stroke-width="7"/>
+            <!-- Main green head -->
+            <ellipse cx="152" cy="150" rx="96" ry="106" fill="url(#hg)" stroke="#111" stroke-width="8"/>
+            <!-- Head highlight -->
+            <ellipse cx="121" cy="117" rx="52" ry="47" fill="#5ad66a" opacity="0.36"/>
+            <!-- Feather tufts (5 spikes) -->
+            <polygon points="85,52 77,9 109,50"  fill="#1b6626" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+            <polygon points="113,43 110,4 139,42" fill="#267030" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+            <polygon points="147,38 149,0 169,40" fill="#1b6626" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+            <polygon points="177,43 185,7 201,48" fill="#267030" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+            <polygon points="205,56 217,18 227,55" fill="#1b6626" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+            <!-- Left eye (larger) -->
+            <circle cx="108" cy="143" r="30" fill="white" stroke="#111" stroke-width="7"/>
+            <circle cx="113" cy="149" r="17" fill="#111"/>
+            <circle cx="104" cy="137" r="6" fill="white"/>
+            <!-- Right eye -->
+            <circle cx="193" cy="134" r="25" fill="white" stroke="#111" stroke-width="7"/>
+            <circle cx="197" cy="140" r="14" fill="#111"/>
+            <circle cx="188" cy="128" r="5" fill="white"/>
+            <!-- Bill upper (yellow) -->
+            <path d="M 63,205 C 59,218 67,244 87,252 L 152,256 L 152,211 C 118,203 86,199 63,205 Z" fill="#f5c000" stroke="#111" stroke-width="7"/>
+            <!-- Bill lower (darker) -->
+            <path d="M 69,223 C 89,215 118,212 152,216 L 152,256 C 122,258 84,252 72,246 C 62,236 64,227 69,223 Z" fill="#d9a800" stroke="#111" stroke-width="4"/>
+            <!-- Bill groove line -->
+            <path d="M 71,231 C 95,225 120,222 152,226" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+            <!-- Nostril -->
+            <ellipse cx="94" cy="215" rx="7" ry="5" fill="#b89000" stroke="#111" stroke-width="2.5"/>
+          </svg>
+
+          <!-- Material effect overlay -->
+          <div class="mat-vfx" id="mat-vfx"></div>
+
+        </div><!-- /sticker-clip -->
+        <!-- Die-cut outline ring (custom shape only) -->
+        <div class="cutline-ring" id="cutline-ring"></div>
+      </div><!-- /sticker-outer -->
+      <p class="preview-label" id="preview-label">Die Cut · Custom · Matte · 3"</p>
+    </div>
+
+    <!-- Product info -->
+    <div class="preview-info">
+      <p class="preview-type-lbl" id="preview-type-lbl">Die-Cut Stickers</p>
+      <h2 class="preview-headline">Premium custom stickers<br>your people will actually keep.</h2>
+      <div class="preview-feats">
+        <span>✓ Waterproof vinyl</span>
+        <span>✓ UV &amp; scratch resistant</span>
+        <span>✓ 3–5 day turnaround</span>
+        <span>✓ Free digital proof</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -618,6 +739,93 @@ function initSwatches(){
   });
 }
 
+// ─── STICKER PREVIEW ─────────────────────────────────────────────────────
+const SHAPE_CLIPS={
+  custom:    'none',
+  circle:    'circle(46%)',
+  oval:      'ellipse(46% 38%)',
+  square:    'inset(3% round 10%)',
+  rectangle: 'inset(22% 3% round 8%)',
+  heart:     "path('M 100 172 C 100 172 8 110 8 62 C 8 29 34 13 62 18 C 77 22 90 33 100 51 C 110 33 123 22 138 18 C 166 13 192 29 192 62 C 192 110 100 172 100 172 Z')",
+};
+
+function renderGlitterVfx(el){
+  let c=el.querySelector('canvas');
+  if(!c){c=document.createElement('canvas');c.style.cssText='position:absolute;inset:0;width:100%;height:100%;';el.appendChild(c);}
+  const W=c.width=200,H=c.height=200,ctx=c.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const cols=['#ff69b4','#ffd700','#87ceeb','#da70d6','#ff9999','#ffffff','#c8b4ff'];
+  for(let i=0;i<90;i++){
+    const x=Math.random()*W,y=Math.random()*H,r=Math.random()*2.5+0.4;
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle=cols[Math.floor(Math.random()*cols.length)];
+    ctx.globalAlpha=Math.random()*0.85+0.15;ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  for(let i=0;i<16;i++){
+    const x=Math.random()*W,y=Math.random()*H,s=Math.random()*4.5+2;
+    ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);
+    ctx.fillStyle='rgba(255,255,255,0.95)';
+    ctx.fillRect(-s*0.15,-s*0.5,s*0.3,s);ctx.fillRect(-s*0.5,-s*0.15,s,s*0.3);
+    ctx.restore();
+  }
+}
+
+function updatePreview(){
+  const clip=document.getElementById('sticker-clip');
+  const bg=document.getElementById('sticker-bg');
+  const vfx=document.getElementById('mat-vfx');
+  const ring=document.getElementById('cutline-ring');
+  const lbl=document.getElementById('preview-label');
+
+  // Shape clip-path
+  clip.style.clipPath=SHAPE_CLIPS[S.shape]||'none';
+
+  // Show die-cut ring only for custom die-cut
+  const isDieCut=S.cut==='die-cut',isCustom=S.shape==='custom';
+  ring.style.display=(isDieCut&&isCustom)?'block':'none';
+
+  // Reset vfx overlay
+  vfx.style.cssText='position:absolute;inset:0;z-index:2;pointer-events:none;';
+  vfx.innerHTML='';
+
+  // Background + material effect
+  switch(S.material){
+    case 'matte':
+      bg.style.background='#ffffff';
+      break;
+    case 'gloss':
+      bg.style.background='#ffffff';
+      vfx.style.background='linear-gradient(138deg,rgba(255,255,255,0) 28%,rgba(255,255,255,0.62) 44%,rgba(255,255,255,0) 56%)';
+      break;
+    case 'holographic':
+      bg.style.background='#ffffff';
+      vfx.style.background='linear-gradient(135deg,rgba(255,0,144,.45) 0%,rgba(255,102,0,.35) 17%,rgba(255,238,0,.35) 34%,rgba(0,210,100,.35) 50%,rgba(0,150,255,.35) 67%,rgba(160,50,255,.35) 83%,rgba(255,0,144,.45) 100%)';
+      vfx.style.mixBlendMode='overlay';
+      vfx.style.animation='holoShift 2s linear infinite';
+      break;
+    case 'clear':
+      bg.style.background='repeating-conic-gradient(#bbb 0% 25%,#e8e8e8 0% 50%) 0 0/22px 22px';
+      vfx.style.background='rgba(190,215,255,0.08)';
+      break;
+    case 'glitter':
+      bg.style.background=(isDieCut&&isCustom)?'rgba(255,240,255,0)':'#fef0ff';
+      renderGlitterVfx(vfx);
+      break;
+    case 'chrome':
+      bg.style.background='#ffffff';
+      vfx.style.background='linear-gradient(135deg,rgba(75,80,95,.55) 0%,rgba(255,255,255,.68) 36%,rgba(125,130,145,.58) 62%,rgba(55,60,75,.52) 100%)';
+      vfx.style.mixBlendMode='multiply';
+      break;
+  }
+
+  // Update preview label
+  const cutLbl=S.cut==='die-cut'?'Die Cut':'Kiss Cut';
+  const shapeLbl=S.shape.charAt(0).toUpperCase()+S.shape.slice(1);
+  const matLbl=S.material.charAt(0).toUpperCase()+S.material.slice(1);
+  lbl.textContent=cutLbl+' · '+shapeLbl+' · '+matLbl+' · '+S.size+'"';
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────
 function init(){
   const p=new URLSearchParams(location.search);
@@ -648,30 +856,33 @@ function init(){
   initSwatches();
   buildQty();
   updateSummary();
+  updatePreview();
   // Mark all cols done since defaults are set
   [1,2,3,4].forEach(n=>document.getElementById('col'+n).classList.add('done'));
+  // Set preview product label
+  document.getElementById('preview-type-lbl').textContent=cfg.name;
 }
 
 // ─── SELECTORS ────────────────────────────────────────────────────────────
 function pickCut(v,el){
   S.cut=v;
   document.querySelectorAll('[data-cut]').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');buildQty();updateSummary();
+  el.classList.add('selected');buildQty();updateSummary();updatePreview();
 }
 function pickShape(v,el){
   S.shape=v;
   document.querySelectorAll('[data-shape]').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');updateSummary();
+  el.classList.add('selected');updateSummary();updatePreview();
 }
 function pickMat(v,el){
   S.material=v;
   document.querySelectorAll('[data-mat]').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');buildQty();updateSummary();
+  el.classList.add('selected');buildQty();updateSummary();updatePreview();
 }
 function pickSize(v,el){
   S.size=v;
   document.querySelectorAll('[data-size]').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');buildQty();updateSummary();
+  el.classList.add('selected');buildQty();updateSummary();updatePreview();
 }
 function pickQty(v){
   S.qty=parseInt(v);
