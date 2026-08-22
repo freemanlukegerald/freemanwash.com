@@ -3,35 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driveway & Pressure Washing Bee Cave & Lakeway | Freeman Exterior Cleaning</title>
-  <meta name="description" content="Professional driveway and concrete pressure washing in Bee Cave, Lakeway & Austin. Get $50 off your first clean. Call or text (512) 333-0552.">
+  <title>Sticker Duck — Custom Stickers Printed Fast</title>
+  <meta name="description" content="Custom die-cut stickers, vinyl stickers, holographic stickers, and more. Upload your design, we handle the rest. Fast turnaround, unbeatable quality.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --navy:       #0b1120;
-      --navy-2:     #111827;
-      --navy-3:     #1a2540;
-      --blue:       #1e6ef4;
-      --blue-light: #3b82f6;
-      --blue-dark:  #1554c0;
-      --orange:     #f97316;
-      --white:      #ffffff;
-      --off-white:  #f8fafc;
-      --gray-400:   #94a3b8;
-      --gray-600:   #475569;
-      --green:      #22c55e;
-      --border:     rgba(255,255,255,0.08);
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --surface2: #1f1f1f;
+      --yellow:   #f5b800;
+      --yellow-d: #d9a200;
+      --green:    #2d7d3a;
+      --green-l:  #38a047;
+      --blue:     #3fa9dc;
+      --white:    #ffffff;
+      --muted:    #888888;
+      --muted-l:  #aaaaaa;
+      --border:   rgba(255,255,255,0.07);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--navy);
+      background: var(--bg);
       color: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
@@ -43,18 +42,17 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(11,17,32,0.92);
+      background: rgba(13,13,13,0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
     }
 
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
-      height: 72px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -62,12 +60,9 @@
     }
 
     .nav-logo img {
-      height: 56px;
+      height: 52px;
       width: auto;
       display: block;
-      background: white;
-      border-radius: 8px;
-      padding: 4px 10px;
     }
 
     .nav-links {
@@ -77,31 +72,30 @@
     }
 
     .nav-links a {
-      color: var(--gray-400);
+      color: var(--muted-l);
       text-decoration: none;
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: 0.02em;
       transition: color 0.2s;
     }
 
     .nav-links a:hover { color: var(--white); }
 
     .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--blue);
-      color: var(--white);
+      background: var(--yellow);
+      color: #000;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
+      font-weight: 800;
+      font-size: 0.85rem;
       padding: 0.6rem 1.25rem;
       border-radius: 8px;
       white-space: nowrap;
+      letter-spacing: 0.03em;
       transition: background 0.2s, transform 0.15s;
     }
 
-    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--yellow-d); transform: translateY(-1px); }
 
     .hamburger {
       display: none;
@@ -119,15 +113,15 @@
       height: 2px;
       background: var(--white);
       border-radius: 2px;
-      transition: 0.3s;
     }
 
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 10rem 2rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -137,58 +131,78 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(30,110,244,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(30,110,244,0.07) 0%, transparent 50%);
+        radial-gradient(ellipse 70% 50% at 50% -5%, rgba(245,184,0,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(45,125,58,0.08) 0%, transparent 50%);
+    }
+
+    /* Background grid texture */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
     }
 
     .hero-content {
       position: relative;
-      max-width: 780px;
+      max-width: 860px;
     }
 
-    .hero-eyebrow {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(30,110,244,0.12);
-      border: 1px solid rgba(30,110,244,0.3);
-      color: var(--blue-light);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      background: rgba(245,184,0,0.1);
+      border: 1px solid rgba(245,184,0,0.3);
+      color: var(--yellow);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 0.4rem 1rem;
       border-radius: 100px;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
     }
 
-    .hero-eyebrow::before {
+    .hero-badge::before {
       content: '';
       width: 6px;
       height: 6px;
-      background: var(--blue-light);
+      background: var(--yellow);
       border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 400; /* Anton is always bold */
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--blue-light);
+    .hero h1 .yellow { color: var(--yellow); }
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
     }
 
     .hero-sub {
-      font-size: 1.125rem;
-      color: var(--gray-400);
-      max-width: 580px;
+      font-size: 1.15rem;
+      color: var(--muted-l);
+      max-width: 560px;
       margin: 0 auto 2.5rem;
+      line-height: 1.7;
     }
 
     .hero-actions {
@@ -198,100 +212,95 @@
       flex-wrap: wrap;
     }
 
+    /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.875rem 1.75rem;
+      padding: 0.9rem 1.75rem;
       border-radius: 10px;
       font-family: inherit;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s, opacity 0.2s;
+      letter-spacing: 0.02em;
     }
 
     .btn:hover { transform: translateY(-2px); }
 
-    .btn-primary {
-      background: var(--blue);
-      color: var(--white);
-      box-shadow: 0 4px 24px rgba(30,110,244,0.35);
+    .btn-yellow {
+      background: var(--yellow);
+      color: #000;
+      box-shadow: 0 4px 24px rgba(245,184,0,0.3);
+      font-weight: 800;
     }
 
-    .btn-primary:hover {
-      background: var(--blue-dark);
-      box-shadow: 0 6px 32px rgba(30,110,244,0.45);
+    .btn-yellow:hover {
+      background: var(--yellow-d);
+      box-shadow: 0 6px 32px rgba(245,184,0,0.45);
     }
 
     .btn-ghost {
-      background: rgba(255,255,255,0.06);
+      background: transparent;
       color: var(--white);
-      border: 1px solid var(--border);
+      border: 1.5px solid rgba(255,255,255,0.2);
     }
 
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
 
-    .btn-orange {
-      background: var(--orange);
+    .btn-green {
+      background: var(--green);
       color: var(--white);
-      box-shadow: 0 4px 24px rgba(249,115,22,0.35);
+      box-shadow: 0 4px 24px rgba(45,125,58,0.3);
     }
 
-    .btn-orange:hover {
-      background: #ea6c0a;
-      box-shadow: 0 6px 32px rgba(249,115,22,0.45);
+    .btn-green:hover { background: var(--green-l); }
+
+    /* ─── MARQUEE STRIP ─── */
+    .marquee-strip {
+      background: var(--yellow);
+      padding: 0.65rem 0;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
-    /* ─── STATS BAR ─── */
-    .stats-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
+    .marquee-track {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 24s linear infinite;
     }
 
-    .stats-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      display: flex;
+    .marquee-item {
+      display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1.5rem;
+      padding: 0 2rem;
+      font-family: 'Anton', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #000;
     }
 
-    .stat-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(30,110,244,0.12);
-      display: grid;
-      place-items: center;
-      font-size: 1rem;
+    .marquee-dot {
+      width: 5px;
+      height: 5px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
       flex-shrink: 0;
     }
 
-    .stat-label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .stat-sub {
-      font-size: 0.75rem;
-      color: var(--gray-400);
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ─── SECTIONS ─── */
     .section { padding: 6rem 2rem; }
-    .section-alt { background: var(--navy-2); }
+    .section-alt { background: var(--surface); }
 
     .container { max-width: 1200px; margin: 0 auto; }
 
@@ -299,359 +308,256 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--blue-light);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.875rem;
     }
 
     .section-label::before {
       content: '';
-      width: 16px;
+      width: 20px;
       height: 2px;
-      background: var(--blue-light);
+      background: var(--yellow);
     }
 
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1;
       margin-bottom: 1rem;
     }
 
     .section-desc {
-      color: var(--gray-400);
-      max-width: 560px;
+      color: var(--muted-l);
+      max-width: 540px;
       font-size: 1rem;
+      line-height: 1.75;
     }
 
     .section-header { margin-bottom: 3.5rem; }
-
     .section-header.center { text-align: center; }
     .section-header.center .section-label { justify-content: center; }
     .section-header.center .section-desc { margin: 0 auto; }
 
-    /* ─── SERVICES ─── */
-    .services-grid {
+    /* ─── PRODUCTS GRID ─── */
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
     }
 
-    .service-card {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
+    .product-card {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
       padding: 2rem;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
       position: relative;
       overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
     }
 
-    .service-card::before {
+    .product-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(30,110,244,0.06) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(245,184,0,0.05) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.25s;
     }
 
-    .service-card:hover {
-      border-color: rgba(30,110,244,0.4);
+    .product-card:hover {
+      border-color: rgba(245,184,0,0.35);
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
 
-    .service-card:hover::before { opacity: 1; }
+    .product-card:hover::after { opacity: 1; }
 
-    .service-card.featured-service {
-      border-color: rgba(249,115,22,0.4);
-      background: linear-gradient(135deg, rgba(249,115,22,0.06) 0%, var(--navy-3) 50%);
+    .product-card.featured {
+      border-color: var(--yellow);
+      background: linear-gradient(135deg, rgba(245,184,0,0.07) 0%, var(--surface2) 50%);
     }
 
-    .service-icon {
-      font-size: 2rem;
+    .product-badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--yellow);
+      color: #000;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .product-icon {
+      font-size: 2.25rem;
       margin-bottom: 1.25rem;
       display: block;
+      position: relative;
+      z-index: 1;
     }
 
-    .service-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
+    .product-card h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .service-card p {
-      color: var(--gray-400);
-      font-size: 0.9rem;
+    .product-card p {
+      color: var(--muted-l);
+      font-size: 0.875rem;
       line-height: 1.7;
       margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .service-price-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
+    .product-from {
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--blue-light);
+      color: var(--yellow);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 1;
     }
-
-    .service-price-tag.orange { color: var(--orange); }
 
     /* ─── STEPS ─── */
     .steps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 1000px;
       margin: 0 auto;
+      position: relative;
     }
 
     .step-card {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
       padding: 2rem;
-      position: relative;
       text-align: center;
+      position: relative;
     }
 
     .step-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--blue);
-      opacity: 0.15;
+      font-family: 'Anton', sans-serif;
+      font-size: 4rem;
+      color: var(--yellow);
+      opacity: 0.12;
       line-height: 1;
       position: absolute;
-      top: 1rem;
+      top: 0.75rem;
       right: 1.25rem;
     }
 
     .step-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
 
     .step-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
       margin-bottom: 0.75rem;
     }
 
-    .step-card p { color: var(--gray-400); font-size: 0.9rem; line-height: 1.7; }
+    .step-card p { color: var(--muted-l); font-size: 0.875rem; line-height: 1.7; }
 
-    /* ─── RATE TABLE ─── */
-    .rate-table {
-      max-width: 700px;
-      margin: 0 auto;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .rate-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .rate-row:last-child { border-bottom: none; }
-    .rate-row:nth-child(odd) { background: rgba(255,255,255,0.02); }
-
-    .rate-service { font-weight: 600; font-size: 0.9rem; }
-    .rate-price { font-size: 0.85rem; color: var(--blue-light); font-weight: 600; white-space: nowrap; }
-
-    /* ─── WHY SECTION ─── */
+    /* ─── WHY US ─── */
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .why-card {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
+      padding: 1.75rem;
+      transition: border-color 0.2s;
     }
 
-    .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .why-card:hover { border-color: rgba(245,184,0,0.25); }
+
+    .why-icon { font-size: 2rem; margin-bottom: 0.875rem; display: block; }
 
     .why-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
       font-weight: 800;
-      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
     }
 
-    .why-card p { color: var(--gray-400); font-size: 0.875rem; line-height: 1.7; }
+    .why-card p { color: var(--muted-l); font-size: 0.85rem; line-height: 1.7; }
 
-    /* ─── OTHER SERVICES ─── */
-    .other-services-grid {
+    /* ─── STATS ─── */
+    .stats-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    .other-service-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--navy-3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      font-size: 1.5rem;
+    .stat-cell {
+      background: var(--surface);
+      padding: 2rem;
+      text-align: center;
     }
 
-    .other-service-item div { display: flex; flex-direction: column; gap: 0.2rem; }
-    .other-service-item strong { font-size: 0.875rem; font-weight: 600; }
-    .other-service-item span:last-child { font-size: 0.775rem; color: var(--gray-400); }
-
-    /* ─── ABOUT ─── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 5rem;
-      align-items: center;
+    .stat-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.8rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.25rem;
     }
 
-    .about-photo-wrap { position: relative; }
-
-    .about-photo {
-      width: 100%;
-      max-width: 380px;
-      border-radius: 20px;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 3/4;
-      filter: grayscale(15%);
-      border: 2px solid var(--border);
-    }
-
-    .about-photo-accent {
-      position: absolute;
-      bottom: -1rem;
-      right: -1rem;
-      background: var(--blue);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      line-height: 1.4;
-      max-width: 180px;
-      box-shadow: 0 8px 32px rgba(30,110,244,0.4);
-    }
-
-    .about-photo-accent strong {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 900;
-    }
-
-    .about-text h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      line-height: 1.15;
-    }
-
-    .about-text p { color: var(--gray-400); font-size: 1rem; margin-bottom: 1.25rem; line-height: 1.8; }
-
-    .about-values { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
-
-    .value-pill {
-      background: rgba(30,110,244,0.1);
-      border: 1px solid rgba(30,110,244,0.25);
-      color: var(--blue-light);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
-    }
-
-    /* ─── TRUST ─── */
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .trust-card {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      transition: border-color 0.25s;
-    }
-
-    .trust-card:hover { border-color: rgba(30,110,244,0.3); }
-    .trust-icon { font-size: 2rem; margin-bottom: 0.875rem; display: block; }
-    .trust-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
-    .trust-card p { color: var(--gray-400); font-size: 0.875rem; line-height: 1.7; }
+    .stat-label { font-size: 0.8rem; color: var(--muted-l); font-weight: 600; letter-spacing: 0.02em; }
 
     /* ─── MINI FAQ ─── */
-    .mini-faq-grid {
+    .faq-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.25rem;
       max-width: 960px;
       margin: 0 auto;
     }
 
-    .mini-faq-item {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
+    .faq-item {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
       border-radius: 14px;
       padding: 1.5rem;
     }
 
-    .mini-faq-item h4 { font-weight: 700; font-size: 0.925rem; margin-bottom: 0.5rem; color: var(--white); }
-    .mini-faq-item p { color: var(--gray-400); font-size: 0.875rem; line-height: 1.7; }
-
-    /* ─── AREA ─── */
-    .area-wrap { text-align: center; }
-
-    .area-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .area-tag {
-      background: var(--navy-3);
-      border: 1px solid var(--border);
-      padding: 0.6rem 1.25rem;
-      border-radius: 100px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: border-color 0.2s;
-    }
-
-    .area-tag:hover { border-color: rgba(30,110,244,0.4); }
+    .faq-item h4 { font-weight: 700; font-size: 0.925rem; margin-bottom: 0.5rem; }
+    .faq-item p { color: var(--muted-l); font-size: 0.875rem; line-height: 1.7; }
 
     /* ─── CTA STRIP ─── */
     .cta-strip {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      background: var(--yellow);
       padding: 5rem 2rem;
       text-align: center;
       position: relative;
@@ -662,35 +568,34 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='18'/%3E%3C/g%3E%3C/svg%3E");
     }
 
     .cta-strip .container { position: relative; }
 
     .cta-strip h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 1rem;
     }
 
-    .cta-strip p { opacity: 0.88; font-size: 1.05rem; margin-bottom: 1.5rem; }
+    .cta-strip p { font-size: 1.1rem; color: rgba(0,0,0,0.65); margin-bottom: 2rem; font-weight: 600; }
 
-    .cta-phone-big {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900;
-      margin-bottom: 0.5rem;
+    .cta-strip .btn-ghost {
+      border-color: rgba(0,0,0,0.3);
+      color: #000;
     }
 
-    .cta-phone-big a { color: inherit; text-decoration: none; }
-
-    .cta-note { opacity: 0.75; font-size: 0.875rem; margin-bottom: 2rem; }
+    .cta-strip .btn-ghost:hover { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.5); }
 
     /* ─── FOOTER ─── */
     footer {
-      background: #070c18;
+      background: #080808;
       border-top: 1px solid var(--border);
       padding: 3rem 2rem 2rem;
     }
@@ -708,22 +613,14 @@
       margin-bottom: 1.5rem;
     }
 
-    .footer-logo img {
-      height: 56px;
-      width: auto;
-      margin-bottom: 0.75rem;
-      display: block;
-      background: white;
-      border-radius: 8px;
-      padding: 4px 10px;
-    }
+    .footer-logo img { height: 48px; display: block; margin-bottom: 0.75rem; }
 
-    .footer-tagline { color: var(--gray-400); font-size: 0.85rem; max-width: 260px; }
+    .footer-tagline { color: var(--muted); font-size: 0.85rem; max-width: 240px; }
 
-    .footer-contact { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem; }
-    .footer-contact a { color: var(--gray-400); text-decoration: none; transition: color 0.2s; }
-    .footer-contact a:hover { color: var(--white); }
-    .footer-contact strong { color: var(--white); display: block; margin-bottom: 0.25rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-links strong { color: var(--white); display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
 
     .footer-bottom {
       display: flex;
@@ -733,27 +630,23 @@
       gap: 1rem;
     }
 
-    .footer-copy { color: var(--gray-400); font-size: 0.8rem; }
-    .footer-verse { color: #334155; font-size: 0.75rem; font-style: italic; }
+    .footer-copy { color: #444; font-size: 0.8rem; }
 
     /* ─── ANIMATIONS ─── */
     .fade-up {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up:nth-child(2) { transition-delay: 0.1s; }
     .fade-up:nth-child(3) { transition-delay: 0.2s; }
     .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-up:nth-child(6) { transition-delay: 0.5s; }
 
     /* ─── MOBILE ─── */
-    @media (max-width: 900px) {
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .mini-faq-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -762,31 +655,23 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 72px;
+        top: 70px;
         left: 0;
         right: 0;
-        background: var(--navy-2);
+        background: #111;
         padding: 1.5rem 2rem;
         border-bottom: 1px solid var(--border);
         gap: 1.25rem;
       }
 
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-photo { max-width: 280px; margin: 0 auto; }
-      .about-photo-accent { right: 0; bottom: -0.5rem; }
       .footer-top { flex-direction: column; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .stats-inner { gap: 1.5rem; }
-    }
-
-    @media (max-width: 540px) {
-      .trust-grid { grid-template-columns: 1fr; }
-      .mini-faq-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 8rem 1.5rem 4rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
       .section { padding: 4rem 1.5rem; }
+      .hero h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
     }
   </style>
 </head>
@@ -795,20 +680,16 @@
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <img src="images/logo.png" alt="Freeman Pressure Washing & Exterior Cleaning">
+      <a href="/" class="nav-logo">
+        <img src="images/logo.png" alt="Sticker Duck">
       </a>
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#products">Products</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#area">Service Area</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="tel:5123330552" class="nav-cta">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
-        (512) 333-0552
-      </a>
+      <a href="#get-quote" class="nav-cta">Get a Quote</a>
       <button class="hamburger" id="menu-btn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -818,390 +699,261 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Bee Cave &amp; Lakeway, Texas</div>
-      <h1>Your Driveway Should<br><em>Look New</em> Again.</h1>
+      <div class="hero-badge">🦆 Custom Stickers · Fast Turnaround</div>
+      <h1>
+        Stickers That<br>
+        <span class="yellow">Actually</span> <span class="outline">Slap.</span>
+      </h1>
       <p class="hero-sub">
-        Professional pressure washing for driveways, patios, and concrete surfaces. Most driveways transformed in under 2 hours — get $50 off your first clean.
+        Die-cut, vinyl, holographic — any shape, any size, any quantity. Upload your design and we handle the rest. Fast shipping, premium quality, no minimums on custom orders.
       </p>
       <div class="hero-actions">
-        <a href="/offer" class="btn btn-orange">Get $50 Off My First Clean</a>
-        <a href="tel:5123330552" class="btn btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
-          Call or Text Luke
-        </a>
+        <a href="#get-quote" class="btn btn-yellow">🦆 Get a Free Quote</a>
+        <a href="#products" class="btn btn-ghost">See All Products</a>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat">
-        <div class="stat-icon">💧</div>
-        <div>
-          <div class="stat-label">High-Pressure Cleaning</div>
-          <div class="stat-sub">Deep-cleans concrete &amp; surfaces</div>
-        </div>
+  <!-- MARQUEE -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Set 1 -->
+      <div class="marquee-item">Die-Cut Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Vinyl Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Holographic <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Kiss-Cut Sheets <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Bumper Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Custom Shapes <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Fast Shipping <span class="marquee-dot"></span></div>
+      <div class="marquee-item">No Minimums <span class="marquee-dot"></span></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="marquee-item">Die-Cut Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Vinyl Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Holographic <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Kiss-Cut Sheets <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Bumper Stickers <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Custom Shapes <span class="marquee-dot"></span></div>
+      <div class="marquee-item">Fast Shipping <span class="marquee-dot"></span></div>
+      <div class="marquee-item">No Minimums <span class="marquee-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">What We Print</div>
+        <h2 class="section-title">Every Sticker Type.<br>One Place.</h2>
+        <p class="section-desc">Custom printed on premium materials built to last — waterproof, UV-resistant, and actually stick.</p>
       </div>
-      <div class="stat">
-        <div class="stat-icon">⚡</div>
-        <div>
-          <div class="stat-label">Same-Day Results</div>
-          <div class="stat-sub">Use your driveway that afternoon</div>
+      <div class="products-grid">
+
+        <div class="product-card featured fade-up">
+          <span class="product-badge">Best Seller</span>
+          <span class="product-icon">✂️</span>
+          <h3>Die-Cut Stickers</h3>
+          <p>Cut precisely to the shape of your design. Clean edges, premium vinyl, waterproof. The classic — and still the best.</p>
+          <div class="product-from">Get a Quote →</div>
         </div>
-      </div>
-      <div class="stat">
-        <div class="stat-icon">♻️</div>
-        <div>
-          <div class="stat-label">Eco-Friendly</div>
-          <div class="stat-sub">Safe for plants, pets &amp; family</div>
+
+        <div class="product-card fade-up">
+          <span class="product-icon">🌈</span>
+          <h3>Holographic Stickers</h3>
+          <p>Iridescent rainbow effect that shifts with the light. Stops people in their tracks every single time.</p>
+          <div class="product-from">Get a Quote →</div>
         </div>
+
+        <div class="product-card fade-up">
+          <span class="product-icon">📄</span>
+          <h3>Kiss-Cut Sheets</h3>
+          <p>Multiple stickers on one sheet. Perfect for sticker packs, merch, or gifting. Easy to peel, easy to love.</p>
+          <div class="product-from">Get a Quote →</div>
+        </div>
+
+        <div class="product-card fade-up">
+          <span class="product-icon">🚗</span>
+          <h3>Bumper Stickers</h3>
+          <p>Heavy-duty, weather-resistant, and built to last outdoors. Great for vehicles, equipment, or anything outside.</p>
+          <div class="product-from">Get a Quote →</div>
+        </div>
+
+        <div class="product-card fade-up">
+          <span class="product-icon">⬛</span>
+          <h3>Matte & Gloss Vinyl</h3>
+          <p>Classic vinyl stickers available in matte or gloss finish. Waterproof, durable, and crisp on every color.</p>
+          <div class="product-from">Get a Quote →</div>
+        </div>
+
+        <div class="product-card fade-up">
+          <span class="product-icon">🦆</span>
+          <h3>Custom Shape & Size</h3>
+          <p>Don't see exactly what you need? If you can design it, we can print it. Any shape, any size, no limits.</p>
+          <div class="product-from">Get a Quote →</div>
+        </div>
+
       </div>
-      <div class="stat">
-        <div class="stat-icon">🚫</div>
-        <div>
-          <div class="stat-label">No Contracts</div>
-          <div class="stat-sub">Pay per job, no commitment</div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stats-row fade-up">
+        <div class="stat-cell">
+          <div class="stat-number">48hr</div>
+          <div class="stat-label">Turnaround Time</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Waterproof & UV-Resistant</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">1+</div>
+          <div class="stat-label">Minimum Order Qty</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">5★</div>
+          <div class="stat-label">Satisfaction Guaranteed</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="section-label">What We Clean</div>
-        <h2 class="section-title">Exterior Cleaning Done Right</h2>
-        <p class="section-desc">Driveways, patios, sidewalks, and concrete surfaces throughout Bee Cave and Lakeway.</p>
-      </div>
-      <div class="services-grid">
-
-        <div class="service-card featured-service fade-up">
-          <span class="service-icon">🚗</span>
-          <h3>Driveway Cleaning</h3>
-          <p>Remove oil stains, tire marks, mold, algae, and years of buildup. Your driveway will look like it was just poured.</p>
-          <div class="service-price-tag orange">Starting at $150</div>
-        </div>
-
-        <div class="service-card fade-up">
-          <span class="service-icon">🏗️</span>
-          <h3>Patio &amp; Pool Deck</h3>
-          <p>Restore your outdoor living space. We clean concrete, pavers, and pool decks so they look freshly installed.</p>
-          <div class="service-price-tag">Starting at $150</div>
-        </div>
-
-        <div class="service-card fade-up">
-          <span class="service-icon">🚶</span>
-          <h3>Sidewalks &amp; Walkways</h3>
-          <p>First impressions matter. Clean walkways make your whole property look sharp and well-maintained.</p>
-          <div class="service-price-tag">Free Quote</div>
-        </div>
-
-        <div class="service-card fade-up">
-          <span class="service-icon">🏠</span>
-          <h3>Other Concrete Surfaces</h3>
-          <p>Garage floors, retaining walls, curbs — if it's concrete and it's dirty, we clean it. Text Luke for a free quote.</p>
-          <div class="service-price-tag">Free Quote</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section section-alt" id="pricing">
-    <div class="container">
-      <div class="section-header center fade-up">
-        <div class="section-label">Pricing</div>
-        <h2 class="section-title">Simple, Honest Rates</h2>
-        <p class="section-desc">Text Luke your address and a quick photo for an exact quote — usually within the hour.</p>
-      </div>
-      <div class="rate-table fade-up">
-        <div class="rate-row">
-          <span class="rate-service">Driveways, patios &amp; concrete surfaces</span>
-          <span class="rate-price">Starting at $150</span>
-        </div>
-        <div class="rate-row">
-          <span class="rate-service">Larger jobs</span>
-          <span class="rate-price">$0.15 / sq ft</span>
-        </div>
-        <div class="rate-row">
-          <span class="rate-service">All other services</span>
-          <span class="rate-price">Free Quote</span>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:2rem" class="fade-up">
-        <a href="/offer" class="btn btn-orange">Get $50 Off Your First Clean →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
-  <section class="section" id="how-it-works">
+  <section class="section section-alt" id="how-it-works">
     <div class="container">
       <div class="section-header center fade-up">
-        <div class="section-label">How It Works</div>
-        <h2 class="section-title">A New-Looking Driveway in 3 Steps</h2>
-        <p class="section-desc">Simple process, dramatic results. Most jobs are done the same week you reach out.</p>
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">Simple as That.</h2>
+        <p class="section-desc">From upload to doorstep in days. No complicated forms, no back-and-forth — just great stickers.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card fade-up">
           <div class="step-num">01</div>
-          <div class="step-icon">📱</div>
-          <h3>Text Luke a Photo</h3>
-          <p>Send a quick photo of your driveway or surface to (512) 333-0552. Luke sends back a price — usually same day. No commitment.</p>
+          <div class="step-icon">📤</div>
+          <h3>Send Your Design</h3>
+          <p>Upload your artwork or logo. PNG, PDF, AI — we take it all. Not sure about your file? Send it anyway and we'll check it.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">02</div>
-          <div class="step-icon">🚿</div>
-          <h3>We Show Up &amp; Clean</h3>
-          <p>Luke arrives with commercial-grade equipment. He pressure washes every inch until it looks brand new — usually 1 to 2 hours.</p>
+          <div class="step-icon">🎨</div>
+          <h3>Pick Your Options</h3>
+          <p>Choose your sticker type, size, quantity, and finish. We'll send you a proof before we print a single one.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">03</div>
-          <div class="step-icon">✅</div>
-          <h3>Enjoy the Transformation</h3>
-          <p>Dramatic difference, every single time. Your driveway is ready to use that same afternoon.</p>
+          <div class="step-icon">🚀</div>
+          <h3>We Print & Ship Fast</h3>
+          <p>Production starts immediately. Your stickers are printed, inspected, and shipped straight to your door.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">04</div>
+          <div class="step-icon">🦆</div>
+          <h3>Stick 'Em Everywhere</h3>
+          <p>Slap 'em on laptops, water bottles, bumpers, gear, merch — whatever you want. These things are built to last.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY PRESSURE WASH -->
-  <section class="section section-alt" id="why">
+  <!-- WHY US -->
+  <section class="section" id="why-us">
     <div class="container">
       <div class="section-header center fade-up">
-        <div class="section-label">Why It Matters</div>
-        <h2 class="section-title">A Clean Driveway Does More Than You Think</h2>
-        <p class="section-desc">It's not just about looks — there are real reasons to keep your concrete clean.</p>
+        <div class="section-label">Why Sticker Duck</div>
+        <h2 class="section-title">No Fluff. Just Good Stickers.</h2>
+        <p class="section-desc">We're not a faceless factory. We care about every order, no matter the size.</p>
       </div>
       <div class="why-grid">
         <div class="why-card fade-up">
-          <div class="why-icon">🏡</div>
-          <h3>Instant Curb Appeal</h3>
-          <p>Your driveway is the first thing people see. A clean driveway makes the whole property look cared-for and polished.</p>
+          <span class="why-icon">⚡</span>
+          <h3>Fast Turnaround</h3>
+          <p>Production in 48 hours. We know you needed them yesterday — we move fast without cutting corners.</p>
         </div>
         <div class="why-card fade-up">
-          <div class="why-icon">💰</div>
-          <h3>Protects Your Investment</h3>
-          <p>Mold, algae, and oil break down concrete over time. Regular cleaning extends your driveway's lifespan by years.</p>
+          <span class="why-icon">💎</span>
+          <h3>Premium Materials</h3>
+          <p>Waterproof, UV-resistant vinyl that won't fade, peel, or crack. Made to survive real life.</p>
         </div>
         <div class="why-card fade-up">
-          <div class="why-icon">⚠️</div>
-          <h3>Removes Slip Hazards</h3>
-          <p>Algae and mold on wet concrete are serious fall hazards. Pressure washing eliminates them completely.</p>
+          <span class="why-icon">🎯</span>
+          <h3>Proof Before We Print</h3>
+          <p>You approve a digital proof before we print a single sticker. No surprises, no wasted orders.</p>
         </div>
         <div class="why-card fade-up">
-          <div class="why-icon">✨</div>
-          <h3>Fastest ROI on Your Home</h3>
-          <p>Nothing refreshes a property faster or cheaper. Most driveways look brand new after a single clean.</p>
+          <span class="why-icon">📦</span>
+          <h3>Any Quantity</h3>
+          <p>Order 1 or order 10,000. No minimums on custom stickers — perfect for individuals and businesses alike.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-photo-wrap fade-up">
-          <img src="images/headshot.jpg" alt="Luke Freeman – Owner of Freeman Pressure Washing" class="about-photo">
-          <div class="about-photo-accent">
-            <strong>Luke Freeman</strong>
-            Owner &amp; Operator<br>Bee Cave, TX
-          </div>
-        </div>
-        <div class="about-text fade-up">
-          <div class="section-label">About Me</div>
-          <h2>Hi, I'm Luke —<br>your neighbor.</h2>
-          <p>
-            Born and raised in Austin. Lake Travis High School grad, now living right here in Bee Cave. I started Freeman Exterior Cleaning because I wanted to offer this community reliable, honest work done by someone who actually gives a damn.
-          </p>
-          <p>
-            When I clean your driveway, I treat it like it's my own. You won't get a rush job or a crew you've never met — you get me, personally, on every single job.
-          </p>
-          <div class="about-values">
-            <span class="value-pill">Family-Oriented</span>
-            <span class="value-pill">Local &amp; Trusted</span>
-            <span class="value-pill">Detail-Focused</span>
-            <span class="value-pill">Reliable</span>
-          </div>
-          <a href="tel:5123330552" class="btn btn-primary">Call or Text Luke Directly</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST SIGNALS -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header center fade-up">
-        <div class="section-label">Why Freeman</div>
-        <h2 class="section-title">The Difference is in the Details</h2>
-        <p class="section-desc">Built on trust, run by a neighbor who actually shows up.</p>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-card fade-up">
-          <span class="trust-icon">🏡</span>
-          <h3>Locally Owned</h3>
-          <p>Born and raised in Austin, based right here in Bee Cave. This is my neighborhood — my reputation is on the line with every job.</p>
-        </div>
-        <div class="trust-card fade-up">
-          <span class="trust-icon">📵</span>
-          <h3>No Contracts</h3>
-          <p>Pay per job, no commitments. Book when you need it, skip when you don't. I earn your business every single time.</p>
-        </div>
-        <div class="trust-card fade-up">
-          <span class="trust-icon">💵</span>
-          <h3>Transparent Pricing</h3>
-          <p>What I quote is what you pay. No hidden fees, no surprise add-ons. Straight-forward from someone who values your trust.</p>
-        </div>
-        <div class="trust-card fade-up">
-          <span class="trust-icon">♻️</span>
-          <h3>Eco-Friendly</h3>
-          <p>No harsh chemicals. All wastewater is properly contained — never left to run off into your yard or storm drains.</p>
-        </div>
-        <div class="trust-card fade-up">
-          <span class="trust-icon">💧</span>
-          <h3>Real Results, Every Time</h3>
-          <p>Oil stains, mold, algae, tire marks, years of buildup — we remove it all. If it doesn't look dramatically better, I make it right.</p>
-        </div>
-        <div class="trust-card fade-up">
-          <span class="trust-icon">✅</span>
+        <div class="why-card fade-up">
+          <span class="why-icon">🛡️</span>
           <h3>Satisfaction Guaranteed</h3>
-          <p>Not happy with the result? I come back and make it right, no questions asked. Every time. That's my personal guarantee.</p>
+          <p>If your stickers arrive and something's off, we make it right. Simple as that — no hoops to jump through.</p>
+        </div>
+        <div class="why-card fade-up">
+          <span class="why-icon">🦆</span>
+          <h3>Real Person, Real Service</h3>
+          <p>Not a chat bot. Real humans review every order and reply to every message. You're never talking to a wall.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AREA -->
-  <section class="section" id="area">
-    <div class="container">
-      <div class="area-wrap fade-up">
-        <div class="section-label" style="justify-content:center">Where We Work</div>
-        <h2 class="section-title" style="text-align:center">Proudly Serving the Austin Area</h2>
-        <p class="section-desc" style="margin:0 auto;text-align:center">Based in Bee Cave, we serve communities throughout the greater Austin area.</p>
-        <div class="area-tags">
-          <span class="area-tag">Bee Cave</span>
-          <span class="area-tag">Lakeway</span>
-          <span class="area-tag">West Lake Hills</span>
-          <span class="area-tag">Spicewood</span>
-          <span class="area-tag">Dripping Springs</span>
-          <span class="area-tag">Austin</span>
-          <span class="area-tag">Steiner Ranch</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JUNK REMOVAL -->
-  <section class="section" id="junk-removal">
-    <div class="container">
-      <div style="max-width:700px;margin:0 auto;background:var(--navy-3);border:1px solid var(--border);border-radius:20px;padding:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap" class="fade-up">
-        <div style="font-size:3rem;flex-shrink:0">🚛</div>
-        <div style="flex:1;min-width:220px">
-          <div style="color:var(--blue-light);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">Also Available</div>
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:900;margin-bottom:0.5rem">Junk Removal</h3>
-          <p style="color:var(--gray-400);font-size:0.9rem;line-height:1.7;margin-bottom:0">Old furniture, appliances, yard debris, garage cleanouts — whatever you need hauled off. Contact Luke for a free quote.</p>
-        </div>
-        <a href="tel:5123330552" class="btn btn-ghost" style="white-space:nowrap;flex-shrink:0">Get a Free Quote</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- OTHER SERVICES -->
-  <section class="section section-alt" id="other-services">
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
     <div class="container">
       <div class="section-header center fade-up">
-        <div class="section-label">Also Available</div>
-        <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2rem)">Other Services</h2>
-        <p class="section-desc">Have another project in mind? Reach out for a free quote.</p>
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Good Questions.</h2>
       </div>
-      <div class="other-services-grid fade-up">
-        <div class="other-service-item">
-          <span>🗑️</span>
-          <div>
-            <strong>Trash Can Cleaning</strong>
-            <span>Monthly from $30 · first month free</span>
-          </div>
+      <div class="faq-grid fade-up">
+        <div class="faq-item">
+          <h4>What file formats do you accept?</h4>
+          <p>PNG, PDF, SVG, AI, EPS — most common design files work. For best results, send vector files or high-res PNGs (at least 300 DPI).</p>
         </div>
-        <div class="other-service-item">
-          <span>🪟</span>
-          <div>
-            <strong>Window Cleaning</strong>
-            <span>Exterior $10/window · Interior $5/window</span>
-          </div>
+        <div class="faq-item">
+          <h4>Is there a minimum order?</h4>
+          <p>Nope. Order as few as 1. Pricing scales down with quantity, but there's no minimum holding you back.</p>
         </div>
-        <div class="other-service-item">
-          <span>🔲</span>
-          <div>
-            <strong>Screen Cleaning</strong>
-            <span>$5 standard · $10 solar/specialty</span>
-          </div>
-        </div>
-        <div class="other-service-item">
-          <span>🍂</span>
-          <div>
-            <strong>Gutter Cleaning</strong>
-            <span>Free Quote</span>
-          </div>
-        </div>
-        <div class="other-service-item">
-          <span>🏡</span>
-          <div>
-            <strong>Roof &amp; Soft Washing</strong>
-            <span>Free Quote</span>
-          </div>
-        </div>
-        <div class="other-service-item">
-          <span>☀️</span>
-          <div>
-            <strong>Solar Panel Cleaning</strong>
-            <span>Free Quote</span>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:2.5rem" class="fade-up">
-        <a href="tel:5123330552" class="btn btn-ghost">Get a Quote → (512) 333-0552</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MINI FAQ -->
-  <section class="section" id="faq-preview">
-    <div class="container">
-      <div class="section-header center fade-up">
-        <div class="section-label">Quick Answers</div>
-        <h2 class="section-title">Common Questions</h2>
-      </div>
-      <div class="mini-faq-grid fade-up">
-        <div class="mini-faq-item">
-          <h4>How much does it cost?</h4>
-          <p>Most driveways run $150–$250 depending on size. Text Luke a photo and your address for an exact quote — no commitment required.</p>
-        </div>
-        <div class="mini-faq-item">
-          <h4>Do I need to be home?</h4>
-          <p>No. As long as Luke has access to the driveway and a nearby water spigot, you don't need to be present at all.</p>
-        </div>
-        <div class="mini-faq-item">
+        <div class="faq-item">
           <h4>How long does it take?</h4>
-          <p>Most residential driveways take 1–2 hours. Your driveway is ready to use the same afternoon.</p>
+          <p>Production takes 48 hours after proof approval. Shipping time depends on your location — typically 2–5 business days.</p>
         </div>
-        <div class="mini-faq-item">
-          <h4>Will it damage my concrete?</h4>
-          <p>No. We use the right pressure settings for each surface. Concrete is built to handle it — we remove what's actually degrading it.</p>
+        <div class="faq-item">
+          <h4>Do I get a proof before printing?</h4>
+          <p>Yes — always. We send a digital proof for your approval before we run a single print. You control the final look.</p>
         </div>
-        <div class="mini-faq-item">
-          <h4>Do you clean patios and pool decks?</h4>
-          <p>Yes. Driveways, patios, sidewalks, pool decks, and any concrete surface. Text Luke your address for a free quote.</p>
+        <div class="faq-item">
+          <h4>Are the stickers waterproof?</h4>
+          <p>Yes. All stickers are printed on waterproof, UV-resistant vinyl. They're built for the outdoors and everyday use.</p>
         </div>
-        <div class="mini-faq-item">
-          <h4>Do you serve my area?</h4>
-          <p>Bee Cave, Lakeway, West Lake Hills, Dripping Springs, Steiner Ranch, and greater Austin. Text your address if you're not sure.</p>
+        <div class="faq-item">
+          <h4>Can you help with my design?</h4>
+          <p>Send us what you have and we'll tell you honestly if it'll print well. We can make minor adjustments — or connect you with design help for bigger projects.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET QUOTE / CONTACT -->
+  <section class="section" id="get-quote">
+    <div class="container">
+      <div style="max-width:640px;margin:0 auto;text-align:center" class="fade-up">
+        <div class="section-label" style="justify-content:center">Ready to Order?</div>
+        <h2 class="section-title">Let's Get Started.</h2>
+        <p class="section-desc" style="margin:0 auto 2rem">Tell us what you need and we'll get back to you with a quote — fast. No commitment required.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="mailto:hello@stickerduck.com" class="btn btn-yellow" style="font-size:1rem;padding:1rem 2rem">
+            📧 Email Us a Quote Request
+          </a>
+          <a href="tel:5123330552" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+            Call or Text
+          </a>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--muted)">Include your design file, sticker type, quantity, and size for the fastest response.</p>
       </div>
     </div>
   </section>
@@ -1209,11 +961,11 @@
   <!-- CTA STRIP -->
   <section class="cta-strip">
     <div class="container">
-      <h2>Ready for a New-Looking Driveway?</h2>
-      <p>Claim $50 off your first clean — takes 30 seconds.</p>
-      <div class="cta-phone-big"><a href="tel:5123330552">(512) 333-0552</a></div>
-      <div class="cta-note">Call or text anytime · freemanwash.com</div>
-      <a href="/offer" class="btn btn-orange">Claim My $50 Off →</a>
+      <h2>Your Design.<br>Our Stickers.</h2>
+      <p>Fast turnaround. Premium vinyl. No minimums.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="mailto:hello@stickerduck.com" class="btn btn-ghost">🦆 Get a Free Quote</a>
+      </div>
     </div>
   </section>
 
@@ -1221,30 +973,38 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-logo">
-          <img src="images/logo.png" alt="Freeman Pressure Washing">
-          <p class="footer-tagline">Professional exterior cleaning for Bee Cave, Lakeway, and surrounding Austin communities.</p>
+        <div>
+          <img src="images/logo.png" alt="Sticker Duck" class="footer-logo" style="height:48px;display:block;margin-bottom:0.75rem">
+          <p class="footer-tagline">Custom stickers printed fast. Any design, any shape, any quantity.</p>
         </div>
-        <div class="footer-contact">
-          <strong>Get in Touch</strong>
+        <div class="footer-links">
+          <strong>Get In Touch</strong>
+          <a href="mailto:hello@stickerduck.com">hello@stickerduck.com</a>
           <a href="tel:5123330552">(512) 333-0552</a>
-          <a href="mailto:luke@freemanwash.com">luke@freemanwash.com</a>
-          <span style="color:var(--gray-400)">Bee Cave, TX</span>
+        </div>
+        <div class="footer-links">
+          <strong>Products</strong>
+          <a href="#products">Die-Cut Stickers</a>
+          <a href="#products">Holographic Stickers</a>
+          <a href="#products">Kiss-Cut Sheets</a>
+          <a href="#products">Bumper Stickers</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Freeman Pressure Washing &amp; Exterior Cleaning. All rights reserved. &nbsp;·&nbsp; <a href="/manage" style="color:inherit;text-decoration:none;">Manage Subscription</a></p>
-        <p class="footer-verse">Proverbs 22:1</p>
+        <p class="footer-copy">&copy; 2026 Sticker Duck. All rights reserved.</p>
+        <p style="color:#333;font-size:0.75rem;font-style:italic">Proverbs 22:1</p>
       </div>
     </div>
   </footer>
 
   <script>
+    // Scroll animations
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+    // Mobile menu
     document.getElementById('menu-btn').addEventListener('click', () => {
       document.getElementById('nav').classList.toggle('menu-open');
     });
