@@ -35,7 +35,7 @@
     .prod-badge{background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:6px}
     .prod-title{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:0.04em;text-transform:uppercase}
     .prod-feats{margin-left:auto;display:flex;gap:1.5rem}
-    .prod-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--muted);font-weight:500}
+    .prod-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;color:var(--muted);font-weight:500}
     .prod-feat svg{flex-shrink:0}
 
     /* CONFIG GRID: 4 equal cols */
@@ -49,18 +49,18 @@
     .col-num{width:22px;height:22px;border-radius:50%;background:var(--raised);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.68rem;color:var(--muted);flex-shrink:0;transition:all 0.2s}
     .cfg-col.done .col-num{background:var(--yellow);border-color:var(--yellow);color:#000}
     .col-title{font-family:'Anton',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;flex:1}
-    .col-sel{font-size:0.72rem;color:var(--yellow);font-weight:600;text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .col-sel{font-size:0.78rem;color:var(--yellow);font-weight:600;text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
     /* CUT TABS */
     .cut-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem}
     .cut-tab{padding:0.6rem 0.5rem;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);text-align:center;transition:all 0.15s;user-select:none}
     .cut-tab:hover{border-color:rgba(245,192,0,0.3)}
     .cut-tab.selected{border-color:var(--yellow);background:var(--sel-bg)}
-    .ct-name{font-weight:700;font-size:0.8rem}
-    .ct-sub{font-size:0.66rem;color:var(--muted);margin-top:0.15rem}
+    .ct-name{font-weight:700;font-size:0.88rem}
+    .ct-sub{font-size:0.72rem;color:var(--muted);margin-top:0.15rem}
     .cut-tab.selected .ct-name{color:var(--yellow)}
 
-    .sec-lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:0.65rem}
+    .sec-lbl{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.7rem}
 
     /* SHAPE OPTIONS */
     .shape-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
@@ -69,7 +69,7 @@
     .shape-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
     .shape-opt svg{width:32px;height:32px;color:var(--white);opacity:0.7;transition:all 0.15s}
     .shape-opt.selected svg{color:var(--yellow);opacity:1}
-    .sn{font-size:0.68rem;font-weight:600;color:var(--muted);transition:color 0.15s}
+    .sn{font-size:0.75rem;font-weight:600;color:var(--muted);transition:color 0.15s}
     .shape-opt.selected .sn{color:var(--yellow)}
 
     /* MATERIAL SWATCHES */
@@ -81,11 +81,31 @@
     .mat-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
     .mat-swatch{width:44px;height:30px;border-radius:5px;flex-shrink:0;overflow:hidden;position:relative;box-shadow:0 2px 6px rgba(0,0,0,0.5)}
     .mat-swatch canvas{display:block;width:100%;height:100%;border-radius:5px}
-    .mn{font-size:0.68rem;font-weight:600;color:var(--muted);text-align:center;transition:color 0.15s}
+    .mn{font-size:0.78rem;font-weight:600;color:var(--muted);text-align:center;transition:color 0.15s}
     .mat-opt.selected .mn{color:var(--yellow)}
 
     /* SIZE OPTIONS */
     .size-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
+
+    /* Custom size toggle button */
+    .custom-size-toggle{margin-top:0.75rem;background:var(--raised);border:1.5px solid var(--border);color:var(--white);border-radius:10px;padding:0.65rem 1rem;font-family:'Inter',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;text-align:center;transition:all 0.15s;user-select:none}
+    .custom-size-toggle:hover,.custom-size-toggle.active{border-color:var(--yellow);color:var(--yellow);background:var(--sel-bg)}
+
+    /* Custom dimensions input panel */
+    .custom-size-panel{margin-top:0.65rem;padding:0.85rem;background:var(--raised);border:1.5px solid var(--yellow);border-radius:10px}
+    .custom-dims-row{display:flex;align-items:center;gap:0.6rem}
+    .custom-dim-field{flex:1;display:flex;flex-direction:column;gap:0.3rem}
+    .custom-dim-field label{font-size:0.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+    .custom-dim-field input{background:#1a1a1a;border:1.5px solid var(--border);color:var(--white);padding:0.55rem 0.7rem;border-radius:8px;font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:600;width:100%;transition:border-color 0.15s}
+    .custom-dim-field input:focus{outline:none;border-color:var(--yellow)}
+    .custom-dim-sep{font-size:1.1rem;font-weight:700;color:var(--muted);flex-shrink:0;margin-top:1.2rem}
+
+    /* Popular sizes */
+    .popular-sizes-label{margin-top:0.85rem;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+    .popular-sizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.45rem}
+    .pop-size{background:var(--raised);border:1.5px solid var(--border);border-radius:8px;padding:0.5rem 0.4rem;text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-size:0.75rem;color:var(--white);cursor:pointer;transition:all 0.15s;user-select:none}
+    .pop-size:hover{border-color:rgba(245,192,0,0.4);color:var(--yellow)}
+    .pop-size.selected{border-color:var(--yellow);background:var(--sel-bg);color:var(--yellow)}
     .size-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:0.35rem;padding:0.75rem 0.5rem;transition:all 0.15s;user-select:none;min-height:110px}
     .size-opt:hover{border-color:rgba(245,192,0,0.4);background:rgba(245,192,0,0.05)}
     .size-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
@@ -97,9 +117,9 @@
     .size-opt:hover .size-hover-text{opacity:1;transform:scale(1)}
     .size-bubble{border-radius:50%;background:rgba(255,255,255,0.1);transition:background 0.15s;flex-shrink:0}
     .size-opt.selected .size-bubble{background:rgba(245,192,0,0.22)}
-    .size-in{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.02em;transition:color 0.15s}
+    .size-in{font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.02em;transition:color 0.15s}
     .size-opt.selected .size-in{color:var(--yellow)}
-    .size-name{font-size:0.65rem;color:var(--muted);transition:color 0.15s}
+    .size-name{font-size:0.75rem;color:var(--muted);transition:color 0.15s}
     .size-opt.selected .size-name{color:rgba(245,192,0,0.7)}
 
     /* QUANTITY */
@@ -107,10 +127,10 @@
     .qty-row{display:grid;grid-template-columns:2.5rem 1fr auto auto;align-items:center;gap:0.6rem;padding:0.65rem 0.6rem;border-radius:8px;cursor:pointer;transition:all 0.12s;border:1.5px solid transparent;user-select:none}
     .qty-row:hover{background:rgba(255,255,255,0.03);border-color:rgba(245,192,0,0.2)}
     .qty-row.selected{background:var(--sel-bg);border-color:var(--yellow)}
-    .qn{font-family:'Anton',sans-serif;font-size:0.95rem;font-variant-numeric:tabular-nums}
-    .qp{font-size:0.67rem;color:var(--muted);font-variant-numeric:tabular-nums}
+    .qn{font-family:'Inter',sans-serif;font-weight:800;font-size:1rem;font-variant-numeric:tabular-nums}
+    .qp{font-size:0.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
     .qprice{font-weight:700;font-size:0.85rem;font-variant-numeric:tabular-nums}
-    .qsave{font-size:0.62rem;font-weight:700;color:var(--green);background:var(--green-bg);padding:0.18rem 0.42rem;border-radius:4px;min-width:48px;text-align:center}
+    .qsave{font-size:0.68rem;font-weight:700;color:var(--green);background:var(--green-bg);padding:0.18rem 0.42rem;border-radius:4px;min-width:48px;text-align:center}
 
     .custom-qty-row{display:flex;gap:0.4rem;margin-bottom:0.85rem}
     .custom-qty-row input{flex:1;background:var(--raised);border:1.5px solid var(--border);color:var(--white);padding:0.5rem 0.65rem;border-radius:8px;font-size:0.8rem;font-family:'Inter',sans-serif}
@@ -123,14 +143,14 @@
     .total-box{background:var(--raised);border-radius:12px;padding:1rem;border:1px solid var(--border)}
     .total-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:0.35rem}
     .total-price{font-family:'Anton',sans-serif;font-size:2rem;color:var(--yellow);font-variant-numeric:tabular-nums;line-height:1}
-    .total-per{font-size:0.72rem;background:rgba(255,255,255,0.07);border-radius:5px;padding:0.22rem 0.55rem;font-weight:600;font-variant-numeric:tabular-nums}
-    .total-delivery{font-size:0.73rem;color:var(--green);font-weight:500;margin-bottom:0.2rem}
+    .total-per{font-size:0.8rem;background:rgba(255,255,255,0.07);border-radius:5px;padding:0.22rem 0.55rem;font-weight:600;font-variant-numeric:tabular-nums}
+    .total-delivery{font-size:0.8rem;color:var(--green);font-weight:500;margin-bottom:0.2rem}
     .total-credit{font-size:0.7rem;color:var(--muted)}
     .total-credit em{color:var(--yellow);font-style:normal;font-weight:600}
 
     .order-btn{display:block;width:100%;margin-top:0.85rem;background:var(--yellow);color:#000;border:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem;border-radius:10px;transition:all 0.15s}
     .order-btn:hover{background:var(--yellow-d);transform:translateY(-1px)}
-    .guarantee{margin-top:0.6rem;text-align:center;font-size:0.68rem;color:var(--muted)}
+    .guarantee{margin-top:0.6rem;text-align:center;font-size:0.75rem;color:var(--muted)}
 
     /* UPLOAD */
     .upload-section{border-bottom:1px solid var(--border)}
@@ -443,27 +463,7 @@
         <div class="mn">Gloss</div>
       </div>
 
-      <div class="mat-divider">Specialty</div>
 
-      <div class="mat-opt" data-mat="holographic" onclick="pickMat('holographic',this)" tabindex="0">
-        <div class="mat-swatch" id="sw-holo"></div>
-        <div class="mn">Holographic</div>
-      </div>
-
-      <div class="mat-opt" data-mat="clear" onclick="pickMat('clear',this)" tabindex="0">
-        <div class="mat-swatch" id="sw-clear"></div>
-        <div class="mn">Clear</div>
-      </div>
-
-      <div class="mat-opt" data-mat="glitter" onclick="pickMat('glitter',this)" tabindex="0">
-        <div class="mat-swatch" id="sw-glitter"></div>
-        <div class="mn">Glitter</div>
-      </div>
-
-      <div class="mat-opt" data-mat="chrome" onclick="pickMat('chrome',this)" tabindex="0">
-        <div class="mat-swatch" id="sw-chrome"></div>
-        <div class="mn">Chrome</div>
-      </div>
 
     </div>
   </div>
@@ -516,9 +516,34 @@
 
     </div>
 
-    <p style="margin-top:0.85rem;font-size:0.68rem;color:var(--muted);line-height:1.5">
-      Longest dimension of your design. Need a different size? Note it in your order.
-    </p>
+
+    <!-- Custom size -->
+    <div id="custom-size-btn" class="custom-size-toggle" onclick="toggleCustomSize()">
+      ✏️ Custom size
+    </div>
+
+    <div id="custom-size-panel" class="custom-size-panel" style="display:none">
+      <div class="custom-dims-row">
+        <div class="custom-dim-field">
+          <label>Width (in)</label>
+          <input type="number" id="custom-w" min="1" max="24" step="0.5" placeholder="e.g. 4" oninput="applyCustomSize()">
+        </div>
+        <div class="custom-dim-sep">×</div>
+        <div class="custom-dim-field">
+          <label>Height (in)</label>
+          <input type="number" id="custom-h" min="1" max="24" step="0.5" placeholder="e.g. 3" oninput="applyCustomSize()">
+        </div>
+      </div>
+    </div>
+
+    <div class="popular-sizes-label">Other popular sizes:</div>
+    <div class="popular-sizes-grid">
+      <div class="pop-size" onclick="pickPopSize('5.5 × 5.5')">5.5"</div>
+      <div class="pop-size" onclick="pickPopSize('11 × 3')">11" × 3"</div>
+      <div class="pop-size" onclick="pickPopSize('3 × 2')">3" × 2"</div>
+      <div class="pop-size" onclick="pickPopSize('4 × 3')">4" × 3"</div>
+    </div>
+
   </div>
 
   <!-- COL 4: QUANTITY + TOTAL -->
@@ -892,7 +917,44 @@ function pickMat(v,el){
 function pickSize(v,el){
   S.size=v;
   document.querySelectorAll('[data-size]').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');buildQty();updateSummary();updatePreview();
+  el.classList.add('selected');
+  // Clear custom size state
+  document.querySelectorAll('.pop-size').forEach(p=>p.classList.remove('selected'));
+  document.getElementById('custom-size-btn').classList.remove('active');
+  document.getElementById('custom-size-panel').style.display='none';
+  buildQty();updateSummary();updatePreview();
+}
+
+function toggleCustomSize(){
+  const btn=document.getElementById('custom-size-btn');
+  const panel=document.getElementById('custom-size-panel');
+  const open=panel.style.display!=='none';
+  panel.style.display=open?'none':'block';
+  btn.classList.toggle('active',!open);
+  if(!open){
+    document.querySelectorAll('[data-size]').forEach(e=>e.classList.remove('selected'));
+    document.querySelectorAll('.pop-size').forEach(p=>p.classList.remove('selected'));
+  }
+}
+
+function applyCustomSize(){
+  const w=parseFloat(document.getElementById('custom-w').value)||0;
+  const h=parseFloat(document.getElementById('custom-h').value)||0;
+  if(w>0&&h>0){
+    S.size=Math.max(w,h).toFixed(1);
+    buildQty();updateSummary();updatePreview();
+  }
+}
+
+function pickPopSize(label){
+  // Parse the label like "4 × 3" → use max dimension
+  const parts=label.replace(/"/g,'').split('×').map(s=>parseFloat(s.trim()));
+  const maxDim=Math.max(...parts);
+  S.size=maxDim.toFixed(1);
+  document.querySelectorAll('.pop-size').forEach(p=>p.classList.remove('selected'));
+  event.target.classList.add('selected');
+  document.querySelectorAll('[data-size]').forEach(e=>e.classList.remove('selected'));
+  buildQty();updateSummary();updatePreview();
 }
 function pickQty(v){
   S.qty=parseInt(v);
