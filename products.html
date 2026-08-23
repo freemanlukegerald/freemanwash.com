@@ -4,194 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sticker Duck — Choose Your Sticker Type</title>
-  <meta name="description" content="Choose from die-cut, kiss-cut, holographic, clear, glitter stickers and more. Custom printed fast.">
+  <meta name="description" content="Custom stickers printed fast — vinyl, holographic, glitter, chrome, transparent, sticker sheets. No minimums. 3–5 day turnaround.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black:   #000000;
-      --yellow:  #f5c000;
-      --yellow-d:#d9aa00;
-      --white:   #ffffff;
-      --muted:   #888888;
-      --green:   #2d7d3a;
-      --card:    #111111;
-      --border:  rgba(255,255,255,0.08);
+      --black:  #0a0a0a;
+      --yellow: #f5c000;
+      --white:  #ffffff;
+      --muted:  rgba(255,255,255,0.45);
+      --card:   #111111;
+      --border: rgba(255,255,255,0.07);
+      --hover:  #181818;
     }
 
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
 
-    /* ─── ANNOUNCE BAR ─── */
-    .announce-bar {
-      background: var(--yellow); color: #000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.6rem 1.25rem;
-      font-family: 'Anton', sans-serif; font-size: 0.85rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-    .announce-bar button { background: none; border: none; cursor: pointer; color: #000; font-size: 1.1rem; opacity: 0.6; padding: 0.15rem 0.4rem; }
-    .announce-bar button:hover { opacity: 1; }
-    .announce-messages { display: flex; overflow: hidden; flex: 1; justify-content: center; }
-    .announce-msg { text-align: center; flex-shrink: 0; width: 100%; }
-
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--black); border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: var(--black); border-bottom: 1px solid var(--border);
     }
     .nav-inner {
       max-width: 1280px; margin: 0 auto; padding: 0 2rem;
       height: 72px; display: flex; align-items: center; gap: 2rem;
     }
-    .nav-logo { flex-shrink: 0; }
     .nav-logo img { height: 52px; width: auto; display: block; }
     .nav-links { display: flex; gap: 0.25rem; list-style: none; margin-left: 1.5rem; flex: 1; }
     .nav-links a {
       color: var(--white); text-decoration: none;
-      font-family: 'Anton', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 600; font-size: 0.92rem;
       padding: 0.4rem 0.85rem; border-radius: 6px; transition: background 0.15s;
     }
     .nav-links a:hover { background: rgba(255,255,255,0.07); }
     .nav-links a.active { color: var(--yellow); }
-    .nav-actions { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+    .nav-actions { margin-left: auto; }
     .nav-cta {
       background: var(--yellow); color: #000; text-decoration: none;
-      font-family: 'Anton', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.6rem 1.25rem; border-radius: 8px; transition: background 0.15s, transform 0.15s;
+      font-weight: 800; font-size: 0.9rem;
+      padding: 0.65rem 1.35rem; border-radius: 8px; transition: opacity 0.15s, transform 0.15s;
+      display: inline-block;
     }
-    .nav-cta:hover { background: var(--yellow-d); transform: translateY(-1px); }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
 
-    /* ─── PAGE HERO ─── */
+    /* ── HERO ── */
     .page-hero {
-      background: var(--black); padding: 4rem 2rem 3rem;
+      background: var(--black); padding: 5rem 2rem 4rem;
       text-align: center; border-bottom: 1px solid var(--border);
     }
     .page-hero-eyebrow {
-      font-family: 'Anton', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--yellow); margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 0.78rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 1.25rem;
     }
     .page-hero h1 {
-      font-family: 'Anton', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem);
-      text-transform: uppercase; letter-spacing: 0.03em; line-height: 1;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      text-transform: uppercase; letter-spacing: 0.02em; line-height: 1;
     }
     .page-hero h1 .hl {
       display: inline-block; background: var(--yellow); color: #000;
-      padding: 0 0.2em; margin: 0 0.05em;
+      padding: 0 0.18em; margin: 0 0.04em;
     }
     .page-hero-sub {
-      margin-top: 1rem; color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 500px; margin-inline: auto;
+      margin-top: 1.25rem; color: var(--muted);
+      font-size: 1.05rem; max-width: 480px; margin-inline: auto; line-height: 1.65;
     }
 
-    /* ─── PRODUCTS GRID ─── */
+    /* ── FEATURES STRIP ── */
+    .features-strip {
+      background: var(--yellow); color: #000;
+      padding: 1.1rem 2rem;
+      display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+    }
+    .feat-item { display: flex; align-items: center; gap: 0.55rem; }
+    .feat-icon { font-size: 1rem; }
+    .feat-item strong { font-weight: 800; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ── PRODUCTS LAYOUT ── */
     .products-section {
-      max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem;
+      max-width: 1240px; margin: 0 auto; padding: 3.5rem 2rem 6rem;
     }
 
-    .cat-label {
-      font-family: 'Anton', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--yellow); margin-bottom: 1.25rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .cat-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-    .products-grid {
+    /* 3-col grid at top, single col for sheets */
+    .cats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       margin-bottom: 3rem;
     }
 
-    .product-card {
-      background: var(--card); padding: 1.5rem 1.75rem;
-      display: flex; align-items: center; gap: 1.25rem;
+    .cat-col {}
+
+    .cat-heading {
+      font-family: 'Inter', sans-serif; font-weight: 900;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 1rem;
+      padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+    }
+
+    /* Product row */
+    .product-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 0.75rem; border-radius: 10px;
       text-decoration: none; color: var(--white);
       transition: background 0.15s;
-      cursor: pointer;
+      border-bottom: 1px solid var(--border);
     }
-    .product-card:hover { background: #1c1c1c; }
-    .product-card:hover .card-arrow { transform: translateX(4px); }
+    .product-row:last-child { border-bottom: none; }
+    .product-row:hover { background: var(--hover); }
+    .product-row:hover .row-arrow { color: var(--yellow); transform: translateX(3px); }
 
-    .card-icon {
-      width: 56px; height: 56px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.75rem; flex-shrink: 0;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    .row-img {
+      width: 54px; height: 54px; object-fit: contain; flex-shrink: 0;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .product-row:hover .row-img { transform: scale(1.08) rotate(-3deg); }
+
+    .row-body { flex: 1; min-width: 0; }
+    .row-name {
+      font-weight: 800; font-size: 1rem; line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+    .row-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
+    .row-badge {
+      display: inline-block; margin-top: 0.35rem;
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 0.15rem 0.55rem; border-radius: 4px;
+      background: rgba(245,192,0,0.15); color: var(--yellow);
     }
 
-    .card-body { flex: 1; }
-    .card-name {
-      font-family: 'Anton', sans-serif; font-size: 1rem;
-      letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.3rem;
+    .row-arrow {
+      color: var(--muted); font-size: 1.1rem; flex-shrink: 0;
+      transition: transform 0.2s, color 0.15s;
     }
-    .card-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
-    .card-tag {
-      display: inline-block; font-size: 0.65rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.5rem;
-    }
-    .tag-popular { background: rgba(245,192,0,0.15); color: var(--yellow); }
-    .tag-new { background: rgba(45,125,58,0.2); color: #4ade80; }
-    .tag-specialty { background: rgba(139,92,246,0.15); color: #a78bfa; }
 
-    .card-arrow {
-      color: var(--muted); font-size: 1.25rem; flex-shrink: 0;
-      transition: transform 0.2s, color 0.2s;
+    /* Sheets section (full-width below) */
+    .sheets-section { margin-top: 1rem; }
+    .sheets-section .cat-heading { margin-bottom: 0; }
+    .sheets-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      margin-top: 1rem;
     }
-    .product-card:hover .card-arrow { color: var(--yellow); }
-
-    /* ─── FEATURES STRIP ─── */
-    .features-strip {
-      background: var(--yellow); color: #000;
-      padding: 1.25rem 2rem;
-      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    .sheets-grid .product-row {
+      border-bottom: none; border-right: 1px solid var(--border);
+      border-radius: 0; padding: 1.2rem 1.25rem;
     }
-    .feat-item { display: flex; align-items: center; gap: 0.6rem; }
-    .feat-item span:first-child { font-size: 1.25rem; }
-    .feat-item strong { font-family: 'Anton', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .sheets-grid .product-row:last-child { border-right: none; }
 
-    /* ─── FOOTER ─── */
+    /* ── FOOTER ── */
     footer {
-      background: #0a0a0a; border-top: 1px solid var(--border);
+      background: #060606; border-top: 1px solid var(--border);
       padding: 2.5rem 2rem; text-align: center;
-      font-size: 0.8rem; color: var(--muted);
+      font-size: 0.82rem; color: var(--muted);
     }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--white); }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       nav.menu-open .nav-links {
         display: flex; flex-direction: column; gap: 0;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: #0a0a0a; border-bottom: 1px solid var(--border);
+        position: absolute; top: 72px; left: 0; right: 0;
+        background: var(--black); border-bottom: 1px solid var(--border);
         padding: 1rem 0;
       }
-      .features-strip { gap: 1.5rem; }
+      .cats-grid { grid-template-columns: 1fr; }
+      .features-strip { gap: 1.25rem; }
+      .sheets-grid { grid-template-columns: 1fr; }
+      .sheets-grid .product-row { border-right: none; border-bottom: 1px solid var(--border); }
+      .page-hero { padding: 3rem 1.5rem 2.5rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ANNOUNCE BAR -->
-  <div class="announce-bar">
-    <button id="ann-prev">&#8249;</button>
-    <div class="announce-messages">
-      <div class="announce-msg" id="ann-text">🦆 FREE SHIPPING ON ORDERS OVER $75 · USE CODE: DUCK</div>
-    </div>
-    <button id="ann-next">&#8250;</button>
-  </div>
 
   <!-- NAV -->
   <nav id="nav">
@@ -205,7 +204,7 @@
         <li><a href="/#faq">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="configure.html?type=die-cut" class="nav-cta">Order Now</a>
+        <a href="configure.html?type=vinyl" class="nav-cta">Order Now</a>
       </div>
       <button class="hamburger" id="menu-btn" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -213,161 +212,137 @@
     </div>
   </nav>
 
-  <!-- PAGE HERO -->
+  <!-- HERO -->
   <div class="page-hero">
-    <p class="page-hero-eyebrow">🦆 Sticker Duck Custom Printing</p>
+    <p class="page-hero-eyebrow">Sticker Duck Custom Printing</p>
     <h1>Choose Your <span class="hl">Sticker</span> Type</h1>
     <p class="page-hero-sub">Premium custom stickers printed on demand. Pick your type, configure your order, upload your design.</p>
   </div>
 
   <!-- FEATURES STRIP -->
   <div class="features-strip">
-    <div class="feat-item"><span>⚡</span><strong>3–5 Day Turnaround</strong></div>
-    <div class="feat-item"><span>💧</span><strong>Waterproof &amp; Weatherproof</strong></div>
-    <div class="feat-item"><span>📦</span><strong>Free Shipping $75+</strong></div>
-    <div class="feat-item"><span>✅</span><strong>No Minimums</strong></div>
+    <div class="feat-item"><strong>⚡ 3–5 Day Turnaround</strong></div>
+    <div class="feat-item"><strong>💧 Waterproof &amp; Weatherproof</strong></div>
+    <div class="feat-item"><strong>📦 Free Shipping $75+</strong></div>
+    <div class="feat-item"><strong>No Minimums</strong></div>
   </div>
 
   <!-- PRODUCTS -->
   <div class="products-section">
 
-    <!-- WHITE VINYL -->
-    <p class="cat-label">🎯 White Vinyl Stickers</p>
-    <div class="products-grid">
+    <div class="cats-grid">
 
-      <a class="product-card" href="configure.html?type=die-cut">
-        <div class="card-icon">✂️</div>
-        <div class="card-body">
-          <div class="card-name">Die-Cut Stickers</div>
-          <div class="card-desc">Cut exactly to your design shape — the most popular custom sticker.</div>
-          <span class="card-tag tag-popular">⭐ Most Popular</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+      <!-- VINYL -->
+      <div class="cat-col">
+        <div class="cat-heading">Vinyl Stickers</div>
 
-      <a class="product-card" href="configure.html?type=kiss-cut">
-        <div class="card-icon">🗂️</div>
-        <div class="card-body">
-          <div class="card-name">Kiss-Cut Stickers</div>
-          <div class="card-desc">Your shape cut to the vinyl, sitting on a square backing sheet. Easy to peel.</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=vinyl">
+          <img src="images/sticker-vinyl.png" class="row-img" alt="Vinyl Sticker">
+          <div class="row-body">
+            <div class="row-name">Vinyl Stickers</div>
+            <div class="row-desc">Cut to your design shape — premium waterproof vinyl, the classic choice.</div>
+            <span class="row-badge">Most Popular</span>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=bumper">
-        <div class="card-icon">🚗</div>
-        <div class="card-body">
-          <div class="card-name">Bumper Stickers</div>
-          <div class="card-desc">Heavy-duty outdoor vinyl built for vehicles, weather, and UV exposure.</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=kiss-cut">
+          <img src="images/sticker-vinyl.png" class="row-img" alt="Kiss-Cut Sticker">
+          <div class="row-body">
+            <div class="row-name">Kiss-Cut Stickers</div>
+            <div class="row-desc">Your shape on a square backing sheet. Easy to peel, easy to hand out.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=circle">
-        <div class="card-icon">⭕</div>
-        <div class="card-body">
-          <div class="card-name">Circle Stickers</div>
-          <div class="card-desc">Perfect rounds — great for branding, lids, and product packaging.</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=bumper">
+          <img src="images/sticker-vinyl.png" class="row-img" alt="Bumper Sticker">
+          <div class="row-body">
+            <div class="row-name">Bumper Stickers</div>
+            <div class="row-desc">Heavy-duty outdoor vinyl built for vehicles, weather, and UV exposure.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-    </div>
+      </div>
 
-    <!-- SPECIALTY VINYL -->
-    <p class="cat-label">✨ Specialty Vinyl</p>
-    <div class="products-grid">
+      <!-- SPECIALTY -->
+      <div class="cat-col">
+        <div class="cat-heading">Specialty Vinyl</div>
 
-      <a class="product-card" href="configure.html?type=holographic">
-        <div class="card-icon">🌈</div>
-        <div class="card-body">
-          <div class="card-name">Holographic Stickers</div>
-          <div class="card-desc">Rainbow prismatic finish that catches every angle of light.</div>
-          <span class="card-tag tag-specialty">✨ Specialty</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=holographic">
+          <img src="images/sticker-holographic.png" class="row-img" alt="Holographic Sticker">
+          <div class="row-body">
+            <div class="row-name">Holographic Stickers</div>
+            <div class="row-desc">Rainbow prismatic finish that shifts with every angle of light.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=clear">
-        <div class="card-icon">💎</div>
-        <div class="card-body">
-          <div class="card-name">Clear Stickers</div>
-          <div class="card-desc">Transparent vinyl with no white background — looks printed-on.</div>
-          <span class="card-tag tag-specialty">✨ Specialty</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=glitter">
+          <img src="images/sticker-glitter.png" class="row-img" alt="Glitter Sticker">
+          <div class="row-body">
+            <div class="row-name">Glitter Stickers</div>
+            <div class="row-desc">Sparkle and shimmer vinyl that makes your design impossible to ignore.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=glitter">
-        <div class="card-icon">🪩</div>
-        <div class="card-body">
-          <div class="card-name">Glitter Stickers</div>
-          <div class="card-desc">Sparkle and shimmer vinyl that makes your design pop.</div>
-          <span class="card-tag tag-new">🆕 New</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=transparent">
+          <img src="images/sticker-transparent.png" class="row-img" alt="Transparent Sticker">
+          <div class="row-body">
+            <div class="row-name">Transparent Stickers</div>
+            <div class="row-desc">Clear vinyl with no white background — looks printed right on the surface.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=chrome">
-        <div class="card-icon">🪞</div>
-        <div class="card-body">
-          <div class="card-name">Chrome Stickers</div>
-          <div class="card-desc">Mirror-like metallic vinyl with a premium reflective look.</div>
-          <span class="card-tag tag-specialty">✨ Specialty</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=chrome">
+          <img src="images/sticker-chrome.png" class="row-img" alt="Chrome Sticker">
+          <div class="row-body">
+            <div class="row-name">Chrome Stickers</div>
+            <div class="row-desc">Mirror-like metallic vinyl with a bold, premium reflective look.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-    </div>
+      </div>
 
-    <!-- SHEETS -->
-    <p class="cat-label">📄 Sticker Sheets &amp; Labels</p>
-    <div class="products-grid">
+      <!-- SHEETS -->
+      <div class="cat-col">
+        <div class="cat-heading">Sticker Sheets</div>
 
-      <a class="product-card" href="configure.html?type=sheets">
-        <div class="card-icon">📋</div>
-        <div class="card-body">
-          <div class="card-name">Sticker Sheets</div>
-          <div class="card-desc">Multiple designs on one sheet — perfect for merch packs and sticker packs.</div>
-          <span class="card-tag tag-popular">⭐ Fan Fave</span>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=sheets">
+          <img src="images/sticker-sheet.png" class="row-img" alt="Sticker Sheet">
+          <div class="row-body">
+            <div class="row-name">Sticker Sheets</div>
+            <div class="row-desc">Multiple designs on one sheet — perfect for merch packs and giveaways.</div>
+            <span class="row-badge">Fan Fave</span>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
 
-      <a class="product-card" href="configure.html?type=labels">
-        <div class="card-icon">🏷️</div>
-        <div class="card-body">
-          <div class="card-name">Sheet Labels</div>
-          <div class="card-desc">Durable labels on sheets — great for products, packaging, and shipping.</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
+        <a class="product-row" href="configure.html?type=sheets">
+          <img src="images/sticker-sheet.png" class="row-img" alt="Sheet Labels">
+          <div class="row-body">
+            <div class="row-name">Sheet Labels</div>
+            <div class="row-desc">Durable labels on sheets — great for products, packaging, and shipping.</div>
+          </div>
+          <div class="row-arrow">→</div>
+        </a>
+
+      </div>
 
     </div>
 
-  </div><!-- /products-section -->
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Sticker Duck · Custom Sticker Printing · Bee Cave, TX · <a href="mailto:luke@stickerduck.com">luke@stickerduck.com</a></p>
+    <p>© 2025 Sticker Duck · Custom Sticker Printing · Bee Cave, TX · <a href="mailto:luke@freemanwash.com">luke@freemanwash.com</a></p>
   </footer>
 
   <script>
-    // Announcement bar rotation
-    const msgs = [
-      '🦆 FREE SHIPPING ON ORDERS OVER $75 · USE CODE: DUCK',
-      '⚡ 3–5 DAY TURNAROUND · RUSH AVAILABLE',
-      '✅ NO MINIMUMS · ORDER AS FEW AS 25 STICKERS',
-      '🌈 HOLOGRAPHIC · CLEAR · GLITTER · DIE-CUT',
-    ];
-    let mi = 0;
-    const annEl = document.getElementById('ann-text');
-    function setAnn(i) { mi = (i + msgs.length) % msgs.length; annEl.textContent = msgs[mi]; }
-    document.getElementById('ann-prev').addEventListener('click', () => setAnn(mi - 1));
-    document.getElementById('ann-next').addEventListener('click', () => setAnn(mi + 1));
-    setInterval(() => setAnn(mi + 1), 4000);
-
-    // Mobile nav
     document.getElementById('menu-btn').addEventListener('click', () => {
       document.getElementById('nav').classList.toggle('menu-open');
     });
