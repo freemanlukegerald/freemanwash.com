@@ -476,6 +476,91 @@
       gap: 0.25rem;
     }
 
+    /* ─── SIZE GUIDE ─── */
+    .size-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: end;
+    }
+
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Wrapper creates bottom-aligned circles that grow left→right */
+    .size-circle-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 200px;
+      margin-bottom: 1rem;
+    }
+
+    .size-circle {
+      background: #fff;
+      border: 3px solid #e5e7eb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    .sc-2 { width: 80px;  height: 80px;  font-size: 2.2rem; }
+    .sc-3 { width: 115px; height: 115px; font-size: 3rem; }
+    .sc-4 { width: 155px; height: 155px; font-size: 3.8rem; }
+    .sc-5 { width: 195px; height: 195px; font-size: 4.5rem; }
+
+    .size-pill {
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.02em;
+      padding: 0.3rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 0.55rem;
+      display: inline-block;
+    }
+
+    .size-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #000;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .size-desc {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .size-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .size-guide-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .size-circle-wrap { height: 130px; }
+      .sc-2 { width: 55px;  height: 55px;  font-size: 1.5rem; }
+      .sc-3 { width: 78px;  height: 78px;  font-size: 2rem; }
+      .sc-4 { width: 104px; height: 104px; font-size: 2.5rem; }
+      .sc-5 { width: 128px; height: 128px; font-size: 3rem; }
+    }
+
     /* ─── STEPS ─── */
     .steps-grid {
       display: grid;
@@ -1036,6 +1121,57 @@
         </a>
 
       </div>
+    </div>
+  </section>
+
+  <!-- SIZE GUIDE -->
+  <section class="section section-light" id="size-guide">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <div class="section-label dark">Size Reference</div>
+        <h2 class="section-title dark">How Big Is Your Sticker?</h2>
+        <p class="section-desc dark">Not sure what size to order? Here's a real-world cheat sheet.</p>
+      </div>
+      <div class="size-guide-grid fade-up">
+
+        <div class="size-item">
+          <div class="size-circle-wrap">
+            <div class="size-circle sc-2">⛳</div>
+          </div>
+          <div class="size-pill">2"</div>
+          <div class="size-name">Golf Ball</div>
+          <div class="size-desc">Laptop corner, phone case</div>
+        </div>
+
+        <div class="size-item">
+          <div class="size-circle-wrap">
+            <div class="size-circle sc-3">🎾</div>
+          </div>
+          <div class="size-pill">3"</div>
+          <div class="size-name">Tennis Ball</div>
+          <div class="size-desc">Water bottles, journals</div>
+        </div>
+
+        <div class="size-item">
+          <div class="size-circle-wrap">
+            <div class="size-circle sc-4">🍪</div>
+          </div>
+          <div class="size-pill">4"</div>
+          <div class="size-name">Large Cookie</div>
+          <div class="size-desc">Helmets, skateboard decks</div>
+        </div>
+
+        <div class="size-item">
+          <div class="size-circle-wrap">
+            <div class="size-circle sc-5">🍔</div>
+          </div>
+          <div class="size-pill">5"</div>
+          <div class="size-name">Burger Bun</div>
+          <div class="size-desc">Bumpers, toolboxes, bins</div>
+        </div>
+
+      </div>
+      <p class="size-note fade-up">Custom sizes available — just ask. We print anything from 1" to 12".</p>
     </div>
   </section>
 
