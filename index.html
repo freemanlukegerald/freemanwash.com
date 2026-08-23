@@ -166,6 +166,19 @@
 
     .hero-text { position: relative; }
 
+    /* Durability badge cluster — floats in the void between headline and logo */
+    .hero-durability-stack {
+      position: absolute;
+      left: 46%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      z-index: 10;
+    }
+
     .hero-h1 {
       font-family: 'Anton', sans-serif;
       font-size: clamp(4rem, 9.5vw, 8.5rem);
@@ -848,16 +861,9 @@
       <!-- Left: text + CTA -->
       <div class="hero-text">
 
-        <!-- Floating badges -->
+        <!-- Fast Turnaround badge above headline -->
         <div class="sticker-float" style="top:-48px;left:-10px">
           <div class="sticker-badge yellow">🔥 Fast Turnaround</div>
-        </div>
-        <!-- Durability stack: single floating group -->
-        <div class="sticker-float" style="bottom:60px;right:10px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;width:fit-content">
-          <div class="sticker-badge green" style="transform:rotate(-2deg)">✓ Waterproof</div>
-          <div class="sticker-badge green" style="transform:rotate(2deg)">☀️ UV Resistant</div>
-          <div class="sticker-badge green" style="transform:rotate(-2deg)">💪 5+ Year Life</div>
-          <div class="sticker-badge green" style="transform:rotate(2deg)">🧴 Scratch-Proof</div>
         </div>
 
         <h1 class="hero-h1">
@@ -876,6 +882,14 @@
           <a href="products.html" class="btn btn-outline">See All Sticker Types</a>
         </div>
 
+      </div>
+
+      <!-- Durability badges floating in the void between text and logo -->
+      <div class="sticker-float hero-durability-stack">
+        <div class="sticker-badge green" style="transform:rotate(-2deg)">✓ Waterproof</div>
+        <div class="sticker-badge green" style="transform:rotate(2deg)">☀️ UV Resistant</div>
+        <div class="sticker-badge green" style="transform:rotate(-2deg)">💪 5+ Year Life</div>
+        <div class="sticker-badge green" style="transform:rotate(2deg)">🧴 Scratch-Proof</div>
       </div>
 
       <!-- Right: mascot -->
