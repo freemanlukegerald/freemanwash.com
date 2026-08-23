@@ -272,6 +272,7 @@
     .sticker-float {
       position: absolute;
       pointer-events: none;
+      width: fit-content;
       animation: floatRand 6s ease-in-out infinite;
     }
 
@@ -851,18 +852,12 @@
         <div class="sticker-float" style="top:-48px;left:-10px">
           <div class="sticker-badge yellow">🔥 Fast Turnaround</div>
         </div>
-        <!-- Durability stack (green) -->
-        <div class="sticker-float" style="bottom:220px;right:20px;animation-delay:0s">
-          <div class="sticker-badge green" style="transform:rotate(-3deg)">✓ Waterproof</div>
-        </div>
-        <div class="sticker-float" style="bottom:162px;right:20px;animation-delay:0.5s">
+        <!-- Durability stack: single floating group -->
+        <div class="sticker-float" style="bottom:60px;right:10px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;width:fit-content">
+          <div class="sticker-badge green" style="transform:rotate(-2deg)">✓ Waterproof</div>
           <div class="sticker-badge green" style="transform:rotate(2deg)">☀️ UV Resistant</div>
-        </div>
-        <div class="sticker-float" style="bottom:104px;right:20px;animation-delay:1s">
-          <div class="sticker-badge green" style="transform:rotate(-4deg)">💪 5+ Year Life</div>
-        </div>
-        <div class="sticker-float" style="bottom:46px;right:20px;animation-delay:1.5s">
-          <div class="sticker-badge green" style="transform:rotate(3deg)">🧴 Scratch-Proof</div>
+          <div class="sticker-badge green" style="transform:rotate(-2deg)">💪 5+ Year Life</div>
+          <div class="sticker-badge green" style="transform:rotate(2deg)">🧴 Scratch-Proof</div>
         </div>
 
         <h1 class="hero-h1">
