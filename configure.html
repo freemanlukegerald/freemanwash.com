@@ -209,43 +209,19 @@
     .success-box h3{font-family:'Anton',sans-serif;font-size:1.2rem;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.6rem}
     .success-box p{color:var(--muted);line-height:1.7;font-size:0.85rem}
 
-    /* ── STICKER PREVIEW STAGE ───────────────────────────── */
-    .preview-stage-wrap{border-bottom:1px solid var(--border);padding:1.5rem 1.5rem 1.75rem}
-    .preview-stage{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:3rem}
+    /* ── STATIC PRODUCT BANNER ───────────────────────────── */
+    .product-banner{border-bottom:1px solid var(--border);padding:1.5rem 1.5rem 1.75rem;transition:background 0.3s}
+    .banner-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:2.5rem}
+    .banner-img{width:160px;height:160px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.7));transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+    .banner-img:hover{transform:scale(1.05) rotate(-3deg)}
+    .banner-body{flex:1;min-width:0}
+    .banner-type-lbl{font-family:'Anton',sans-serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem}
+    .banner-headline{font-size:1.4rem;font-weight:800;line-height:1.25;margin-bottom:0.9rem;text-wrap:balance}
+    .banner-desc{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:0.85rem;max-width:500px}
+    .banner-feats{display:flex;flex-wrap:wrap;gap:0.45rem 1.25rem}
+    .banner-feats span{font-size:0.76rem;color:var(--green);font-weight:500}
 
-    /* Shadow wrapper — filter here so drop-shadow follows clipped shape */
-    .sticker-outer{width:200px;height:200px;flex-shrink:0;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.7));position:relative}
-
-    /* Clip container — gets clip-path + overflow */
-    .sticker-clip{
-      width:100%;height:100%;position:relative;overflow:hidden;
-      transition:clip-path 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    /* White/material sticker background */
-    .sticker-bg{position:absolute;inset:0;background:#ffffff;transition:background 0.25s}
-    /* Duck art SVG */
-    .duck-art{position:relative;z-index:1;display:block;width:100%;height:100%}
-    /* Material FX overlay */
-    .mat-vfx{position:absolute;inset:0;z-index:2;pointer-events:none}
-
-    /* Holographic hue-shift */
-    @keyframes holoShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
-    /* Die-cut dashed ring (shown around duck for custom cut) */
-    .cutline-ring{
-      position:absolute;inset:-4px;border-radius:50%;
-      border:2.5px dashed rgba(255,192,0,0.55);
-      pointer-events:none;z-index:3;display:none;
-    }
-
-    /* Preview label below sticker */
-    .preview-label{font-size:0.7rem;font-weight:600;color:var(--muted);letter-spacing:0.06em;text-align:center;margin-top:0.65rem;white-space:nowrap}
-
-    /* Info panel */
-    .preview-info{flex:1;min-width:0}
-    .preview-type-lbl{font-family:'Anton',sans-serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem}
-    .preview-headline{font-size:1.3rem;font-weight:800;line-height:1.25;margin-bottom:0.9rem;text-wrap:balance}
-    .preview-feats{display:flex;flex-wrap:wrap;gap:0.45rem 1.25rem}
-    .preview-feats span{font-size:0.76rem;color:var(--green);font-weight:500}
+    /* Banner responsive */
 
     /* RESPONSIVE */
     @media(max-width:1024px){
@@ -256,12 +232,12 @@
       .preview-stage{gap:2rem}
     }
     @media(max-width:700px){
-      /* Preview: stack vertically, center everything */
-      .preview-stage{flex-direction:column;align-items:center;gap:1rem;text-align:center}
-      .preview-stage-wrap{padding:1.25rem 1rem 1.5rem}
-      .preview-feats{justify-content:center}
-      .sticker-outer{width:160px;height:160px}
-      .preview-info{width:100%;text-align:center}
+      /* Banner: stack on mobile */
+      .banner-inner{flex-direction:column;align-items:center;gap:1rem;text-align:center}
+      .product-banner{padding:1.25rem 1rem 1.5rem}
+      .banner-feats{justify-content:center}
+      .banner-img{width:130px;height:130px}
+      .banner-desc{max-width:100%}
 
       /* Nav: tighten */
       .nav-inner{padding:0 1rem;gap:0.75rem}
@@ -294,7 +270,7 @@
     }
     @media(max-width:420px){
       /* Very small screens */
-      .sticker-outer{width:140px;height:140px}
+      .banner-img{width:110px;height:110px}
       .nav-crumb{display:none}
       .shape-grid{grid-template-columns:repeat(3,1fr)}
       .mat-grid{grid-template-columns:repeat(3,1fr)}
@@ -340,43 +316,21 @@
   </div>
 </div>
 
-<!-- STICKER PREVIEW STAGE -->
-<div class="preview-stage-wrap">
-  <div class="preview-stage">
-
-    <!-- Live sticker preview -->
-    <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0">
-      <div class="sticker-outer" id="sticker-outer">
-        <div class="sticker-clip" id="sticker-clip">
-
-          <!-- Background (white / checkerboard / transparent) -->
-          <div class="sticker-bg" id="sticker-bg"></div>
-
-          <!-- Duck mascot SVG -->
-          <img src="images/duck-head.png" class="duck-art" alt="Sticker Duck" style="object-fit:contain;">
-
-          <!-- Material effect overlay -->
-          <div class="mat-vfx" id="mat-vfx"></div>
-
-        </div><!-- /sticker-clip -->
-        <!-- Die-cut outline ring (custom shape only) -->
-        <div class="cutline-ring" id="cutline-ring"></div>
-      </div><!-- /sticker-outer -->
-      <p class="preview-label" id="preview-label">Die Cut · Custom · Matte · 3"</p>
-    </div>
-
-    <!-- Product info -->
-    <div class="preview-info">
-      <p class="preview-type-lbl" id="preview-type-lbl">Die-Cut Stickers</p>
-      <h2 class="preview-headline">Premium custom stickers<br>your people will actually keep.</h2>
-      <div class="preview-feats">
+<!-- STATIC PRODUCT BANNER -->
+<div class="product-banner" id="product-banner">
+  <div class="banner-inner">
+    <img src="images/sticker-vinyl.png" class="banner-img" id="banner-img" alt="Sticker type">
+    <div class="banner-body">
+      <p class="banner-type-lbl" id="banner-type-lbl">Vinyl Stickers</p>
+      <h2 class="banner-headline" id="banner-headline">Premium custom stickers<br>your people will actually keep.</h2>
+      <p class="banner-desc" id="banner-desc">Waterproof, UV-resistant die-cut vinyl. The classic choice.</p>
+      <div class="banner-feats" id="banner-feats">
         <span>✓ Waterproof vinyl</span>
         <span>✓ UV &amp; scratch resistant</span>
         <span>✓ 3–5 day turnaround</span>
         <span>✓ Free digital proof</span>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -813,59 +767,32 @@ function renderGlitterVfx(el){
   }
 }
 
-function updatePreview(){
-  const clip=document.getElementById('sticker-clip');
-  const bg=document.getElementById('sticker-bg');
-  const vfx=document.getElementById('mat-vfx');
-  const ring=document.getElementById('cutline-ring');
-  const lbl=document.getElementById('preview-label');
+// Static — no dynamic preview
+function updatePreview(){ /* banner is static; nothing to update */ }
 
-  // Shape clip-path
-  clip.style.clipPath=SHAPE_CLIPS[S.shape]||'none';
+// ─── BANNER DATA ─────────────────────────────────────────────────────────
+const BANNER={
+  'vinyl':       {img:'images/sticker-vinyl.png',       lbl:'Vinyl Stickers',       headline:'Premium custom stickers<br>your people will actually keep.',      desc:'Waterproof die-cut vinyl — the go-to custom sticker, cut exactly to your design.',   bg:'#060f06', feats:['Waterproof vinyl','UV & scratch resistant','3–5 day turnaround','Free digital proof']},
+  'die-cut':     {img:'images/sticker-vinyl.png',       lbl:'Die-Cut Stickers',     headline:'Cut exactly to your design.<br>The sticker standard.',               desc:'Your artwork cut perfectly to shape — durable, waterproof, and crowd-pleasing.',      bg:'#060f06', feats:['Waterproof vinyl','UV & scratch resistant','3–5 day turnaround','Free digital proof']},
+  'kiss-cut':    {img:'images/shape-kisscut-duck.png',  lbl:'Kiss-Cut Stickers',    headline:'Your shape on a square backing.<br>Easy to peel, easy to share.',   desc:'Die-cut design sitting on a square backing — clean, peel-ready, and hand-out friendly.', bg:'#06100a', feats:['Waterproof vinyl','Square backing sheet','3–5 day turnaround','Free digital proof']},
+  'holographic': {img:'images/sticker-holographic.png', lbl:'Holographic Stickers', headline:'Rainbow shine that catches<br>every eye in the room.',                desc:'Prismatic rainbow finish that shifts color with every angle of light.',               bg:'#0d0620', feats:['Prismatic rainbow finish','Waterproof vinyl','3–5 day turnaround','Free digital proof']},
+  'glitter':     {img:'images/sticker-glitter.png',     lbl:'Glitter Stickers',     headline:'Sparkle and shine<br>with every angle.',                             desc:'A textured, sparkly finish that adds glamour and personality to any surface.',       bg:'#150620', feats:['Sparkle finish vinyl','Waterproof','3–5 day turnaround','Free digital proof']},
+  'transparent': {img:'images/sticker-transparent.png', lbl:'Transparent Stickers', headline:'Looks printed directly<br>onto the surface.',                         desc:'No white background — clear vinyl that makes your design appear seamlessly on any surface.', bg:'#061414', feats:['Clear no-background vinyl','Waterproof','3–5 day turnaround','Free digital proof']},
+  'chrome':      {img:'images/sticker-chrome.png',      lbl:'Chrome Stickers',      headline:'Mirror-like metallic vinyl<br>with a premium reflective look.',       desc:'Stunning chrome finish that creates a bold, eye-catching reflective effect.',        bg:'#111111', feats:['Metallic chrome finish','Waterproof vinyl','3–5 day turnaround','Free digital proof']},
+  'sheets':      {img:'images/sticker-sheet.png',       lbl:'Sticker Sheets',       headline:'Multiple designs,<br>one stunning sheet.',                            desc:'Pack multiple designs onto one sheet — perfect for merch packs, giveaways, and kits.', bg:'#06090f', feats:['Multiple designs per sheet','Waterproof vinyl','3–5 day turnaround','Free digital proof']},
+  'bumper':      {img:'images/shape-bumper.png',        lbl:'Bumper Stickers',      headline:'Heavy-duty outdoor vinyl<br>built for the long haul.',                desc:'Oversized outdoor-grade vinyl designed for vehicles, weather, and years of UV exposure.', bg:'#100e06', feats:['Outdoor-grade vinyl','UV resistant','3–5 day turnaround','Free digital proof']},
+};
 
-  // Show die-cut ring only for custom die-cut
-  const isDieCut=S.cut==='die-cut',isCustom=S.shape==='custom';
-  ring.style.display=(isDieCut&&isCustom)?'block':'none';
-
-  // Reset vfx overlay
-  vfx.style.cssText='position:absolute;inset:0;z-index:2;pointer-events:none;';
-  vfx.innerHTML='';
-
-  // Background + material effect
-  switch(S.material){
-    case 'matte':
-      bg.style.background='#ffffff';
-      break;
-    case 'gloss':
-      bg.style.background='#ffffff';
-      vfx.style.background='linear-gradient(138deg,rgba(255,255,255,0) 28%,rgba(255,255,255,0.62) 44%,rgba(255,255,255,0) 56%)';
-      break;
-    case 'holographic':
-      bg.style.background='#ffffff';
-      vfx.style.background='linear-gradient(135deg,rgba(255,0,144,.45) 0%,rgba(255,102,0,.35) 17%,rgba(255,238,0,.35) 34%,rgba(0,210,100,.35) 50%,rgba(0,150,255,.35) 67%,rgba(160,50,255,.35) 83%,rgba(255,0,144,.45) 100%)';
-      vfx.style.mixBlendMode='overlay';
-      vfx.style.animation='holoShift 2s linear infinite';
-      break;
-    case 'clear':
-      bg.style.background='repeating-conic-gradient(#bbb 0% 25%,#e8e8e8 0% 50%) 0 0/22px 22px';
-      vfx.style.background='rgba(190,215,255,0.08)';
-      break;
-    case 'glitter':
-      bg.style.background=(isDieCut&&isCustom)?'rgba(255,240,255,0)':'#fef0ff';
-      renderGlitterVfx(vfx);
-      break;
-    case 'chrome':
-      bg.style.background='#ffffff';
-      vfx.style.background='linear-gradient(135deg,rgba(75,80,95,.55) 0%,rgba(255,255,255,.68) 36%,rgba(125,130,145,.58) 62%,rgba(55,60,75,.52) 100%)';
-      vfx.style.mixBlendMode='multiply';
-      break;
-  }
-
-  // Update preview label
-  const cutLbl=S.cut==='die-cut'?'Die Cut':'Kiss Cut';
-  const shapeLbl=S.shape.charAt(0).toUpperCase()+S.shape.slice(1);
-  const matLbl=S.material.charAt(0).toUpperCase()+S.material.slice(1);
-  lbl.textContent=cutLbl+' · '+shapeLbl+' · '+matLbl+' · '+S.size+'"';
+function initBanner(type){
+  const d=BANNER[type]||BANNER['vinyl'];
+  document.getElementById('product-banner').style.background=
+    'linear-gradient(135deg,'+d.bg+' 0%,#0a0a0a 100%)';
+  document.getElementById('banner-img').src=d.img;
+  document.getElementById('banner-type-lbl').textContent=d.lbl;
+  document.getElementById('banner-headline').innerHTML=d.headline;
+  document.getElementById('banner-desc').textContent=d.desc;
+  document.getElementById('banner-feats').innerHTML=
+    d.feats.map(f=>'<span>✓ '+f+'</span>').join('');
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────
@@ -895,14 +822,12 @@ function init(){
     const el=document.querySelector('[data-shape="'+cfg.shape+'"]');if(el)el.classList.add('selected');
   }
 
+  initBanner(type);
   initSwatches();
   buildQty();
   updateSummary();
-  updatePreview();
   // Mark all cols done since defaults are set
   [1,2,3,4].forEach(n=>document.getElementById('col'+n).classList.add('done'));
-  // Set preview product label
-  document.getElementById('preview-type-lbl').textContent=cfg.name;
 }
 
 // ─── SELECTORS ────────────────────────────────────────────────────────────
