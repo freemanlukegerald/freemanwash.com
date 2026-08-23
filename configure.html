@@ -64,13 +64,17 @@
 
     /* SHAPE OPTIONS */
     .shape-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
-    .shape-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.35rem;padding:0.7rem 0.5rem;transition:all 0.15s;user-select:none;aspect-ratio:1}
+    .shape-opt{border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--raised);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;padding:0.65rem 0.5rem;transition:all 0.15s;user-select:none;min-height:90px}
     .shape-opt:hover{border-color:rgba(245,192,0,0.3);background:rgba(255,255,255,0.03)}
     .shape-opt.selected{border-color:var(--yellow);background:var(--sel-bg)}
-    .shape-opt svg{width:32px;height:32px;color:var(--white);opacity:0.7;transition:all 0.15s}
-    .shape-opt.selected svg{color:var(--yellow);opacity:1}
     .sn{font-size:0.75rem;font-weight:600;color:var(--muted);transition:color 0.15s}
     .shape-opt.selected .sn{color:var(--yellow)}
+    /* shape image + crossfade hover */
+    .shape-vis{position:relative;display:flex;align-items:center;justify-content:center;flex:1;width:100%;min-height:52px}
+    .shape-ref-img{width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4));transition:opacity 0.22s ease,transform 0.22s ease;position:relative;z-index:1}
+    .shape-hover-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 0.2rem;font-family:'Inter',sans-serif;font-weight:700;font-size:0.6rem;line-height:1.3;color:var(--yellow);opacity:0;transform:scale(0.9);transition:opacity 0.22s ease,transform 0.22s ease;pointer-events:none;z-index:2}
+    .shape-opt:hover .shape-ref-img{opacity:0;transform:scale(0.75)}
+    .shape-opt:hover .shape-hover-text{opacity:1;transform:scale(1)}
 
     /* MATERIAL SWATCHES */
     .mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.45rem}
@@ -402,40 +406,43 @@
 
     <div class="shape-grid">
 
-      <!-- Custom: duck silhouette = on-brand -->
       <div class="shape-opt selected" data-shape="custom" onclick="pickShape('custom',this)" tabindex="0">
-        <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M34.5 13.5c1.5-1.8 4.5-2.8 7-1.5 2.5 1.3 3 4 1.5 6-1 1.3-2.8 2-4.2 1.8 1.5 1.5 2.2 4 0.8 6C38 28 34 28.5 31 27c-2.5 4-7 7-14 6.5C10 33 6 27.5 7.5 21 9 15 15.5 12 21.5 13c2.5-2.8 7-3.5 10-1.5z"/>
-          <circle cx="38" cy="16" r="1.8" fill="white" opacity="0.9"/>
-        </svg>
+        <div class="shape-vis">
+          <img src="images/shape-custom.png" class="shape-ref-img" alt="Custom shape">
+          <div class="shape-hover-text">Cut to your exact design</div>
+        </div>
         <div class="sn">Custom</div>
       </div>
 
       <div class="shape-opt" data-shape="circle" onclick="pickShape('circle',this)" tabindex="0">
-        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-          <circle cx="24" cy="24" r="19"/>
-        </svg>
+        <div class="shape-vis">
+          <img src="images/shape-circle.png" class="shape-ref-img" alt="Circle">
+          <div class="shape-hover-text">Perfect round sticker</div>
+        </div>
         <div class="sn">Circle</div>
       </div>
 
       <div class="shape-opt" data-shape="oval" onclick="pickShape('oval',this)" tabindex="0">
-        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-          <ellipse cx="24" cy="24" rx="22" ry="14"/>
-        </svg>
+        <div class="shape-vis">
+          <img src="images/shape-oval.png" class="shape-ref-img" alt="Oval">
+          <div class="shape-hover-text">Smooth oval shape</div>
+        </div>
         <div class="sn">Oval</div>
       </div>
 
       <div class="shape-opt" data-shape="square" onclick="pickShape('square',this)" tabindex="0">
-        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-          <rect x="7" y="7" width="34" height="34" rx="5"/>
-        </svg>
+        <div class="shape-vis">
+          <img src="images/shape-square.png" class="shape-ref-img" alt="Square">
+          <div class="shape-hover-text">Clean square sticker</div>
+        </div>
         <div class="sn">Square</div>
       </div>
 
       <div class="shape-opt" data-shape="rectangle" onclick="pickShape('rectangle',this)" tabindex="0">
-        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-          <rect x="4" y="13" width="40" height="22" rx="5"/>
-        </svg>
+        <div class="shape-vis">
+          <img src="images/shape-rectangle.png" class="shape-ref-img" alt="Rectangle">
+          <div class="shape-hover-text">Classic rectangle shape</div>
+        </div>
         <div class="sn">Rectangle</div>
       </div>
 
